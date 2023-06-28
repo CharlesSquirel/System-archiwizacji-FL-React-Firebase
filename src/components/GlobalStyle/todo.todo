@@ -1,0 +1,5 @@
+☐ migracja do bazy firebase @high 
+☐ refaktoryzacja do css variables, delete theme.js
+☐ search bar i logika wyszukiwania
+☐ poprawienie dependencji w useEffect
+☐ może zmiana stringa na date w inpucie daty
