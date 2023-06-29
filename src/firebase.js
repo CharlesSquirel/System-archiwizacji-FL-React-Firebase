@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, onValue } from "firebase/database";
+import { getDatabase } from "firebase/database";
 import { uid } from "uid";
 import { ref, set } from "firebase/database";
 
@@ -21,4 +21,3 @@ export const writeToDB = (datas) => {
   const uuid = uid();
   set(ref(db, `files/${uuid}`), datas);
 };
-

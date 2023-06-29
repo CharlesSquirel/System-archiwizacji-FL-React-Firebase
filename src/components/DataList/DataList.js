@@ -1,24 +1,22 @@
 import { StyledDataList } from "./StyledDataList";
-import axios from "axios";
-import { onValue, ref } from "firebase/database";
+import { onValue, ref, remove } from "firebase/database";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../../firebase";
 
-
 function DataList() {
-  const [credentials, setCredentials] = useState([]);
+  const [credentials, setCredentials] = useState({});
 
   useEffect(() => {
     onValue(ref(db), (snapshot) => {
       const data = snapshot.val();
-      setCredentials(data ? Object.values(data.files) : [])
-      console.log(credentials)
+      setCredentials(data ? data.files : {});
     });
   }, []);
 
-  const handleDelete = () => {
-    // await axios.delete(`http://localhost:3000/data/${id}`)
+  const handleDelete = (index) => {
+    const toRemove = Object.keys(credentials)[index];
+    remove(ref(db, `/files/${toRemove}`));
   };
   return (
     <StyledDataList>
@@ -31,8 +29,8 @@ function DataList() {
             <th>Tagi</th>
             <th>Akcje</th>
           </tr>
-          {credentials.map((data) => (
-            <tr className="verse-box" key={data.id}>
+          {Object.values(credentials).map((data, index) => (
+            <tr className="verse-box" key={index}>
               <td>{data.signature}</td>
               <td>{data.date}</td>
               <td>{data.description}</td>
@@ -44,7 +42,7 @@ function DataList() {
                       Edytuj
                     </Link>
                   </button>
-                  <button className="btn btn-delete" onClick={() => handleDelete(data.id)}>
+                  <button className="btn btn-delete" onClick={() => handleDelete(index)}>
                     Usuń
                   </button>
                 </div>
