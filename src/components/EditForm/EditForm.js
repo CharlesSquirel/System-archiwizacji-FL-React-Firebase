@@ -9,6 +9,7 @@ function EditForm() {
   const location = useLocation();
   const dataToEdit = location.state.data;
   const indexOfEditedData = location.state.index;
+  const credentials = location.state.credentials;
   let navigate = useNavigate();
 
   return (
@@ -16,7 +17,7 @@ function EditForm() {
       initialValues={dataToEdit}
       validationSchema={validationSchema}
       onSubmit={(values) => {
-        const toUptade = Object.keys(dataToEdit)[indexOfEditedData];
+        const toUptade = Object.keys(credentials)[indexOfEditedData];
         update(ref(db, `files/${toUptade}`), values);
         navigate("/");
       }}
