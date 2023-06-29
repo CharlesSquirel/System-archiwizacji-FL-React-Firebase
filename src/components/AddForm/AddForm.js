@@ -1,22 +1,15 @@
 import { StyledAddForm } from "./StyledAddForm";
 import { Formik } from "formik";
-import * as Yup from "yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { writeToDB } from "../../firebase";
+import { validationSchema } from "../../yupvalidation";
 const initialValues = {
   signature: "",
   date: "",
   description: "",
   tags: "",
 };
-
-const validationSchema = Yup.object().shape({
-  signature: Yup.string().required("Pole jest wymagane!"),
-  date: Yup.string().required("Pole jest wymagane!"),
-  description: Yup.string().required("Pole jest wymagane!"),
-  tags: Yup.string().required("Pole jest wymagane!"),
-});
 
 function AddForm() {
   return (

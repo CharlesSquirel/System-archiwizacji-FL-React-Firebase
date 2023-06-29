@@ -38,7 +38,7 @@ function DataList() {
               <td>
                 <div className="btn-box">
                   <button className="btn btn-edit">
-                    <Link to="/edit" state={data}>
+                    <Link to="/edit" state={{ data, index }}>
                       Edytuj
                     </Link>
                   </button>

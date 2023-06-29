@@ -1,32 +1,24 @@
 import { Formik } from "formik";
 import { useLocation, useNavigate } from "react-router-dom";
-import * as Yup from "yup";
 import { StyledAddForm } from "../AddForm/StyledAddForm";
-import axios from "axios";
-
-
-const validationSchema = Yup.object().shape({
-  signature: Yup.string().required("Pole jest wymagane!"),
-  date: Yup.string().required("Pole jest wymagane!"),
-  description: Yup.string().required("Pole jest wymagane!"),
-  tags: Yup.string().required("Pole jest wymagane!"),
-});
+import { validationSchema } from "../../yupvalidation";
+import { ref, update } from "firebase/database";
+import { db } from "../../firebase";
 
 function EditForm() {
   const location = useLocation();
-  const data = location.state;
+  const dataToEdit = location.state.data;
+  const indexOfEditedData = location.state.index;
   let navigate = useNavigate();
 
   return (
     <Formik
-      initialValues={data}
+      initialValues={dataToEdit}
       validationSchema={validationSchema}
       onSubmit={(values) => {
-        const uptadeData = async(id) => {
-          await axios.patch(`http://localhost:3000/data/${id}`, values)
-        }
-        uptadeData(values.id)
-        navigate("/")
+        const toUptade = Object.keys(dataToEdit)[indexOfEditedData];
+        update(ref(db, `files/${toUptade}`), values);
+        navigate("/");
       }}
     >
       {(formik) => {
@@ -36,13 +28,7 @@ function EditForm() {
             <form className="form" onSubmit={handleSubmit}>
               <div className="input-box">
                 <label htmlFor="signature">Sygnatura:</label>
-                <input
-                  id="singature"
-                  name="signature"
-                  className="input"
-                  autoComplete="off"
-                  {...formik.getFieldProps("signature")}
-                ></input>
+                <input id="singature" name="signature" className="input" autoComplete="off" {...formik.getFieldProps("signature")}></input>
                 {touched.signature && errors.signature && <p className="error">{errors.signature}</p>}
               </div>
               <div className="input-box">
@@ -52,24 +38,12 @@ function EditForm() {
               </div>
               <div className="input-box">
                 <label htmlFor="description">Opis:</label>
-                <input
-                  id="description"
-                  name="description"
-                  className="input"
-                  autoComplete="off"
-                  {...formik.getFieldProps("description")}
-                ></input>
+                <input id="description" name="description" className="input" autoComplete="off" {...formik.getFieldProps("description")}></input>
                 {touched.description && errors.description && <p className="error">{errors.description}</p>}
               </div>
               <div className="input-box">
                 <label htmlFor="tags">Tagi:</label>
-                <input
-                  id="tags"
-                  name="tags"
-                  className="input"
-                  autoComplete="off"
-                  {...formik.getFieldProps("tags")}
-                ></input>
+                <input id="tags" name="tags" className="input" autoComplete="off" {...formik.getFieldProps("tags")}></input>
                 {touched.tags && errors.tags && <p className="error">{errors.tags}</p>}
               </div>
               <div className="input-box">
