@@ -1,8 +1,11 @@
 ✔ migracja do bazy firebase @high @done (29.06.2023, 19:56:24)
 ☐ refaktoryzacja do css variables, delete theme.js
 ✔ search bar i logika wyszukiwania @done (4.07.2023, 14:59:34)
-☐ poprawienie dependencji w useEffect
+✘ poprawienie dependencji w useEffect @cancelled (4.07.2023, 21:08:05)
 ☐ może zmiana stringa na date w inpucie daty
-☐ domyślne sortowanie listy od najnowszego, bo teraz nie jest tak
+✔ domyślne sortowanie listy od najnowszego, bo teraz nie jest tak @done (4.07.2023, 21:11:32)
 ☐ poprawić wizualnie, w szczególności tabelę
-☐ sortowanie wyników wyszukiwania
+✔ sortowanie wyników wyszukiwania @done (4.07.2023, 21:08:29)
+☐ kolejność importów
+☐ css order
+☐ problem z rerenderingiem po edytowaniu @high

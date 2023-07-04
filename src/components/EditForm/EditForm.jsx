@@ -1,3 +1,4 @@
+import React from "react";
 import { Formik } from "formik";
 import { useLocation, useNavigate } from "react-router-dom";
 import { StyledAddForm } from "../AddForm/StyledAddForm";
@@ -10,6 +11,8 @@ function EditForm() {
   const dataToEdit = location.state.data;
   const indexOfEditedData = location.state.index;
   const credentials = location.state.credentials;
+  // const setCredentials = location.state.setCredentials;
+
   let navigate = useNavigate();
 
   return (
@@ -19,6 +22,7 @@ function EditForm() {
       onSubmit={(values) => {
         const toUptade = Object.keys(credentials)[indexOfEditedData];
         update(ref(db, `files/${toUptade}`), values);
+
         navigate("/");
       }}
     >

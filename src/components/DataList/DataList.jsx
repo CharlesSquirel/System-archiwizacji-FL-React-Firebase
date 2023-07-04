@@ -1,26 +1,30 @@
+import React from "react";
 import { StyledDataList } from "./StyledDataList";
-import {  ref, remove } from "firebase/database";
+import { ref, remove } from "firebase/database";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { db, readfromDB } from "../../utils/firebase";
 import SearchBar from "../SearchBar/SearchBar";
-
-
+import { sortCredentials } from "../../utils/sortingFunc";
 
 function DataList() {
   const [credentials, setCredentials] = useState({});
 
   useEffect(() => {
     readfromDB(setCredentials);
+    // domyślne sortowanie listy chronologicznie
+    sortCredentials(credentials, setCredentials, "dateAsc");
   }, []);
 
   const handleDelete = (index) => {
+    // obsługa kasowania wpisu
     const toRemove = Object.keys(credentials)[index];
     remove(ref(db, `/files/${toRemove}`));
   };
+
   return (
     <>
-      <SearchBar setCredentials={setCredentials} />
+      <SearchBar setCredentials={setCredentials} credentials={credentials} />
       <StyledDataList>
         <table className="table">
           <tbody>
