@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 import { uid } from "uid";
-import { ref, set } from "firebase/database";
+import { ref, set, onValue } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAaiuMwRZ8WJSE--oWSnp9aF2P3-YzD2sg",
@@ -20,4 +20,11 @@ export const db = getDatabase(app);
 export const writeToDB = (datas) => {
   const uuid = uid();
   set(ref(db, `files/${uuid}`), datas);
+};
+
+export const readfromDB = (settingFunction) => {
+  onValue(ref(db), (snapshot) => {
+    const data = snapshot.val();
+    settingFunction(data ? data.files : {});
+  });
 };

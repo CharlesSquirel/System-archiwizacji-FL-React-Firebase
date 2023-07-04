@@ -2,8 +2,8 @@ import { StyledAddForm } from "./StyledAddForm";
 import { Formik } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { writeToDB } from "../../firebase";
-import { validationSchema } from "../../yupvalidation";
+import { writeToDB } from "../../utils/firebase";
+import { validationSchema } from "../../utils/yupvalidation";
 const initialValues = {
   signature: "",
   date: "",

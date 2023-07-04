@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import bg from "./Tlo2.jpg";
 
 export const GlobalStyle = createGlobalStyle`
 * {

@@ -1,9 +1,9 @@
 import { Formik } from "formik";
 import { useLocation, useNavigate } from "react-router-dom";
 import { StyledAddForm } from "../AddForm/StyledAddForm";
-import { validationSchema } from "../../yupvalidation";
+import { validationSchema } from "../../utils/yupvalidation";
 import { ref, update } from "firebase/database";
-import { db } from "../../firebase";
+import { db } from "../../utils/firebase";
 
 function EditForm() {
   const location = useLocation();
