@@ -8,7 +8,7 @@ border-radius: 10px;
     padding: 15px;
     border-radius: 5px;
     text-align: center;
-    background-color: ${({theme}) => theme.colors.gray};
+    background-color: var(--gray);
 }
 .table-header-box{
     font-size: 20px;
@@ -18,7 +18,7 @@ border-radius: 10px;
 .verse-box {
     height: 50px;
     font-size: 18px;
-    border-bottom: 1px solid ${({theme}) => theme.colors.primary};
+    border-bottom: 1px solid var(--primary);
     & th {
         font-weight: 400;
     }
@@ -40,8 +40,8 @@ border-radius: 10px;
     align-self: center;
     gap: 5px;
     border-radius: 5px;
-    background: ${({ theme }) => theme.colors.primary};
-    color: ${({ theme }) => theme.colors.white};
+    background: var(--primary);
+    color: var(--white);
   }
 .btn-box{
     display: flex;

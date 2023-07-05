@@ -8,4 +8,4 @@
 ✔ sortowanie wyników wyszukiwania @done (4.07.2023, 21:08:29)
 ☐ kolejność importów
 ☐ css order
-☐ problem z rerenderingiem po edytowaniu @high
+☐ problem z rerenderingiem po edytowaniu @high | chwilowo zastosowano wymuszenie przeładowania strony

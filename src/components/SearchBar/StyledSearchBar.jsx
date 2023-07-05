@@ -9,7 +9,7 @@ export const StyledSearchBarWrapper = styled.div`
   width: 100%;
 `;
 export const StyledLabel = styled.label`
-  color: white;
+  color: var(--white);
   font-size: 22px;
 `;
 export const StyledSearchBarInput = styled.input`
@@ -20,7 +20,7 @@ export const StyledSelectWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 15px;
-  color: white;
+  color: var(--white);
 `;
 export const StyledSelectInput = styled.select`
   width: 300px;

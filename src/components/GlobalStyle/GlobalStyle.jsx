@@ -1,6 +1,15 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
+     
+:root {
+    --primary: #8c2433;
+    --white: #fff;
+    --black: #000;
+    --gray: #e7e7e7;
+    --background: #353535;
+}
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -14,7 +23,7 @@ input {
     padding-left: 8px;
     border-radius: 5px;
     outline: 0;
-    border: 1px solid ${({theme}) => theme.colors.primary};
+    border: 1px solid var(--primary);
     font-size: 18px;
     cursor: pointer;
     &:focus {
@@ -35,7 +44,7 @@ button {
 }
 body {
     padding-top: 100px;
-    background: #353535;
+    background-color: var(--background);
     height: 100vh;
 }
 
@@ -48,7 +57,7 @@ body {
 }
 
 tr {
-    border-bottom: 1px solid ${({theme}) => theme.colors.primary};
+    border-bottom: 1px solid var(--primary);
 }
 
 a{

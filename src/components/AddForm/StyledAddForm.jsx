@@ -10,7 +10,7 @@ export const StyledAddForm = styled.header`
     gap: 10px;
   }
   label {
-    color: ${({theme}) => theme.colors.white};
+    color: var(--white);
   }
   .btn {
     display: flex;
@@ -23,8 +23,8 @@ export const StyledAddForm = styled.header`
     border-radius: 5px;
     font-weight: 600;
     font-size: 22px;
-    background: ${({ theme }) => theme.colors.primary};
-    color: ${({ theme }) => theme.colors.white};
+    background: var(--primary);
+    color: var(--white);
   }
   .input-box {
     display: flex;
@@ -34,7 +34,7 @@ export const StyledAddForm = styled.header`
   }
   .icon {
     font-size: 20px;
-    color: ${({ theme }) => theme.colors.white};
+    color: var(--white);
   }
   .error {
     color: red;

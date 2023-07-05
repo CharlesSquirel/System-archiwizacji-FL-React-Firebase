@@ -22,8 +22,9 @@ function EditForm() {
       onSubmit={(values) => {
         const toUptade = Object.keys(credentials)[indexOfEditedData];
         update(ref(db, `files/${toUptade}`), values);
-
         navigate("/");
+        // chwilowe rozwiązanie
+        window.location.reload(false)
       }}
     >
       {(formik) => {
