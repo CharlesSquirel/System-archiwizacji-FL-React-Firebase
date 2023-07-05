@@ -7,5 +7,5 @@
 ☐ poprawić wizualnie, w szczególności tabelę
 ✔ sortowanie wyników wyszukiwania @done (4.07.2023, 21:08:29)
 ☐ kolejność importów
-☐ css order
+✔ css order @done (5.07.2023, 12:54:41)
 ☐ problem z rerenderingiem po edytowaniu @high | chwilowo zastosowano wymuszenie przeładowania strony

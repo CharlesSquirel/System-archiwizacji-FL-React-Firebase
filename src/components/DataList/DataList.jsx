@@ -1,10 +1,10 @@
 import React from "react";
+import SearchBar from "../SearchBar/SearchBar";
 import { StyledDataList } from "./StyledDataList";
-import { ref, remove } from "firebase/database";
 import { useEffect, useState } from "react";
+import { ref, remove } from "firebase/database";
 import { Link } from "react-router-dom";
 import { db, readfromDB } from "../../utils/firebase";
-import SearchBar from "../SearchBar/SearchBar";
 import { sortCredentials } from "../../utils/sortingFunc";
 
 function DataList() {
