@@ -16,3 +16,5 @@
 ✔ MUI dla tabeli @done (5.07.2023, 14:07:06)
 ✘ MUI dopracowanie i przeczytanie dokumentacji table @cancelled (5.07.2023, 16:15:38)
 ☐ dodać stronę logowania i skonfigurować uwierzytelnianie przez firebase
+☐ przenieść stylowanie inputów z GlobalStyle do psozczególnych komponentów
+☐ zwiększyć wysokość inputa "Opis"
