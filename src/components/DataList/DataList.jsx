@@ -1,6 +1,6 @@
 import React from "react";
 import SearchBar from "../SearchBar/SearchBar";
-import { StyledDataList } from "./StyledDataList";
+import { StyledDataList, StyledTable, StyledTableHeader, StyledCell, StyledButtonBox, StyledButtonEdit, StyledButtonDelete } from "./StyledDataList";
 import { useEffect, useState } from "react";
 import { ref, remove } from "firebase/database";
 import { Link } from "react-router-dom";
@@ -26,37 +26,37 @@ function DataList() {
     <>
       <SearchBar setCredentials={setCredentials} credentials={credentials} />
       <StyledDataList>
-        <table className="table">
+        <StyledTable>
           <tbody>
-            <tr className="table-header-box">
+            <StyledTableHeader>
               <th>Sygnatura</th>
               <th>Data</th>
               <th>Opis</th>
               <th>Tagi</th>
               <th>Akcje</th>
-            </tr>
+            </StyledTableHeader>
             {Object.values(credentials).map((data, index) => (
-              <tr className="verse-box" key={index}>
+              <StyledCell key={index}>
                 <td>{data.signature}</td>
                 <td>{data.date}</td>
                 <td>{data.description}</td>
                 <td>{data.tags}</td>
                 <td>
-                  <div className="btn-box">
-                    <button className="btn btn-edit">
+                  <StyledButtonBox>
+                    <StyledButtonEdit>
                       <Link to="/edit" state={{ data, index, credentials }}>
                         Edytuj
                       </Link>
-                    </button>
-                    <button className="btn btn-delete" onClick={() => handleDelete(index)}>
+                    </StyledButtonEdit>
+                    <StyledButtonDelete onClick={() => handleDelete(index)}>
                       Usuń
-                    </button>
-                  </div>
+                    </StyledButtonDelete>
+                  </StyledButtonBox>
                 </td>
-              </tr>
+              </StyledCell>
             ))}
           </tbody>
-        </table>
+        </StyledTable>
       </StyledDataList>
     </>
   );

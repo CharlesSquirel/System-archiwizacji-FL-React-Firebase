@@ -6,6 +6,8 @@
 ✔ domyślne sortowanie listy od najnowszego, bo teraz nie jest tak @done (4.07.2023, 21:11:32)
 ☐ poprawić wizualnie, w szczególności tabelę
 ✔ sortowanie wyników wyszukiwania @done (4.07.2023, 21:08:29)
-☐ kolejność importów
+✔ kolejność importów @done (5.07.2023, 12:56:15)
 ✔ css order @done (5.07.2023, 12:54:41)
 ☐ problem z rerenderingiem po edytowaniu @high | chwilowo zastosowano wymuszenie przeładowania strony
+☐ napisać testy jakieś
+☐ zmienić wszystko na komponenty Styled Components
