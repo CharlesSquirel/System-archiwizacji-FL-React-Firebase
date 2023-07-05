@@ -10,4 +10,5 @@
 ✔ css order @done (5.07.2023, 12:54:41)
 ☐ problem z rerenderingiem po edytowaniu @high | chwilowo zastosowano wymuszenie przeładowania strony
 ☐ napisać testy jakieś
-☐ zmienić wszystko na komponenty Styled Components
+✔ zmienić wszystko na komponenty Styled Components @done (5.07.2023, 13:12:42)
+☐ może pokusić się o jakiś stan globalny typu Context API
