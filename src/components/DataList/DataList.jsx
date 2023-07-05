@@ -1,6 +1,6 @@
 import React from "react";
 import SearchBar from "../SearchBar/SearchBar";
-import { StyledDataList, StyledTable, StyledTableHeader, StyledCell, StyledButtonBox, StyledButtonEdit, StyledButtonDelete } from "./StyledDataList";
+import { StyledDataList, StyledButtonBox, StyledButtonEdit, StyledButtonDelete } from "./StyledDataList";
 import { useEffect, useState } from "react";
 import { ref, remove } from "firebase/database";
 import { Link } from "react-router-dom";
@@ -13,6 +13,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+
 
 function DataList() {
   const [credentials, setCredentials] = useState({});
@@ -34,7 +35,7 @@ function DataList() {
       <SearchBar setCredentials={setCredentials} credentials={credentials} />
       <StyledDataList>
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }}>
+          <Table stickyHeader={true}>
             <TableHead>
               <TableRow>
                 <TableCell>Sygnatura</TableCell>
@@ -46,11 +47,11 @@ function DataList() {
             </TableHead>
             <TableBody>
               {Object.values(credentials).map((data, index) => (
-                <TableRow key={index} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-                  <TableCell>{data.signature}</TableCell>
-                  <TableCell>{data.date}</TableCell>
-                  <TableCell>{data.description}</TableCell>
-                  <TableCell>{data.tags}</TableCell>
+                <TableRow key={index} >
+                  <TableCell >{data.signature}</TableCell>
+                  <TableCell >{data.date}</TableCell>
+                  <TableCell >{data.description}</TableCell>
+                  <TableCell >{data.tags}</TableCell>
                   <TableCell>
                     <StyledButtonBox>
                       <StyledButtonEdit>
