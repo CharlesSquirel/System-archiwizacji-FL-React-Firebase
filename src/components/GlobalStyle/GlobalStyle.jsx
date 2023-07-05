@@ -56,10 +56,6 @@ body {
 
 }
 
-tr {
-    border-bottom: 1px solid var(--primary);
-}
-
 a{
     color: inherit;
     text-decoration: none;

@@ -3,15 +3,8 @@ import styled from "styled-components";
 export const StyledDataList = styled.main`
   width: 80%;
   border-radius: 10px;
-  .btn-edit,
-  .btn-delete {
-  }
-  .btn-delete {
-  }
-  .btn {
-  }
+  padding-bottom: 20px;
 `;
-
 export const StyledTable = styled.table`
   width: 100%;
   padding: 15px;
@@ -20,16 +13,40 @@ export const StyledTable = styled.table`
   background-color: var(--gray);
 `;
 export const StyledTableHeader = styled.tr`
+  position: relative;
   font-size: 20px;
   font-weight: 500;
   height: 36px;
+  ::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
 `;
 export const StyledCell = styled.tr`
-  height: 50px;
+  position: relative;
   font-size: 18px;
-  border-bottom: 1px solid var(--primary);
-  & th {
+  td {
+    height: auto;
+    max-width: 300px;
+    overflow: hidden;
     font-weight: 400;
+    :not(:last-child) {
+      border-right: 1px solid black;
+    }
+  }
+  :after {
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: var(--black);
+    position: absolute;
+    bottom: 0;
+    left: 0;
   }
 `;
 export const StyledButtonBox = styled.div`
