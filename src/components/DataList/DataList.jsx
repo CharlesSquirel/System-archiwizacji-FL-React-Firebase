@@ -1,19 +1,11 @@
 import React from "react";
 import SearchBar from "../SearchBar/SearchBar";
-import { StyledDataList, StyledButtonBox, StyledButtonEdit, StyledButtonDelete } from "./StyledDataList";
+import { StyledDataList, StyledButtonBox, StyledButtonEdit, StyledButtonDelete, StyledCell, StyledTableHeader, StyledTable, StyledRow } from "./StyledDataList";
 import { useEffect, useState } from "react";
 import { ref, remove } from "firebase/database";
 import { Link } from "react-router-dom";
 import { db, readfromDB } from "../../utils/firebase";
 import { sortCredentials } from "../../utils/sortingFunc";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-
 
 function DataList() {
   const [credentials, setCredentials] = useState({});
@@ -34,39 +26,37 @@ function DataList() {
     <>
       <SearchBar setCredentials={setCredentials} credentials={credentials} />
       <StyledDataList>
-        <TableContainer component={Paper}>
-          <Table stickyHeader={true}>
-            <TableHead>
-              <TableRow>
-                <TableCell>Sygnatura</TableCell>
-                <TableCell>Data</TableCell>
-                <TableCell>Opis</TableCell>
-                <TableCell>Tagi</TableCell>
-                <TableCell>Akcje</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {Object.values(credentials).map((data, index) => (
-                <TableRow key={index} >
-                  <TableCell >{data.signature}</TableCell>
-                  <TableCell >{data.date}</TableCell>
-                  <TableCell >{data.description}</TableCell>
-                  <TableCell >{data.tags}</TableCell>
-                  <TableCell>
-                    <StyledButtonBox>
-                      <StyledButtonEdit>
-                        <Link to="/edit" state={{ data, index, credentials }}>
-                          Edytuj
-                        </Link>
-                      </StyledButtonEdit>
-                      <StyledButtonDelete onClick={() => handleDelete(index)}>Usuń</StyledButtonDelete>
-                    </StyledButtonBox>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <StyledTable>
+          <thead>
+            <StyledTableHeader>
+              <th>Sygnatura</th>
+              <th>Data</th>
+              <th>Opis</th>
+              <th>Tagi</th>
+              <th>Akcje</th>
+            </StyledTableHeader>
+          </thead>
+          <tbody>
+            {Object.values(credentials).map((data, index) => (
+              <StyledRow key={index}>
+                <StyledCell>{data.signature}</StyledCell>
+                <StyledCell>{data.date}</StyledCell>
+                <StyledCell>{data.description}</StyledCell>
+                <StyledCell>{data.tags}</StyledCell>
+                <StyledCell>
+                  <StyledButtonBox>
+                    <StyledButtonEdit>
+                      <Link to="/edit" state={{ data, index, credentials }}>
+                        Edytuj
+                      </Link>
+                    </StyledButtonEdit>
+                    <StyledButtonDelete onClick={() => handleDelete(index)}>Usuń</StyledButtonDelete>
+                  </StyledButtonBox>
+                </StyledCell>
+              </StyledRow>
+            ))}
+          </tbody>
+        </StyledTable>
       </StyledDataList>
     </>
   );

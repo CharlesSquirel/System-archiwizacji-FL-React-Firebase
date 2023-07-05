@@ -27,28 +27,42 @@ export const StyledTableHeader = styled.tr`
     left: 0;
   }
 `;
-export const StyledCell = styled.tr`
+
+export const StyledRow = styled.tr`
   position: relative;
   font-size: 18px;
-  td {
-    height: auto;
-    max-width: 300px;
-    overflow: hidden;
-    font-weight: 400;
-    :not(:last-child) {
-      border-right: 1px solid black;
-    }
-  }
-  :after {
+
+  &:after {
     content: "";
     width: 100%;
     height: 1px;
-    background-color: var(--black);
+    border-bottom: 1px dotted var(--primary);
     position: absolute;
     bottom: 0;
     left: 0;
   }
+  
+  td:nth-child(3),
+  td:nth-child(4) {
+    width: 450px;
+  }
 `;
+
+export const StyledCell = styled.td`
+  max-width: 300px;
+  overflow: hidden;
+  font-weight: 400;
+  position: relative;
+  height: auto;
+  overflow-wrap: break-word;
+
+
+  &:not(:last-child) {
+    border-right: 1px solid black;
+  }
+`;
+
+
 export const StyledButtonBox = styled.div`
   display: flex;
   justify-content: center;
