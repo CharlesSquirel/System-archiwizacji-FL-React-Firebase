@@ -19,3 +19,5 @@
 ☐ przenieść stylowanie inputów z GlobalStyle do psozczególnych komponentów
 ☐ zwiększyć wysokość inputa "Opis"
 ☐ posypał się wygląd editform
+☐ odinstalować MUI
+☐ jeśli opis, lub tagi są puste to z automatu wstawić "brak szczegółów"
