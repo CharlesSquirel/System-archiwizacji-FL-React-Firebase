@@ -1,22 +1,28 @@
 import React, { useState } from "react";
-import { StyledAddButton, StyledInputBox, StyledInput } from "../AddForm/StyledAddForm";
+import { StyledAddButton, StyledInputBox, StyledInput, ErrorMessage } from "../AddForm/StyledAddForm";
 import { StyledLoginForm } from "./StyledLoginForm";
 import Title from "../Title/Title";
-import { auth } from "../../utils/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+    error: ""
+  })
 
   const handleOnSubmit = (e) => {
+    const {email, password} = login;
     e.preventDefault();
+    const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential);
+      .then(() => {
+        navigate("/main");
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        setLogin({...login, error: "Nieprawidłowy email lub hasło"})
       });
   };
 
@@ -26,12 +32,13 @@ const LoginForm = () => {
       <StyledLoginForm onSubmit={handleOnSubmit}>
         <StyledInputBox>
           <label>Login lub hasło</label>
-          <StyledInput onChange={(e) => setEmail(e.target.value)} type="text" name="email" placeholder="Login lub email" autoComplete="off" />
+          <StyledInput onChange={(e) => setLogin({...login, email:e.target.value})} type="text" name="email" placeholder="Login lub email" autoComplete="off" />
         </StyledInputBox>
         <StyledInputBox>
           <label>Hasło</label>
-          <StyledInput onChange={(e) => setPassword(e.target.value)} type="password" name="password" placeholder="hasło" autoComplete="off" />
+          <StyledInput onChange={(e) => setLogin({...login, password:e.target.value})} type="password" name="password" placeholder="hasło" autoComplete="off" />
         </StyledInputBox>
+        {login.error && <ErrorMessage>{login.error}</ErrorMessage>}
         <StyledAddButton type="submit">Zaloguj</StyledAddButton>
       </StyledLoginForm>
     </>

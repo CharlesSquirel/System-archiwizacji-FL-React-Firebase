@@ -11,9 +11,7 @@ function EditForm() {
   const dataToEdit = location.state.data;
   const indexOfEditedData = location.state.index;
   const credentials = location.state.credentials;
-  // const setCredentials = location.state.setCredentials;
-
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <Formik

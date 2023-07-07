@@ -10,8 +10,8 @@ function Root() {
         <GlobalStyle />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/login" element={<LoginForm/>}/>
+            <Route path="/" element={<LoginForm/>}/>
+            <Route path="/main" element={<Main />} />
             <Route path="/edit" element={<EditForm />} />
           </Routes>
         </BrowserRouter>
