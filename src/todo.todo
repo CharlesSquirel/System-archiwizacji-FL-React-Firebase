@@ -15,10 +15,15 @@
 ☐ pewnie czeka migracja do TS
 ✔ MUI dla tabeli @done (5.07.2023, 14:07:06)
 ✘ MUI dopracowanie i przeczytanie dokumentacji table @cancelled (5.07.2023, 16:15:38)
-☐ dodać stronę logowania i skonfigurować uwierzytelnianie przez firebase
+✔ dodać stronę logowania i skonfigurować uwierzytelnianie przez firebase @done (7.07.2023, 15:31:45)
 ✔ stworzyć component widoku logowania i zmienic routing @done (7.07.2023, 13:23:33)
 ✔ przenieść stylowanie inputów z GlobalStyle do psozczególnych komponentów @done (7.07.2023, 12:59:14)
 ✘ zwiększyć wysokość inputa "Opis" @cancelled (7.07.2023, 13:10:49)
 ✔ posypał się wygląd editform @done (7.07.2023, 12:41:46)
 ✔ odinstalować MUI @done (7.07.2023, 12:42:38)
 ✔ jeśli opis, lub tagi są puste to z automatu wstawić "brak szczegółów" @done (7.07.2023, 12:53:20)
+✔ sprawdzić jak zablokować dostęp do /main zanim się nie zalogujesz @done (7.07.2023, 15:41:26)
+✔ zapisać dane zalogowania do local Storage, żeby po odświeżeniu też był zalogowany @done (7.07.2023, 15:41:59)
+☐ poprawić stylowanie login forma. Może nie korzysztać z pożyczonych komponentów z add form? Albo przenieśc ogólne do jakiegoś głównego folderu GlobalStyle/GlobalComponents?
+☐ obsłużyć wylogowywanie się
+☐ obsłużyć wyświetlanie aktualnego użytkownika

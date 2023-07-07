@@ -5,7 +5,7 @@ import Title from "../Title/Title";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
-const LoginForm = () => {
+const LoginForm = ({setIsLogged}) => {
   const navigate = useNavigate();
   const [login, setLogin] = useState({
     email: "",
@@ -19,6 +19,8 @@ const LoginForm = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
+        setIsLogged(true);
+        localStorage.setItem("isLogged", "true");
         navigate("/main");
       })
       .catch(() => {
