@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledAddForm = styled.header`
+export const StyledFormWrapper = styled.header`
   display: flex;
   justify-content: center;
   width: 100%;
@@ -17,7 +17,8 @@ export const StyledForm = styled.form`
   align-items: flex-start;
   gap: 10px;
 `;
-export const StyledAddButton = styled.button`
+
+export const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,10 +40,6 @@ export const StyledInputBox = styled.div`
   min-height: 106px;
 `;
 
-export const ErrorMessage = styled.p`
-  color: red;
-`;
-
 export const StyledInput = styled.input`
   width: 260px;
   height: 40px;
@@ -50,4 +47,8 @@ export const StyledInput = styled.input`
   border-radius: 5px;
   border: 1px solid var(--primary);
   font-size: 18px;
+`;
+
+export const ErrorMessage = styled.p`
+  color: red;
 `;

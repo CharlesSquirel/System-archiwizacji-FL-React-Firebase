@@ -1,10 +1,10 @@
 import React from "react";
-import { StyledAddForm, StyledForm, StyledInputBox, ErrorMessage, StyledAddButton, StyledInput } from "../AddForm/StyledAddForm";
 import { Formik } from "formik";
 import { useLocation, useNavigate } from "react-router-dom";
 import { changeEmptyString, validationSchema } from "../../utils/yupvalidation";
 import { ref, update } from "firebase/database";
 import { db } from "../../utils/firebase";
+import { StyledButton, StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm } from "../GlobalStyle/GlobalComponents";
 
 function EditForm() {
   const location = useLocation();
@@ -29,7 +29,7 @@ function EditForm() {
       {(formik) => {
         const { errors, touched, handleSubmit } = formik;
         return (
-          <StyledAddForm>
+          <StyledFormWrapper>
             <StyledForm onSubmit={handleSubmit}>
               <StyledInputBox>
                 <label htmlFor="signature">Sygnatura:</label>
@@ -53,12 +53,12 @@ function EditForm() {
               </StyledInputBox>
               <StyledInputBox>
                 <label htmlFor="btn">Akcje:</label>
-                <StyledAddButton id="btn" type="submit">
+                <StyledButton id="btn" type="submit">
                   Zmień
-                </StyledAddButton>
+                </StyledButton>
               </StyledInputBox>
             </StyledForm>
-          </StyledAddForm>
+          </StyledFormWrapper>
         );
       }}
     </Formik>

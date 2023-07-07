@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { StyledAddButton, StyledInputBox, StyledInput, ErrorMessage } from "../AddForm/StyledAddForm";
-import { StyledLoginForm } from "./StyledLoginForm";
 import Title from "../Title/Title";
+import { StyledLoginForm } from "./StyledLoginForm";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { StyledButton, StyledInputBox, StyledInput, ErrorMessage } from "../GlobalStyle/GlobalComponents";
 
 const LoginForm = ({setIsLogged}) => {
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ const LoginForm = ({setIsLogged}) => {
           <StyledInput onChange={(e) => setLogin({...login, password:e.target.value})} type="password" name="password" placeholder="hasło" autoComplete="off" />
         </StyledInputBox>
         {login.error && <ErrorMessage>{login.error}</ErrorMessage>}
-        <StyledAddButton type="submit">Zaloguj</StyledAddButton>
+        <StyledButton type="submit">Zaloguj</StyledButton>
       </StyledLoginForm>
     </>
   );

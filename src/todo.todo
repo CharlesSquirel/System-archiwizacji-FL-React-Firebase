@@ -24,6 +24,8 @@
 ✔ jeśli opis, lub tagi są puste to z automatu wstawić "brak szczegółów" @done (7.07.2023, 12:53:20)
 ✔ sprawdzić jak zablokować dostęp do /main zanim się nie zalogujesz @done (7.07.2023, 15:41:26)
 ✔ zapisać dane zalogowania do local Storage, żeby po odświeżeniu też był zalogowany @done (7.07.2023, 15:41:59)
-☐ poprawić stylowanie login forma. Może nie korzysztać z pożyczonych komponentów z add form? Albo przenieśc ogólne do jakiegoś głównego folderu GlobalStyle/GlobalComponents?
+☐ poprawić stylowanie login form
+✔ Może nie korzysztać z pożyczonych komponentów z add form? Albo przenieśc ogólne do jakiegoś głównego folderu GlobalStyle/GlobalComponents? @done (7.07.2023, 16:01:30)
 ☐ obsłużyć wylogowywanie się
 ☐ obsłużyć wyświetlanie aktualnego użytkownika
+☐ coś się odsunął search bar od add form – sprawdzić

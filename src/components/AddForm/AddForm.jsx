@@ -1,9 +1,9 @@
-import { StyledAddForm, StyledForm, StyledAddButton, StyledInputBox, ErrorMessage, StyledInput } from "./StyledAddForm";
 import { Formik } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { writeToDB } from "../../utils/firebase";
 import { changeEmptyString, validationSchema } from "../../utils/yupvalidation";
+import { StyledButton, StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm } from "../GlobalStyle/GlobalComponents";
 const initialValues = {
   signature: "",
   date: "",
@@ -25,7 +25,7 @@ function AddForm() {
       {(formik) => {
         const { errors, touched, handleSubmit } = formik;
         return (
-          <StyledAddForm>
+          <StyledFormWrapper>
             <StyledForm onSubmit={handleSubmit}>
               <StyledInputBox>
                 <label htmlFor="signature">Sygnatura:</label>
@@ -71,13 +71,13 @@ function AddForm() {
               </StyledInputBox>
               <StyledInputBox>
                 <label htmlFor="btn">Akcje:</label>
-                <StyledAddButton id="btn" type="submit">
+                <StyledButton id="btn" type="submit">
                   Dodaj
                   <FontAwesomeIcon className="icon" icon={faPlus} />
-                </StyledAddButton>
+                </StyledButton>
               </StyledInputBox>
             </StyledForm>
-          </StyledAddForm>
+          </StyledFormWrapper>
         );
       }}
     </Formik>
