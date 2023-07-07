@@ -21,7 +21,7 @@ function EditForm() {
         changeEmptyString(values);
         const toUptade = Object.keys(credentials)[indexOfEditedData];
         update(ref(db, `files/${toUptade}`), values);
-        navigate("/");
+        navigate("/main");
         // chwilowe rozwiązanie
         window.location.reload(false);
       }}

@@ -18,8 +18,11 @@ function DataList() {
 
   const handleDelete = (index) => {
     // obsługa kasowania wpisu
-    const toRemove = Object.keys(credentials)[index];
-    remove(ref(db, `/files/${toRemove}`));
+    const confirm = window.confirm("Czy na pewno chcesz to usunąć?");
+    if (confirm) {
+      const toRemove = Object.keys(credentials)[index];
+      remove(ref(db, `/files/${toRemove}`));
+    }
   };
 
   return (
