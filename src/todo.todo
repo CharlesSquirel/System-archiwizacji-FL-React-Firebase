@@ -18,6 +18,6 @@
 ☐ dodać stronę logowania i skonfigurować uwierzytelnianie przez firebase
 ☐ przenieść stylowanie inputów z GlobalStyle do psozczególnych komponentów
 ☐ zwiększyć wysokość inputa "Opis"
-☐ posypał się wygląd editform
-☐ odinstalować MUI
-☐ jeśli opis, lub tagi są puste to z automatu wstawić "brak szczegółów"
+✔ posypał się wygląd editform @done (7.07.2023, 12:41:46)
+✔ odinstalować MUI @done (7.07.2023, 12:42:38)
+✔ jeśli opis, lub tagi są puste to z automatu wstawić "brak szczegółów" @done (7.07.2023, 12:53:20)

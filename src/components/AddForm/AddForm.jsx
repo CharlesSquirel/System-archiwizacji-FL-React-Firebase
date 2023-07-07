@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { writeToDB } from "../../utils/firebase";
-import { validationSchema } from "../../utils/yupvalidation";
+import { changeEmptyString, validationSchema } from "../../utils/yupvalidation";
 const initialValues = {
   signature: "",
   date: "",
@@ -17,7 +17,8 @@ function AddForm() {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={(values, { resetForm }) => {
-        writeToDB({ ...values });
+        changeEmptyString(values);
+        writeToDB({ ...values});
         resetForm();
       }}
     >

@@ -1,8 +1,8 @@
 import React from "react";
-import { StyledAddForm } from "../AddForm/StyledAddForm";
+import { StyledAddForm, StyledForm, StyledInputBox, ErrorMessage, StyledAddButton } from "../AddForm/StyledAddForm";
 import { Formik } from "formik";
 import { useLocation, useNavigate } from "react-router-dom";
-import { validationSchema } from "../../utils/yupvalidation";
+import { changeEmptyString, validationSchema } from "../../utils/yupvalidation";
 import { ref, update } from "firebase/database";
 import { db } from "../../utils/firebase";
 
@@ -20,45 +20,46 @@ function EditForm() {
       initialValues={dataToEdit}
       validationSchema={validationSchema}
       onSubmit={(values) => {
+        changeEmptyString(values);
         const toUptade = Object.keys(credentials)[indexOfEditedData];
         update(ref(db, `files/${toUptade}`), values);
         navigate("/");
         // chwilowe rozwiązanie
-        window.location.reload(false)
+        window.location.reload(false);
       }}
     >
       {(formik) => {
         const { errors, touched, handleSubmit } = formik;
         return (
           <StyledAddForm>
-            <form className="form" onSubmit={handleSubmit}>
-              <div className="input-box">
+            <StyledForm onSubmit={handleSubmit}>
+              <StyledInputBox>
                 <label htmlFor="signature">Sygnatura:</label>
                 <input id="singature" name="signature" className="input" autoComplete="off" {...formik.getFieldProps("signature")}></input>
-                {touched.signature && errors.signature && <p className="error">{errors.signature}</p>}
-              </div>
-              <div className="input-box">
+                {touched.signature && errors.signature && <ErrorMessage>{errors.signature}</ErrorMessage>}
+              </StyledInputBox>
+              <StyledInputBox>
                 <label htmlFor="date">Data:</label>
                 <input id="date" name="date" className="input" autoComplete="off" {...formik.getFieldProps("date")}></input>
-                {touched.date && errors.date && <p className="error">{errors.date}</p>}
-              </div>
-              <div className="input-box">
+                {touched.date && errors.date && <ErrorMessage>{errors.date}</ErrorMessage>}
+              </StyledInputBox>
+              <StyledInputBox>
                 <label htmlFor="description">Opis:</label>
                 <input id="description" name="description" className="input" autoComplete="off" {...formik.getFieldProps("description")}></input>
-                {touched.description && errors.description && <p className="error">{errors.description}</p>}
-              </div>
-              <div className="input-box">
+                {touched.description && errors.description && <ErrorMessage>{errors.description}</ErrorMessage>}
+              </StyledInputBox>
+              <StyledInputBox>
                 <label htmlFor="tags">Tagi:</label>
                 <input id="tags" name="tags" className="input" autoComplete="off" {...formik.getFieldProps("tags")}></input>
-                {touched.tags && errors.tags && <p className="error">{errors.tags}</p>}
-              </div>
-              <div className="input-box">
+                {touched.tags && errors.tags && <ErrorMessage>{errors.tags}</ErrorMessage>}
+              </StyledInputBox>
+              <StyledInputBox>
                 <label htmlFor="btn">Akcje:</label>
-                <button id="btn" type="submit" className="btn">
+                <StyledAddButton id="btn" type="submit">
                   Zmień
-                </button>
-              </div>
-            </form>
+                </StyledAddButton>
+              </StyledInputBox>
+            </StyledForm>
           </StyledAddForm>
         );
       }}
