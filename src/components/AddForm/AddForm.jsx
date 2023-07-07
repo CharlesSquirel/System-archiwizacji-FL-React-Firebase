@@ -1,4 +1,4 @@
-import { StyledAddForm, StyledForm, StyledAddButton, StyledInputBox, ErrorMessage } from "./StyledAddForm";
+import { StyledAddForm, StyledForm, StyledAddButton, StyledInputBox, ErrorMessage, StyledInput } from "./StyledAddForm";
 import { Formik } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -29,43 +29,44 @@ function AddForm() {
             <StyledForm onSubmit={handleSubmit}>
               <StyledInputBox>
                 <label htmlFor="signature">Sygnatura:</label>
-                <input
+                <StyledInput
                   id="singature"
                   name="signature"
                   className="input"
                   placeholder="DA..."
                   autoComplete="off"
                   {...formik.getFieldProps("signature")}
-                ></input>
+                ></StyledInput>
                 {touched.signature && errors.signature && <ErrorMessage>{errors.signature}</ErrorMessage>}
               </StyledInputBox>
               <StyledInputBox>
                 <label htmlFor="date">Data:</label>
-                <input id="date" name="date" className="input" placeholder="01.01.2023" autoComplete="off" {...formik.getFieldProps("date")}></input>
+                <StyledInput id="date" name="date" className="input" placeholder="01.01.2023" autoComplete="off" {...formik.getFieldProps("date")}></StyledInput>
                 {touched.date && errors.date && <ErrorMessage>{errors.date}</ErrorMessage>}
               </StyledInputBox>
               <StyledInputBox>
                 <label htmlFor="description">Opis:</label>
-                <input
+                <StyledInput
                   id="description"
                   name="description"
                   className="input"
                   placeholder="Opis..."
                   autoComplete="off"
+                  type="textarea"
                   {...formik.getFieldProps("description")}
-                ></input>
+                ></StyledInput>
                 {touched.description && errors.description && <ErrorMessage>{errors.description}</ErrorMessage>}
               </StyledInputBox>
               <StyledInputBox>
                 <label htmlFor="tags">Tagi:</label>
-                <input
+                <StyledInput
                   id="tags"
                   name="tags"
                   className="input"
                   placeholder="symfoniczny, Mozart,.."
                   autoComplete="off"
                   {...formik.getFieldProps("tags")}
-                ></input>
+                ></StyledInput>
                 {touched.tags && errors.tags && <ErrorMessage>{errors.tags}</ErrorMessage>}
               </StyledInputBox>
               <StyledInputBox>

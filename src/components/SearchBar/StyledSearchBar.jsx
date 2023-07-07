@@ -14,6 +14,11 @@ export const StyledLabel = styled.label`
 `;
 export const StyledSearchBarInput = styled.input`
   width: 50%;
+  height: 40px;
+  padding-left: 8px;
+  border-radius: 5px;
+  border: 1px solid var(--primary);
+  font-size: 18px;
 `;
 
 export const StyledSelectWrapper = styled.div`

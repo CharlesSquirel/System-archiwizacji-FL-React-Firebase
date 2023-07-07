@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledAddForm, StyledForm, StyledInputBox, ErrorMessage, StyledAddButton } from "../AddForm/StyledAddForm";
+import { StyledAddForm, StyledForm, StyledInputBox, ErrorMessage, StyledAddButton, StyledInput } from "../AddForm/StyledAddForm";
 import { Formik } from "formik";
 import { useLocation, useNavigate } from "react-router-dom";
 import { changeEmptyString, validationSchema } from "../../utils/yupvalidation";
@@ -35,22 +35,22 @@ function EditForm() {
             <StyledForm onSubmit={handleSubmit}>
               <StyledInputBox>
                 <label htmlFor="signature">Sygnatura:</label>
-                <input id="singature" name="signature" className="input" autoComplete="off" {...formik.getFieldProps("signature")}></input>
+                <StyledInput id="singature" name="signature" className="input" autoComplete="off" {...formik.getFieldProps("signature")}></StyledInput>
                 {touched.signature && errors.signature && <ErrorMessage>{errors.signature}</ErrorMessage>}
               </StyledInputBox>
               <StyledInputBox>
                 <label htmlFor="date">Data:</label>
-                <input id="date" name="date" className="input" autoComplete="off" {...formik.getFieldProps("date")}></input>
+                <StyledInput id="date" name="date" className="input" autoComplete="off" {...formik.getFieldProps("date")}></StyledInput>
                 {touched.date && errors.date && <ErrorMessage>{errors.date}</ErrorMessage>}
               </StyledInputBox>
               <StyledInputBox>
                 <label htmlFor="description">Opis:</label>
-                <input id="description" name="description" className="input" autoComplete="off" {...formik.getFieldProps("description")}></input>
+                <StyledInput id="description" name="description" className="input" autoComplete="off" {...formik.getFieldProps("description")}></StyledInput>
                 {touched.description && errors.description && <ErrorMessage>{errors.description}</ErrorMessage>}
               </StyledInputBox>
               <StyledInputBox>
                 <label htmlFor="tags">Tagi:</label>
-                <input id="tags" name="tags" className="input" autoComplete="off" {...formik.getFieldProps("tags")}></input>
+                <StyledInput id="tags" name="tags" className="input" autoComplete="off" {...formik.getFieldProps("tags")}></StyledInput>
                 {touched.tags && errors.tags && <ErrorMessage>{errors.tags}</ErrorMessage>}
               </StyledInputBox>
               <StyledInputBox>

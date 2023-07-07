@@ -4,6 +4,7 @@ export const StyledAddForm = styled.header`
   display: flex;
   justify-content: center;
   width: 100%;
+  height: 230px;
   color: var(--white);
   .icon {
     font-size: 20px;
@@ -13,7 +14,7 @@ export const StyledAddForm = styled.header`
 
 export const StyledForm = styled.form`
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 10px;
 `;
 export const StyledAddButton = styled.button`
@@ -40,4 +41,13 @@ export const StyledInputBox = styled.div`
 
 export const ErrorMessage = styled.p`
   color: red;
+`;
+
+export const StyledInput = styled.input`
+  width: 260px;
+  height: 40px;
+  padding-left: 8px;
+  border-radius: 5px;
+  border: 1px solid var(--primary);
+  font-size: 18px;
 `;

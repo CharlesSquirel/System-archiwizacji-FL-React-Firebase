@@ -18,13 +18,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 input {
-    width: 260px;
-    height: 40px;
-    padding-left: 8px;
-    border-radius: 5px;
     outline: 0;
-    border: 1px solid var(--primary);
-    font-size: 18px;
     cursor: pointer;
     &:focus {
         border: 2px solid green;

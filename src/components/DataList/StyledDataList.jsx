@@ -41,7 +41,7 @@ export const StyledRow = styled.tr`
     bottom: 0;
     left: 0;
   }
-  
+
   td:nth-child(3),
   td:nth-child(4) {
     width: 450px;
@@ -56,12 +56,10 @@ export const StyledCell = styled.td`
   height: auto;
   overflow-wrap: break-word;
 
-
   &:not(:last-child) {
     border-right: 1px solid black;
   }
 `;
-
 
 export const StyledButtonBox = styled.div`
   display: flex;
