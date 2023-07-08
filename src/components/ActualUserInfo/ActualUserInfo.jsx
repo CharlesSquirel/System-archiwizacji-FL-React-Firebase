@@ -6,9 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const ActualUserInfo = () => {
   const context = useContext(Context);
-  const user = context.actualUser;
-  const setIsLogged = context.setIsLogged;
-  const setLogoutBaner = context.setLogoutBaner;
+  const { actualUser, setIsLogged, setLogoutBaner } = context;
   const navigate = useNavigate();
   const logoutUser = () => {
     const auth = getAuth();
@@ -24,7 +22,7 @@ const ActualUserInfo = () => {
   };
   return (
     <UserInfoWrapper>
-      <UserInfoText>{user}</UserInfoText>
+      <UserInfoText>{actualUser}</UserInfoText>
       <LogoutButton onClick={logoutUser}>Wyloguj</LogoutButton>
     </UserInfoWrapper>
   );

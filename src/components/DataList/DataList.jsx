@@ -8,7 +8,7 @@ import { Context } from "../../Root";
 
 function DataList() {
   const context = useContext(Context);
-  const credentials = context.credentials;
+  const { credentials } = context;
   const handleDelete = (index) => {
     // obsługa kasowania wpisu
     const confirm = window.confirm("Czy na pewno chcesz to usunąć?");

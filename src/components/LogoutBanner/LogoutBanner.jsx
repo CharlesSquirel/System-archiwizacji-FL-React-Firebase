@@ -6,10 +6,12 @@ const LogoutBannerBox = styled.div`
   justify-content: center;
   align-items: center;
   width: 30%;
+  height: 30px;
   border-radius: 10px;
   background: green;
 `;
 const LogoutText = styled.p`
+  font-weight: 600;
   color: var(--white);
 `;
 
