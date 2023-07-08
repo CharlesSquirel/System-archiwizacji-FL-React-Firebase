@@ -22,7 +22,7 @@ const LoginForm = () => {
     if (logoutBaner) {
       setTimeout(() => {
         setLogoutBaner(false);
-      }, 5000);
+      }, 10000);
     }
   }, []);
 
