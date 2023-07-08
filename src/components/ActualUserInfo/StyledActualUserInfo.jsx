@@ -10,7 +10,9 @@ export const UserInfoWrapper = styled.div`
   padding: 20px 20px 0 0;
   color: var(--white);
 `;
-export const UserInfoText = styled.p``;
+export const UserInfoText = styled.p`
+  text-shadow: var(--primary-text-shadow);
+`;
 export const LogoutButton = styled(StyledButton)`
   width: 100px;
   height: auto;

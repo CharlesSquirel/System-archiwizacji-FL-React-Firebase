@@ -4,7 +4,6 @@ export const StyledFormWrapper = styled.header`
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 230px;
   color: var(--white);
   .icon {
     font-size: 20px;

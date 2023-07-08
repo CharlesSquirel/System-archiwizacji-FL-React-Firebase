@@ -1,13 +1,16 @@
 import styled from "styled-components";
 
 export const StyledLoginForm = styled.form`
+  display: flex;
+  justify-content: center;
   flex-direction: column;
   width: 30%;
   color: var(--black);
   border-radius: 10px;
   background-color: var(--white);
-  display: flex;
-  justify-content: center;
+  -webkit-box-shadow: 0px 0px 28px -12px rgba(255, 255, 255, 1);
+  -moz-box-shadow: 0px 0px 28px -12px rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 28px -12px rgba(255, 255, 255, 1);
   div {
     align-items: center;
   }

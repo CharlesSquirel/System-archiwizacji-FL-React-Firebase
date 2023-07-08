@@ -52,7 +52,7 @@ const LoginForm = () => {
         </StyledInputBox>
         <StyledInputBox>
           <label>Hasło</label>
-          <StyledInput onChange={(e) => setLogin({ ...login, password: e.target.value })} type="password" name="password" placeholder="hasło" autoComplete="off" />
+          <StyledInput onChange={(e) => setLogin({ ...login, password: e.target.value })} type="password" name="password" placeholder="Hasło" autoComplete="off" />
         </StyledInputBox>
         {login.error && <ErrorMessage>{login.error}</ErrorMessage>}
         <StyledButton type="submit">Zaloguj</StyledButton>

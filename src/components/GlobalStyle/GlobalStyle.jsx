@@ -7,7 +7,9 @@ export const GlobalStyle = createGlobalStyle`
     --white: #fff;
     --black: #000;
     --gray: #e7e7e7;
-    --background: #353535;
+    --bg-light: #686767;
+    --bg-dark: #353535;
+    --primary-text-shadow: 2px 1px 5px rgba(0, 0, 0, 1);
 }
 
 * {
@@ -27,6 +29,7 @@ input {
 
 label {
     font-size: 22px;
+    text-shadow: var(--primary-text-shadow);
 }
 
 button {
@@ -38,7 +41,8 @@ button {
 }
 body {
     padding-top: 100px;
-    background-color: var(--background);
+    background-color: var(--bg-light);
+    background-image: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-dark) 100%);
     height: 100vh;
 }
 
