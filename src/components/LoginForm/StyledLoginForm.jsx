@@ -2,9 +2,7 @@ import styled from "styled-components";
 
 export const StyledLoginForm = styled.form`
   flex-direction: column;
-  align-items: center;
   width: 30%;
-  height: auto;
   color: var(--black);
   border-radius: 10px;
   background-color: var(--white);
@@ -19,4 +17,14 @@ export const StyledLoginForm = styled.form`
   button {
     margin-bottom: 20px;
   }
+`;
+
+export const LoginContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: auto;
+  width: 100%;
+  height: 370px;
 `;

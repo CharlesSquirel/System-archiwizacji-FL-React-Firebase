@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import Title from "../Title/Title";
-import { StyledLoginForm } from "./StyledLoginForm";
+import { StyledLoginForm, LoginContainer } from "./StyledLoginForm";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { StyledButton, StyledInputBox, StyledInput, ErrorMessage } from "../GlobalStyle/GlobalComponents";
@@ -22,7 +22,7 @@ const LoginForm = () => {
     if (logoutBaner) {
       setTimeout(() => {
         setLogoutBaner(false);
-      }, 3000);
+      }, 5000);
     }
   }, []);
 
@@ -42,7 +42,7 @@ const LoginForm = () => {
   };
 
   return (
-    <>
+    <LoginContainer>
       <Title />
       {logoutBaner && <LogoutBanner />}
       <StyledLoginForm onSubmit={handleOnSubmit}>
@@ -57,7 +57,7 @@ const LoginForm = () => {
         {login.error && <ErrorMessage>{login.error}</ErrorMessage>}
         <StyledButton type="submit">Zaloguj</StyledButton>
       </StyledLoginForm>
-    </>
+    </LoginContainer>
   );
 };
 

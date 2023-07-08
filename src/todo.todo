@@ -31,3 +31,4 @@
 ☐ coś się odsunął search bar od add form – sprawdzić
 ✔ po kliknięciu usuń zapytanie o potwierdzenie usunięcia @done (7.07.2023, 18:23:06)
 ☐ poprawić wygląd LogoutBanner
+✔ poprawić odstępy i żeby nie skakał layout w login formie po wyświetleniu logout banera @done (8.07.2023, 18:09:08)
