@@ -32,3 +32,4 @@
 ✔ po kliknięciu usuń zapytanie o potwierdzenie usunięcia @done (7.07.2023, 18:23:06)
 ✔ poprawić wygląd LogoutBanner @done (8.07.2023, 18:13:39)
 ✔ poprawić odstępy i żeby nie skakał layout w login formie po wyświetleniu logout banera @done (8.07.2023, 18:09:08)
+☐ poprawić strukturę plików

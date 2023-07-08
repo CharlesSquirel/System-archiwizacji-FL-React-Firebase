@@ -50,8 +50,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 60px;
-
+    gap: 18px;
 }
 
 a{
