@@ -9,7 +9,8 @@ export const GlobalStyle = createGlobalStyle`
     --gray: #e7e7e7;
     --bg-light: #686767;
     --bg-dark: #353535;
-    --primary-text-shadow: 2px 1px 5px rgba(0, 0, 0, 1);
+    --primary-text-shadow: 2px 1px 5px var(--black);
+    --secondary-text-shadow: 2px 1px 5px var(--white);
 }
 
 * {

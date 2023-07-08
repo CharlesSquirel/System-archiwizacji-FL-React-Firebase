@@ -1,26 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 
-const LogoutBannerBox = styled.div`
+const LoginBannerBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 30%;
   height: 30px;
   border-radius: 10px;
-  background: green;
+  background-color: ${(props) => (props.text === "Zostałeś poprawnie wylogowany!" ? "green" : "var(--primary)")};
 `;
-const LogoutText = styled.p`
+const LoginText = styled.p`
   font-weight: 600;
   color: var(--white);
 `;
-
-const LogoutBanner = () => {
+const LoginBanner = ({ text }) => {
   return (
-    <LogoutBannerBox>
-      <LogoutText>Zostałeś poprawnie wylogowany!</LogoutText>
-    </LogoutBannerBox>
+    <LoginBannerBox text={text}>
+      <LoginText>{text}</LoginText>
+    </LoginBannerBox>
   );
 };
 
-export default LogoutBanner;
+export default LoginBanner;

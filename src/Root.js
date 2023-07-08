@@ -41,7 +41,16 @@ function Root() {
   return (
     <>
       <GlobalStyle />
-      <Context.Provider value={{ credentials, setCredentials, actualUser, setIsLogged, logoutBaner, setLogoutBaner }}>
+      <Context.Provider
+        value={{
+          credentials,
+          setCredentials,
+          actualUser,
+          setIsLogged,
+          logoutBaner,
+          setLogoutBaner,
+        }}
+      >
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<LoginForm setIsLogged={setIsLogged} />} />

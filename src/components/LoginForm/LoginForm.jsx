@@ -1,13 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
 import Title from "../Title/Title";
-import { StyledLoginForm, LoginContainer } from "./StyledLoginForm";
+import { StyledLoginForm, LoginContainer, StyledLoginLabel, StyledLoginInputBox } from "./StyledLoginForm";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { StyledButton, StyledInputBox, StyledInput, ErrorMessage } from "../GlobalStyle/GlobalComponents";
+import { StyledButton, StyledInput } from "../GlobalStyle/GlobalComponents";
 import { Context } from "../../Root";
-import LogoutBanner from "../LogoutBanner/LogoutBanner";
+import LoginBanner from "../LogoutBanner/LogoutBanner";
 
 const LoginForm = () => {
+  const [errorBaner, setErrorBaner] = useState(false);
   const context = useContext(Context);
   const { logoutBaner, setIsLogged, setLogoutBaner } = context;
   const navigate = useNavigate();
@@ -18,7 +19,6 @@ const LoginForm = () => {
   });
 
   useEffect(() => {
-    console.log(logoutBaner);
     if (logoutBaner) {
       setTimeout(() => {
         setLogoutBaner(false);
@@ -35,26 +35,29 @@ const LoginForm = () => {
         setIsLogged(true);
         localStorage.setItem("isLogged", "true");
         navigate("/main");
+        setErrorBaner(false);
       })
       .catch(() => {
         setLogin({ ...login, error: "Nieprawidłowy email lub hasło" });
+
+        setErrorBaner(true);
       });
   };
 
   return (
     <LoginContainer>
       <Title />
-      {logoutBaner && <LogoutBanner />}
+      {logoutBaner && <LoginBanner text="Zostałeś poprawnie wylogowany!" />}
+      {errorBaner && <LoginBanner text={login.error} />}
       <StyledLoginForm onSubmit={handleOnSubmit}>
-        <StyledInputBox>
-          <label>Login lub hasło</label>
-          <StyledInput onChange={(e) => setLogin({ ...login, email: e.target.value })} type="text" name="email" placeholder="Login lub email" autoComplete="off" />
-        </StyledInputBox>
-        <StyledInputBox>
-          <label>Hasło</label>
+        <StyledLoginInputBox>
+          <StyledLoginLabel>Email</StyledLoginLabel>
+          <StyledInput onChange={(e) => setLogin({ ...login, email: e.target.value })} type="text" name="email" placeholder="Email" autoComplete="off" />
+        </StyledLoginInputBox>
+        <StyledLoginInputBox>
+          <StyledLoginLabel>Hasło</StyledLoginLabel>
           <StyledInput onChange={(e) => setLogin({ ...login, password: e.target.value })} type="password" name="password" placeholder="Hasło" autoComplete="off" />
-        </StyledInputBox>
-        {login.error && <ErrorMessage>{login.error}</ErrorMessage>}
+        </StyledLoginInputBox>
         <StyledButton type="submit">Zaloguj</StyledButton>
       </StyledLoginForm>
     </LoginContainer>
