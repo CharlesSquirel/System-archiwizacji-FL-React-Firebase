@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
+import { getDatabase, ref, set, onValue } from "firebase/database";
 import { uid } from "uid";
-import { ref, set, onValue } from "firebase/database";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
