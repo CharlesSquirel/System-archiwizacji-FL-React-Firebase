@@ -12,18 +12,19 @@ function Root() {
   const [isLogged, setIsLogged] = useState(false);
   const [credentials, setCredentials] = useState({});
 
-  useEffect(() => {
-    readfromDB(setCredentials);
-    // domyślne sortowanie listy chronologicznie
-    sortCredentials(credentials, setCredentials, "dateAsc");
-  }, []);
-
-  useEffect(() => {
+  const getLogInfo = () => {
     const storedIsLogged = localStorage.getItem("isLogged");
     if (storedIsLogged === "true") {
       setIsLogged(true);
     }
+  };
+  useEffect(() => {
+    readfromDB(setCredentials);
+    // domyślne sortowanie listy chronologicznie
+    sortCredentials(credentials, setCredentials, "dateAsc");
+    getLogInfo();
   }, []);
+
   return (
     <>
       <GlobalStyle />
