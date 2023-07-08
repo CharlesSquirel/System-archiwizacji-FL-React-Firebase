@@ -1,21 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import { StyledDataList, StyledButtonBox, StyledButtonEdit, StyledButtonDelete, StyledCell, StyledTableHeader, StyledTable, StyledRow } from "./StyledDataList";
-import { useEffect, useState } from "react";
 import { ref, remove } from "firebase/database";
 import { Link } from "react-router-dom";
-import { db, readfromDB } from "../../utils/firebase";
-import { sortCredentials } from "../../utils/sortingFunc";
+import { db } from "../../utils/firebase";
+import { Context } from "../../Root";
 
 function DataList() {
-  const [credentials, setCredentials] = useState({});
-
-  useEffect(() => {
-    readfromDB(setCredentials);
-    // domyślne sortowanie listy chronologicznie
-    sortCredentials(credentials, setCredentials, "dateAsc");
-  }, []);
-
+  const context = useContext(Context);
+  const credentials = context.credentials;
   const handleDelete = (index) => {
     // obsługa kasowania wpisu
     const confirm = window.confirm("Czy na pewno chcesz to usunąć?");
@@ -27,7 +20,7 @@ function DataList() {
 
   return (
     <>
-      <SearchBar setCredentials={setCredentials} credentials={credentials} />
+      <SearchBar />
       <StyledDataList>
         <StyledTable>
           <thead>
@@ -49,7 +42,7 @@ function DataList() {
                 <StyledCell>
                   <StyledButtonBox>
                     <StyledButtonEdit>
-                      <Link to="/edit" state={{ data, index, credentials }}>
+                      <Link to="/edit" state={{ data, index }}>
                         Edytuj
                       </Link>
                     </StyledButtonEdit>

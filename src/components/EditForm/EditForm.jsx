@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Formik } from "formik";
 import { useLocation, useNavigate } from "react-router-dom";
 import { changeEmptyString, validationSchema } from "../../utils/yupvalidation";
 import { ref, update } from "firebase/database";
 import { db } from "../../utils/firebase";
 import { StyledButton, StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm } from "../GlobalStyle/GlobalComponents";
+import { Context } from "../../Root";
+import { readfromDB } from "../../utils/firebase";
 
 function EditForm() {
+  const context = useContext(Context);
+  const { credentials, setCredentials } = context;
   const location = useLocation();
   const dataToEdit = location.state.data;
   const indexOfEditedData = location.state.index;
-  const credentials = location.state.credentials;
   const navigate = useNavigate();
 
   return (
@@ -21,9 +24,8 @@ function EditForm() {
         changeEmptyString(values);
         const toUptade = Object.keys(credentials)[indexOfEditedData];
         update(ref(db, `files/${toUptade}`), values);
+        readfromDB(setCredentials);
         navigate("/main");
-        // chwilowe rozwiązanie
-        window.location.reload(false);
       }}
     >
       {(formik) => {

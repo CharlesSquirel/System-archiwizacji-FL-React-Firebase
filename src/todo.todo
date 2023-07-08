@@ -11,7 +11,7 @@
 ☐ problem z rerenderingiem po edytowaniu @high | chwilowo zastosowano wymuszenie przeładowania strony
 ☐ napisać testy jakieś
 ✔ zmienić wszystko na komponenty Styled Components @done (5.07.2023, 13:12:42)
-☐ może pokusić się o jakiś stan globalny typu Context API
+✔ może pokusić się o jakiś stan globalny typu Context API | przeniesienie credentials i setCredentials do Contextu @done (8.07.2023, 17:09:06)
 ☐ pewnie czeka migracja do TS
 ✔ MUI dla tabeli @done (5.07.2023, 14:07:06)
 ✘ MUI dopracowanie i przeczytanie dokumentacji table @cancelled (5.07.2023, 16:15:38)

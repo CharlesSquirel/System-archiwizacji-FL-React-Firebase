@@ -1,10 +1,11 @@
 import { Formik } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { writeToDB } from "../../utils/firebase";
 import { changeEmptyString, validationSchema } from "../../utils/yupvalidation";
 import { StyledButton, StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm } from "../GlobalStyle/GlobalComponents";
 import ActualUserInfo from "../ActualUserInfo/ActualUserInfo";
+import { writeToDB } from "../../utils/firebase";
+
 const initialValues = {
   signature: "",
   date: "",

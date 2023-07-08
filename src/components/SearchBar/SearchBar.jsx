@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { StyledSearchBarWrapper, StyledLabel, StyledSearchBarInput, StyledSelectWrapper, StyledSelectInput } from "./StyledSearchBar";
 import { readfromDB } from "../../utils/firebase";
 import { sortCredentials } from "../../utils/sortingFunc";
+import { Context } from "../../Root";
 
-const SearchBar = ({ setCredentials, credentials }) => {
+const SearchBar = () => {
+  const context = useContext(Context);
+  const { credentials, setCredentials } = context;
   const [query, setQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("");
 
