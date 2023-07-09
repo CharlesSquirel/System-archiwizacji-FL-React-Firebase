@@ -35,3 +35,4 @@
 ☐ poprawić strukturę plików
 ✔ przenieść login error message jako error baner w miejsce wyświetlania logout baner @done (8.07.2023, 19:10:04)
 ☐ może pokusić się o baner poprawne dodanie danych
+☐ ustawienie poprawnej sygnatury po wprowadzeniu tylko liczby
