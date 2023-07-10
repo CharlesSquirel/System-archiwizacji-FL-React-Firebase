@@ -5,7 +5,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { StyledButton, StyledInput } from "../GlobalStyle/GlobalComponents";
 import { Context } from "../../Root";
-import LoginBanner from "../LogoutBanner/LogoutBanner";
+import Banner from "../Banner/Banner";
 
 const LoginForm = () => {
   const [errorBaner, setErrorBaner] = useState(false);
@@ -47,8 +47,8 @@ const LoginForm = () => {
   return (
     <LoginContainer>
       <Title />
-      {logoutBaner && <LoginBanner text="Zostałeś poprawnie wylogowany!" />}
-      {errorBaner && <LoginBanner text={login.error} />}
+      {logoutBaner && <Banner text="Zostałeś poprawnie wylogowany!" />}
+      {errorBaner && <Banner text={login.error} />}
       <StyledLoginForm onSubmit={handleOnSubmit}>
         <StyledLoginInputBox>
           <StyledLoginLabel>Email</StyledLoginLabel>

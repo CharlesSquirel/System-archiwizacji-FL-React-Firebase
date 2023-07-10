@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const LoginBannerBox = styled.div`
+const BannerBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,16 +10,16 @@ const LoginBannerBox = styled.div`
   border-radius: 10px;
   background-color: ${(props) => (props.text === "Zostałeś poprawnie wylogowany!" ? "green" : "var(--primary)")};
 `;
-const LoginText = styled.p`
+const BanerText = styled.p`
   font-weight: 600;
   color: var(--white);
 `;
-const LoginBanner = ({ text }) => {
+const Banner = ({ text }) => {
   return (
-    <LoginBannerBox text={text}>
-      <LoginText>{text}</LoginText>
-    </LoginBannerBox>
+    <BannerBox text={text}>
+      <BanerText>{text}</BanerText>
+    </BannerBox>
   );
 };
 
-export default LoginBanner;
+export default Banner;
