@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, onValue } from "firebase/database";
 import { uid } from "uid";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAaiuMwRZ8WJSE--oWSnp9aF2P3-YzD2sg",
@@ -28,5 +28,14 @@ export const readfromDB = (settingFunction) => {
   onValue(ref(db), (snapshot) => {
     const data = snapshot.val();
     settingFunction(data ? data.files : {});
+  });
+};
+
+export const getActualUser = (func) => {
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      func(user.email);
+    }
   });
 };

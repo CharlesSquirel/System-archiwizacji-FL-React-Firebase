@@ -1,22 +1,13 @@
-import { GlobalStyle } from "./components/GlobalStyle/GlobalStyle";
-import Main from "./components/Main/Main";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { GlobalStyle } from "./components/GlobalStyle/GlobalStyle";
+import { readfromDB, getActualUser } from "./utils/firebase";
+import { sortCredentials } from "./utils/sortingFunc";
+import Main from "./components/Main/Main";
 import EditForm from "./components/EditForm/EditForm";
 import LoginForm from "./components/LoginForm/LoginForm";
-import React, { useState, useEffect } from "react";
-import { readfromDB } from "./utils/firebase";
-import { sortCredentials } from "./utils/sortingFunc";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-export const Context = React.createContext();
 
-const getActualUser = (func) => {
-  const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      func(user.email);
-    }
-  });
-};
+export const Context = React.createContext();
 
 function Root() {
   const [actualUser, setActualUser] = useState("");
