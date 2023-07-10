@@ -26,8 +26,8 @@ function EditForm() {
         const toUptade = Object.keys(credentials)[indexOfEditedData];
         update(ref(db, `files/${toUptade}`), values);
         readfromDB(setCredentials);
-        navigate("/main");
-        setBaner(setEditBaner)
+        navigate("/archive");
+        setBaner(setEditBaner);
       }}
     >
       {(formik) => {

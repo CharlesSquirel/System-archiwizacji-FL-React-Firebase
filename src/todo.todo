@@ -3,6 +3,8 @@
 ☐ poprawić strukturę plików
 ☐ utworzyć i zredagować README
 ☐ env.location czy coś takiego dla zabezpieczenia konfiguracji firebase
+✔ Routing outlet pod nawigację i zmiana nazw psozczególnych modułów @done (10.07.2023, 17:53:09)
+✔ rozszerzenie o nowe bazy danych nawigacja @done (10.07.2023, 17:52:36)
 ✘ RWD dla przyzwoitości @cancelled (10.07.2023, 15:09:45)
 ✘ poprawienie dependencji w useEffect @cancelled (4.07.2023, 21:08:05)
 ✘ może zmiana stringa na date w inpucie daty @cancelled (10.07.2023, 12:34:42)

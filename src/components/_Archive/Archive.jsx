@@ -2,7 +2,7 @@ import AddForm from "../AddForm/AddForm";
 import DataList from "../DataList/DataList";
 import Title from "../Title/Title";
 
-function Main() {
+function Archive() {
   return (
     <>
       <Title />
@@ -12,4 +12,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Archive;

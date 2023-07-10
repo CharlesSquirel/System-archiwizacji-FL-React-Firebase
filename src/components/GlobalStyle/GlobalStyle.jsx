@@ -62,4 +62,8 @@ a{
     color: inherit;
     text-decoration: none;
 }
+
+ul {
+    list-style-type: none;
+}
 `;

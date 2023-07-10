@@ -3,9 +3,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { GlobalStyle } from "./components/GlobalStyle/GlobalStyle";
 import { readfromDB, getActualUser } from "./utils/firebase";
 import { sortCredentials } from "./utils/sortingFunc";
-import Main from "./components/Main/Main";
 import EditForm from "./components/EditForm/EditForm";
 import LoginForm from "./components/LoginForm/LoginForm";
+import Header from "./components/Header/Header";
+import Contracts from "./components/_Contracts/Contracts";
+import Archive from "./components/_Archive/Archive";
 
 export const Context = React.createContext();
 
@@ -48,13 +50,16 @@ function Root() {
           deleteBaner,
           setDeleteBaner,
           editBaner,
-          setEditBaner
+          setEditBaner,
         }}
       >
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<LoginForm setIsLogged={setIsLogged} />} />
-            {isLogged && <Route path="/main" element={<Main />} />}
+            <Route element={<Header />}>
+              {isLogged && <Route path="/archive" element={<Archive />} />}
+              {isLogged && <Route path="/contracts" element={<Contracts />} />}
+            </Route>
             <Route path="/edit" element={<EditForm />} />
           </Routes>
         </BrowserRouter>

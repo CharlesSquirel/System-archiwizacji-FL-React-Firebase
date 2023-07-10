@@ -34,7 +34,7 @@ const LoginForm = () => {
       .then(() => {
         setIsLogged(true);
         localStorage.setItem("isLogged", "true");
-        navigate("/main");
+        navigate("/archive");
         setErrorBaner(false);
       })
       .catch(() => {
@@ -48,7 +48,7 @@ const LoginForm = () => {
     <LoginContainer>
       <Title />
       {logoutBaner && <Banner text="Zostałeś poprawnie wylogowany!" />}
-      {errorBaner && <Banner text={login.error} error={login.error}/>}
+      {errorBaner && <Banner text={login.error} error={login.error} />}
       <StyledLoginForm onSubmit={handleOnSubmit}>
         <StyledLoginInputBox>
           <StyledLoginLabel>Email</StyledLoginLabel>
