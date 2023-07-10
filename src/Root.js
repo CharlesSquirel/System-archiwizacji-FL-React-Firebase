@@ -6,8 +6,8 @@ import { sortCredentials } from "./utils/sortingFunc";
 import EditForm from "./components/EditForm/EditForm";
 import LoginForm from "./components/LoginForm/LoginForm";
 import Header from "./components/Header/Header";
-import Contracts from "./components/_Contracts/Contracts";
-import Archive from "./components/_Archive/Archive";
+import Contracts from "./components/_Views/_Contracts/Contracts";
+import Archive from "./components/_Views/_Archive/Archive";
 
 export const Context = React.createContext();
 
