@@ -2,8 +2,11 @@ import styled from "styled-components";
 
 export const StyledFormWrapper = styled.header`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
   width: 100%;
+  height: 123px;
   color: var(--white);
   .icon {
     font-size: 20px;
@@ -36,7 +39,7 @@ export const StyledInputBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  min-height: 106px;
+  min-height: 77px;
 `;
 
 export const StyledInput = styled.input`

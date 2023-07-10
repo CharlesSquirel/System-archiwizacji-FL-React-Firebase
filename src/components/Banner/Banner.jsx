@@ -8,7 +8,7 @@ const BannerBox = styled.div`
   width: 30%;
   height: 30px;
   border-radius: 10px;
-  background-color: ${(props) => (props.text === "Zostałeś poprawnie wylogowany!" ? "green" : "var(--primary)")};
+  background-color: ${(props) => (props.text === "Zostałeś poprawnie wylogowany!" ? "var(--primary)" : "green")};
 `;
 const BanerText = styled.p`
   font-weight: 600;

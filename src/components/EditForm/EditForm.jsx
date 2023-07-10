@@ -7,10 +7,11 @@ import { db } from "../../utils/firebase";
 import { StyledButton, StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm } from "../GlobalStyle/GlobalComponents";
 import { Context } from "../../Root";
 import { readfromDB } from "../../utils/firebase";
+import { setBaner } from "../../utils/setBaner";
 
 function EditForm() {
   const context = useContext(Context);
-  const { credentials, setCredentials } = context;
+  const { credentials, setCredentials, setEditBaner } = context;
   const location = useLocation();
   const dataToEdit = location.state.data;
   const indexOfEditedData = location.state.index;
@@ -26,6 +27,7 @@ function EditForm() {
         update(ref(db, `files/${toUptade}`), values);
         readfromDB(setCredentials);
         navigate("/main");
+        setBaner(setEditBaner)
       }}
     >
       {(formik) => {

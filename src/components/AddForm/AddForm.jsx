@@ -5,6 +5,10 @@ import { changeEmptyString, validationSchema } from "../../utils/yupvalidation";
 import { StyledButton, StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm } from "../GlobalStyle/GlobalComponents";
 import ActualUserInfo from "../ActualUserInfo/ActualUserInfo";
 import { writeToDB } from "../../utils/firebase";
+import Banner from "../Banner/Banner";
+import { useContext } from "react";
+import { Context } from "../../Root";
+import { setBaner } from "../../utils/setBaner";
 
 const initialValues = {
   signature: "",
@@ -14,6 +18,8 @@ const initialValues = {
 };
 
 function AddForm() {
+  const context = useContext(Context);
+  const { addBaner, setAddBaner, deleteBaner, editBaner } = context;
   return (
     <Formik
       initialValues={initialValues}
@@ -22,6 +28,7 @@ function AddForm() {
         changeEmptyString(values);
         writeToDB({ ...values });
         resetForm();
+        setBaner(setAddBaner);
       }}
     >
       {(formik) => {
@@ -32,22 +39,51 @@ function AddForm() {
               <StyledForm onSubmit={handleSubmit}>
                 <StyledInputBox>
                   <label htmlFor="signature">Sygnatura:</label>
-                  <StyledInput id="singature" name="signature" className="input" placeholder="DA..." autoComplete="off" {...formik.getFieldProps("signature")}></StyledInput>
+                  <StyledInput
+                    id="singature"
+                    name="signature"
+                    className="input"
+                    placeholder="DA..."
+                    autoComplete="off"
+                    {...formik.getFieldProps("signature")}
+                  ></StyledInput>
                   {touched.signature && errors.signature && <ErrorMessage>{errors.signature}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="date">Data:</label>
-                  <StyledInput id="date" name="date" className="input" placeholder="01.01.2023" autoComplete="off" {...formik.getFieldProps("date")}></StyledInput>
+                  <StyledInput
+                    id="date"
+                    name="date"
+                    className="input"
+                    placeholder="01.01.2023"
+                    autoComplete="off"
+                    {...formik.getFieldProps("date")}
+                  ></StyledInput>
                   {touched.date && errors.date && <ErrorMessage>{errors.date}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="description">Opis:</label>
-                  <StyledInput id="description" name="description" className="input" placeholder="Opis..." autoComplete="off" type="textarea" {...formik.getFieldProps("description")}></StyledInput>
+                  <StyledInput
+                    id="description"
+                    name="description"
+                    className="input"
+                    placeholder="Opis..."
+                    autoComplete="off"
+                    type="textarea"
+                    {...formik.getFieldProps("description")}
+                  ></StyledInput>
                   {touched.description && errors.description && <ErrorMessage>{errors.description}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="tags">Tagi:</label>
-                  <StyledInput id="tags" name="tags" className="input" placeholder="symfoniczny, Mozart,.." autoComplete="off" {...formik.getFieldProps("tags")}></StyledInput>
+                  <StyledInput
+                    id="tags"
+                    name="tags"
+                    className="input"
+                    placeholder="symfoniczny, Mozart,.."
+                    autoComplete="off"
+                    {...formik.getFieldProps("tags")}
+                  ></StyledInput>
                   {touched.tags && errors.tags && <ErrorMessage>{errors.tags}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>
@@ -58,6 +94,9 @@ function AddForm() {
                   </StyledButton>
                 </StyledInputBox>
               </StyledForm>
+              {addBaner && <Banner text="Poprawnie dodano do bazy danych" />}
+              {deleteBaner && <Banner text="Poprawnie usunięto z bazy danych" />}
+              {editBaner && <Banner text="Poprawnie zmieniono dane" />}
             </StyledFormWrapper>
             <ActualUserInfo />
           </>

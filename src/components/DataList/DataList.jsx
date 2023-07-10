@@ -5,16 +5,18 @@ import { ref, remove } from "firebase/database";
 import { Link } from "react-router-dom";
 import { db } from "../../utils/firebase";
 import { Context } from "../../Root";
+import { setBaner } from "../../utils/setBaner";
 
 function DataList() {
   const context = useContext(Context);
-  const { credentials } = context;
+  const { credentials, setDeleteBaner } = context;
   const handleDelete = (index) => {
     // obsługa kasowania wpisu
     const confirm = window.confirm("Czy na pewno chcesz to usunąć?");
     if (confirm) {
       const toRemove = Object.keys(credentials)[index];
       remove(ref(db, `/files/${toRemove}`));
+      setBaner(setDeleteBaner);
     }
   };
 

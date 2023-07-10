@@ -21,6 +21,9 @@ const getActualUser = (func) => {
 function Root() {
   const [actualUser, setActualUser] = useState("");
   const [logoutBaner, setLogoutBaner] = useState(false);
+  const [addBaner, setAddBaner] = useState(false);
+  const [deleteBaner, setDeleteBaner] = useState(false);
+  const [editBaner, setEditBaner] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
   const [credentials, setCredentials] = useState({});
 
@@ -49,6 +52,12 @@ function Root() {
           setIsLogged,
           logoutBaner,
           setLogoutBaner,
+          addBaner,
+          setAddBaner,
+          deleteBaner,
+          setDeleteBaner,
+          editBaner,
+          setEditBaner
         }}
       >
         <BrowserRouter>
