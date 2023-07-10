@@ -1,24 +1,27 @@
+☐ napisać testy jakieś
+☐ pewnie czeka migracja do TS
+☐ poprawić strukturę plików
+☐ utworzyć i zredagować README
+✘ poprawienie dependencji w useEffect @cancelled (4.07.2023, 21:08:05)
+✘ może zmiana stringa na date w inpucie daty @cancelled (10.07.2023, 12:34:42)
+✘ MUI dopracowanie i przeczytanie dokumentacji table @cancelled (5.07.2023, 16:15:38)
+✘ zwiększyć wysokość inputa "Opis" @cancelled (7.07.2023, 13:10:49)
+✘ ustawienie poprawnej sygnatury po wprowadzeniu tylko liczby @cancelled (10.07.2023, 12:34:52)
 ✔ migracja do bazy firebase @high @done (29.06.2023, 19:56:24)
 ✔ refaktoryzacja do css variables, delete theme.js @done (5.07.2023, 12:52:54)
 ✔ search bar i logika wyszukiwania @done (4.07.2023, 14:59:34)
-✘ poprawienie dependencji w useEffect @cancelled (4.07.2023, 21:08:05)
-☐ może zmiana stringa na date w inpucie daty
 ✔ domyślne sortowanie listy od najnowszego, bo teraz nie jest tak @done (4.07.2023, 21:11:32)
 ✔ poprawić wizualnie, w szczególności tabelę | poprawiono automatyczną wysokość komórek @done (7.07.2023, 12:54:16)
 ✔ sortowanie wyników wyszukiwania @done (4.07.2023, 21:08:29)
 ✔ kolejność importów @done (5.07.2023, 12:56:15)
 ✔ css order @done (5.07.2023, 12:54:41)
 ✔ problem z rerenderingiem po edytowaniu @high | chwilowo zastosowano wymuszenie przeładowania strony | załatwione poprzez użycie Context @done (8.07.2023, 18:14:36)
-☐ napisać testy jakieś
 ✔ zmienić wszystko na komponenty Styled Components @done (5.07.2023, 13:12:42)
 ✔ może pokusić się o jakiś stan globalny typu Context API | przeniesienie credentials i setCredentials do Contextu @done (8.07.2023, 17:09:06)
-☐ pewnie czeka migracja do TS
 ✔ MUI dla tabeli @done (5.07.2023, 14:07:06)
-✘ MUI dopracowanie i przeczytanie dokumentacji table @cancelled (5.07.2023, 16:15:38)
 ✔ dodać stronę logowania i skonfigurować uwierzytelnianie przez firebase @done (7.07.2023, 15:31:45)
 ✔ stworzyć component widoku logowania i zmienic routing @done (7.07.2023, 13:23:33)
 ✔ przenieść stylowanie inputów z GlobalStyle do psozczególnych komponentów @done (7.07.2023, 12:59:14)
-✘ zwiększyć wysokość inputa "Opis" @cancelled (7.07.2023, 13:10:49)
 ✔ posypał się wygląd editform @done (7.07.2023, 12:41:46)
 ✔ odinstalować MUI @done (7.07.2023, 12:42:38)
 ✔ jeśli opis, lub tagi są puste to z automatu wstawić "brak szczegółów" @done (7.07.2023, 12:53:20)
@@ -32,7 +35,5 @@
 ✔ po kliknięciu usuń zapytanie o potwierdzenie usunięcia @done (7.07.2023, 18:23:06)
 ✔ poprawić wygląd LogoutBanner @done (8.07.2023, 18:13:39)
 ✔ poprawić odstępy i żeby nie skakał layout w login formie po wyświetleniu logout banera @done (8.07.2023, 18:09:08)
-☐ poprawić strukturę plików
 ✔ przenieść login error message jako error baner w miejsce wyświetlania logout baner @done (8.07.2023, 19:10:04)
-☐ może pokusić się o baner poprawne dodanie danych
-☐ ustawienie poprawnej sygnatury po wprowadzeniu tylko liczby
+✔ może pokusić się o baner poprawne dodanie danych, usuwanie i edytowanie @done (10.07.2023, 12:34:35)
