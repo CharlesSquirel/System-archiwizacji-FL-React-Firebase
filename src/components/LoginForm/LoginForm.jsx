@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Context } from "../../Root";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import Banner from "../Banner/Banner";
 import Title from "../Title/Title";
 import { StyledLoginForm, LoginContainer, StyledLoginLabel, StyledLoginInputBox } from "./StyledLoginForm";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { StyledButton, StyledInput } from "../GlobalStyle/GlobalComponents";
-import { Context } from "../../Root";
-import Banner from "../Banner/Banner";
 
 const LoginForm = () => {
   const [errorBaner, setErrorBaner] = useState(false);

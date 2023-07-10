@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import SearchBar from "../SearchBar/SearchBar";
-import { StyledDataList, StyledButtonBox, StyledButtonEdit, StyledButtonDelete, StyledCell, StyledTableHeader, StyledTable, StyledRow } from "./StyledDataList";
+import { Context } from "../../Root";
+import { setBaner } from "../../utils/setBaner";
 import { ref, remove } from "firebase/database";
 import { Link } from "react-router-dom";
 import { db } from "../../utils/firebase";
-import { Context } from "../../Root";
-import { setBaner } from "../../utils/setBaner";
+import SearchBar from "../SearchBar/SearchBar";
+import { StyledDataList, StyledButtonBox, StyledButtonEdit, StyledButtonDelete, StyledCell, StyledTableHeader, StyledTable, StyledRow } from "./StyledDataList";
 
 function DataList() {
   const context = useContext(Context);
