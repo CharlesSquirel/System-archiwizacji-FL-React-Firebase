@@ -2,6 +2,7 @@
 ☐ pewnie czeka migracja do TS
 ☐ poprawić strukturę plików
 ☐ utworzyć i zredagować README
+☐ RWD dla przyzwoitości
 ✘ poprawienie dependencji w useEffect @cancelled (4.07.2023, 21:08:05)
 ✘ może zmiana stringa na date w inpucie daty @cancelled (10.07.2023, 12:34:42)
 ✘ MUI dopracowanie i przeczytanie dokumentacji table @cancelled (5.07.2023, 16:15:38)

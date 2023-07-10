@@ -8,15 +8,15 @@ const BannerBox = styled.div`
   width: 30%;
   height: 30px;
   border-radius: 10px;
-  background-color: ${(props) => (props.text === "Zostałeś poprawnie wylogowany!" ? "var(--primary)" : "green")};
+  background-color: ${(props) => (props.error ? "var(--primary)" : "green")};
 `;
 const BanerText = styled.p`
   font-weight: 600;
   color: var(--white);
 `;
-const Banner = ({ text }) => {
+const Banner = ({ text, error }) => {
   return (
-    <BannerBox text={text}>
+    <BannerBox text={text} error={error}>
       <BanerText>{text}</BanerText>
     </BannerBox>
   );

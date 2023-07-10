@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     --gray: #e7e7e7;
     --bg-light: #686767;
     --bg-dark: #353535;
+    --error: #ff2d4b;
     --primary-text-shadow: 2px 1px 5px var(--black);
     --secondary-text-shadow: 2px 1px 5px var(--white);
 }
@@ -42,9 +43,10 @@ button {
 }
 body {
     padding-top: 100px;
-    background-color: var(--bg-light);
+    background: var(--bg-light) no-repeat;
     background-image: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-dark) 100%);
     height: 100vh;
+    width: 100vw;
 }
 
 #root{
@@ -52,6 +54,8 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 18px;
+    width: 100%;
+    height: 100%;
 }
 
 a{

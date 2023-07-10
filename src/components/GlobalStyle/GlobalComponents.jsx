@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const StyledFormWrapper = styled.header`
   display: flex;
   flex-direction: column;
@@ -18,6 +19,7 @@ export const StyledForm = styled.form`
   display: flex;
   align-items: flex-start;
   gap: 10px;
+
 `;
 
 export const StyledButton = styled.button`
@@ -52,5 +54,6 @@ export const StyledInput = styled.input`
 `;
 
 export const ErrorMessage = styled.p`
-  color: red;
+font-weight: 500;
+  color: var(--error)
 `;
