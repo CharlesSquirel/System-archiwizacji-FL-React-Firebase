@@ -19,12 +19,12 @@ export const auth = getAuth(app);
 
 export const db = getDatabase(app);
 
-export const writeToDB = (datas) => {
+export const writeToArchive = (datas) => {
   const uuid = uid();
   set(ref(db, `files/${uuid}`), datas);
 };
 
-export const readfromDB = (settingFunction) => {
+export const readfromArchive = (settingFunction) => {
   onValue(ref(db), (snapshot) => {
     const data = snapshot.val();
     settingFunction(data ? data.files : {});

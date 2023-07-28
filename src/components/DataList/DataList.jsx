@@ -7,7 +7,7 @@ import { db } from "../../utils/firebase";
 import SearchBar from "../SearchBar/SearchBar";
 import { StyledDataList, StyledButtonBox, StyledButtonEdit, StyledButtonDelete, StyledCell, StyledTableHeader, StyledTable, StyledRow } from "./StyledDataList";
 
-function DataList() {
+function DataListArchive() {
   const context = useContext(Context);
   const { credentials, setDeleteBaner } = context;
   const handleDelete = (index) => {
@@ -44,7 +44,7 @@ function DataList() {
                 <StyledCell>
                   <StyledButtonBox>
                     <StyledButtonEdit>
-                      <Link to="/edit" state={{ data, index }}>
+                      <Link to="/editarchive" state={{ data, index }}>
                         Edytuj
                       </Link>
                     </StyledButtonEdit>
@@ -60,4 +60,4 @@ function DataList() {
   );
 }
 
-export default DataList;
+export default DataListArchive;

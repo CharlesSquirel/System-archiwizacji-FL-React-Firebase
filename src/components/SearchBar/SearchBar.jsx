@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { StyledSearchBarWrapper, StyledLabel, StyledSearchBarInput, StyledSelectWrapper, StyledSelectInput } from "./StyledSearchBar";
-import { readfromDB } from "../../utils/firebase";
+import { readfromArchive } from "../../utils/firebase";
 import { sortCredentials } from "../../utils/sortingFunc";
 import { Context } from "../../Root";
 
@@ -21,9 +21,9 @@ const SearchBar = () => {
     setQuery(inputValue);
 
     if (inputValue === "") {
-      readfromDB(setCredentials);
+      readfromArchive(setCredentials);
     } else {
-      readfromDB((data) => {
+      readfromArchive((data) => {
         const filteredCredentials = Object.entries(data).filter(([key, value]) => {
           for (const prop in value) {
             if (value[prop].toLowerCase().includes(inputValue)) {

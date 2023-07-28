@@ -1,13 +1,13 @@
-import AddForm from "../../AddForm/AddForm";
-import DataList from "../../DataList/DataList";
+import AddFormArchive from "../../AddFormArchive/AddFormArchive";
+import DataListArchive from "../../DataList/DataList";
 import Title from "../../Title/Title";
 
 function Archive() {
   return (
     <>
-      <Title />
-      <AddForm />
-      <DataList />
+      <Title text={"System archiwizacji FL"} />
+      <AddFormArchive />
+      <DataListArchive />
     </>
   );
 }

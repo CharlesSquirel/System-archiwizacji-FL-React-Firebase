@@ -42,10 +42,10 @@ const Header = () => {
               <Link to="/archive">Archiwizacja</Link>
             </li>
             <li>
-              <Link to="/contracts">Rejestr Umów</Link>
+              <Link to="/contracts">Rejestr umów</Link>
             </li>
             <li>
-              <Link to="/archive">Inne</Link>
+              <Link to="/edicts">Zarządzenia</Link>
             </li>
           </StyledNavLinks>
         </StyledNav>

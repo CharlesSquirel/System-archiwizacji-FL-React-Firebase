@@ -5,8 +5,8 @@ const StyledTitle = styled.h1`
   text-shadow: var(--primary-text-shadow);
 `;
 
-function Title() {
-  return <StyledTitle>System Archiwizacji FL</StyledTitle>;
+function Title({ text }) {
+  return <StyledTitle>{text}</StyledTitle>;
 }
 
 export default Title;

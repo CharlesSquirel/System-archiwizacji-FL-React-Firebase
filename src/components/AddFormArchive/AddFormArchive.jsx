@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { Context } from "../../Root";
 import { Formik } from "formik";
-import { writeToDB } from "../../utils/firebase";
-import { changeEmptyString, validationSchema } from "../../utils/yupvalidation";
+import { writeToArchive } from "../../utils/firebase";
+import { changeEmptyString, validationSchemaArchive } from "../../utils/yupvalidation";
 import { setBaner } from "../../utils/setBaner";
 import Banner from "../Banner/Banner";
 import { StyledButton, StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm } from "../GlobalStyle/GlobalComponents";
@@ -16,16 +16,16 @@ const initialValues = {
   tags: "",
 };
 
-function AddForm() {
+function AddFormArchive() {
   const context = useContext(Context);
   const { addBaner, setAddBaner, deleteBaner, editBaner } = context;
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={validationSchema}
+      validationSchema={validationSchemaArchive}
       onSubmit={(values, { resetForm }) => {
         changeEmptyString(values);
-        writeToDB({ ...values });
+        writeToArchive({ ...values });
         resetForm();
         setBaner(setAddBaner);
       }}
@@ -75,4 +75,4 @@ function AddForm() {
   );
 }
 
-export default AddForm;
+export default AddFormArchive;

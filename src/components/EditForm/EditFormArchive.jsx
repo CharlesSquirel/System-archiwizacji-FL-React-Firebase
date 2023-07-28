@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import { Formik } from "formik";
 import { useLocation, useNavigate } from "react-router-dom";
-import { changeEmptyString, validationSchema } from "../../utils/yupvalidation";
+import { changeEmptyString, validationSchemaArchive } from "../../utils/yupvalidation";
 import { ref, update } from "firebase/database";
 import { db } from "../../utils/firebase";
 import { StyledButton, StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm } from "../GlobalStyle/GlobalComponents";
 import { Context } from "../../Root";
-import { readfromDB } from "../../utils/firebase";
+import { readfromArchive } from "../../utils/firebase";
 import { setBaner } from "../../utils/setBaner";
 
-function EditForm() {
+function EditFormArchive() {
   const context = useContext(Context);
   const { credentials, setCredentials, setEditBaner } = context;
   const location = useLocation();
@@ -20,12 +20,12 @@ function EditForm() {
   return (
     <Formik
       initialValues={dataToEdit}
-      validationSchema={validationSchema}
+      validationSchema={validationSchemaArchive}
       onSubmit={(values) => {
         changeEmptyString(values);
         const toUptade = Object.keys(credentials)[indexOfEditedData];
         update(ref(db, `files/${toUptade}`), values);
-        readfromDB(setCredentials);
+        readfromArchive(setCredentials);
         navigate("/archive");
         setBaner(setEditBaner);
       }}
@@ -69,4 +69,4 @@ function EditForm() {
   );
 }
 
-export default EditForm;
+export default EditFormArchive;

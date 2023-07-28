@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { GlobalStyle } from "./components/GlobalStyle/GlobalStyle";
-import { readfromDB, getActualUser } from "./utils/firebase";
+import { readfromArchive, getActualUser } from "./utils/firebase";
 import { sortCredentials } from "./utils/sortingFunc";
-import EditForm from "./components/EditForm/EditForm";
+import EditFormArchive from "./components/EditForm/EditFormArchive";
 import LoginForm from "./components/LoginForm/LoginForm";
 import Header from "./components/Header/Header";
 import Contracts from "./components/_Views/_Contracts/Contracts";
 import Archive from "./components/_Views/_Archive/Archive";
+import Edicts from "./components/_Views/_Edicts/Edicts";
 
 export const Context = React.createContext();
 
@@ -27,7 +28,7 @@ function Root() {
     }
   };
   useEffect(() => {
-    readfromDB(setCredentials);
+    readfromArchive(setCredentials);
     // domyślne sortowanie listy chronologicznie
     sortCredentials(credentials, setCredentials, "dateAsc");
     getLogInfo();
@@ -59,8 +60,9 @@ function Root() {
             <Route element={<Header />}>
               {isLogged && <Route path="/archive" element={<Archive />} />}
               {isLogged && <Route path="/contracts" element={<Contracts />} />}
+              {isLogged && <Route path="/edicts" element={<Edicts />} />}
             </Route>
-            <Route path="/edit" element={<EditForm />} />
+            <Route path="/editarchive" element={<EditFormArchive />} />
           </Routes>
         </BrowserRouter>
       </Context.Provider>
