@@ -1,7 +1,7 @@
 import React from "react";
 import Title from "../../Title/Title";
 import AddFormContracts from "../../AddFormContracts/AddFormContracts";
-import DataListContracts from "../../DataListContracts/DataListContracts";
+import DataListContracts from "../../_DataLists/DataListContracts/DataListContracts";
 
 const Contracts = () => {
   return (

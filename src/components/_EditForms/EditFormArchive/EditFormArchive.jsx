@@ -1,17 +1,17 @@
 import React, { useContext } from "react";
 import { Formik } from "formik";
 import { useLocation, useNavigate } from "react-router-dom";
-import { changeEmptyString, validationSchemaArchive } from "../../utils/yupvalidation";
+import { changeEmptyString, validationSchemaArchive } from "../../../utils/yupvalidation";
 import { ref, update } from "firebase/database";
-import { db } from "../../utils/firebase";
-import { StyledButton, StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm } from "../GlobalStyle/GlobalComponents";
-import { Context } from "../../Root";
-import { readfromArchive } from "../../utils/firebase";
-import { setBaner } from "../../utils/setBaner";
+import { db } from "../../../utils/firebase";
+import { StyledButton, StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm } from "../../GlobalStyle/GlobalComponents";
+import { Context } from "../../../Root";
+import { readfromArchive } from "../../../utils/firebase";
+import { setBaner } from "../../../utils/setBaner";
 
 function EditFormArchive() {
   const context = useContext(Context);
-  const { credentials, setCredentials, setEditBaner } = context;
+  const { credentialsArchive, setCredentialsArchive, setEditBaner } = context;
   const location = useLocation();
   const dataToEdit = location.state.data;
   const indexOfEditedData = location.state.index;
@@ -23,9 +23,9 @@ function EditFormArchive() {
       validationSchema={validationSchemaArchive}
       onSubmit={(values) => {
         changeEmptyString(values);
-        const toUptade = Object.keys(credentials)[indexOfEditedData];
-        update(ref(db, `files/${toUptade}`), values);
-        readfromArchive(setCredentials);
+        const toUptade = Object.keys(credentialsArchive)[indexOfEditedData];
+        update(ref(db, `files/archive/${toUptade}`), values);
+        readfromArchive(setCredentialsArchive);
         navigate("/archive");
         setBaner(setEditBaner);
       }}

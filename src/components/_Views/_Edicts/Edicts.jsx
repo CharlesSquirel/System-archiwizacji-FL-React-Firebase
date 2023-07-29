@@ -1,7 +1,7 @@
 import React from "react";
 import Title from "../../Title/Title";
-import AddFormEdicts from "../../AddFormEdicts/AddFormEdicts";
-import DataListEdicts from "../../DataListEdicts/DataListEdicts";
+import AddFormEdicts from "../../_AddForms/AddFormEdicts/AddFormEdicts.jsx";
+import DataListEdicts from "../../_DataLists/DataListEdicts/DataListEdicts";
 
 const Edicts = () => {
   return (

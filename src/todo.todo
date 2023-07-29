@@ -3,6 +3,7 @@
 ☐ poprawić strukturę plików
 ☐ utworzyć i zredagować README
 ☐ env.location czy coś takiego dla zabezpieczenia konfiguracji firebase
+☐ reset checkboxów nie działa w addFormEdicts
 ✔ Routing outlet pod nawigację i zmiana nazw psozczególnych modułów @done (10.07.2023, 17:53:09)
 ✔ rozszerzenie o nowe bazy danych nawigacja @done (10.07.2023, 17:52:36)
 ✘ RWD dla przyzwoitości @cancelled (10.07.2023, 15:09:45)

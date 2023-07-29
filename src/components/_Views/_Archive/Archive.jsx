@@ -1,5 +1,5 @@
 import AddFormArchive from "../../AddFormArchive/AddFormArchive";
-import DataListArchive from "../../DataList/DataList";
+import DataListArchive from "../../_DataLists/DataListArchive/DataListArchive";
 import Title from "../../Title/Title";
 
 function Archive() {

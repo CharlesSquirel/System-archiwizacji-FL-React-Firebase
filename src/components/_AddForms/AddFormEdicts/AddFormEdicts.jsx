@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import { ErrorMessage, StyledButton, StyledForm, StyledFormWrapper, StyledInput, StyledInputBox } from "../GlobalStyle/GlobalComponents";
+import { ErrorMessage, StyledButton, StyledForm, StyledFormWrapper, StyledInput, StyledInputBox } from "../../GlobalStyle/GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Formik } from "formik";
-import { validationSchemaEdicts } from "../../utils/yupvalidation";
+import { validationSchemaEdicts } from "../../../utils/yupvalidation";
+import { Context } from "../../../Root";
+import { changeEmptyString } from "../../../utils/yupvalidation";
+import { writeToEdicts } from "../../../utils/firebase";
+import { setBaner } from "../../../utils/setBaner";
 
 const StyledCheckboxBox = styled.div`
   display: flex;
@@ -28,7 +32,7 @@ const StyledDoubleCheckboxes = styled.div`
   width: 407px;
 `;
 
-const initialValues = {
+const initialValuesEdicts = {
   number: "",
   date: "",
   title: "",
@@ -41,12 +45,17 @@ const initialValues = {
 };
 
 const AddFormEdicts = () => {
+  const context = useContext(Context);
+  const { addBaner, setAddBaner, deleteBaner, editBaner } = context;
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={initialValuesEdicts}
       validationSchema={validationSchemaEdicts}
-      onSubmit={(values, { resetForm }) => {
-        console.log(values);
+      onSubmit={(val, { resetForm }) => {
+        changeEmptyString(val);
+        resetForm();
+        writeToEdicts(val);
+        setBaner(setAddBaner);
       }}
     >
       {(formik) => {
@@ -67,7 +76,7 @@ const AddFormEdicts = () => {
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="title">Tytuł:</label>
-                  <StyledInput id="title" name="title" className="input" placeholder="Opis..." autoComplete="off" {...formik.getFieldProps("title")}></StyledInput>
+                  <StyledInput id="title" name="title" className="input" placeholder="Tytuł..." autoComplete="off" {...formik.getFieldProps("title")}></StyledInput>
                   {touched.title && errors.title && <ErrorMessage>{errors.title}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>

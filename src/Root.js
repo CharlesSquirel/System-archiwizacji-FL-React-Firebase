@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { GlobalStyle } from "./components/GlobalStyle/GlobalStyle";
-import { readfromArchive, getActualUser } from "./utils/firebase";
+import { readfromArchive, getActualUser, readfromEdicts } from "./utils/firebase";
 import { sortCredentials } from "./utils/sortingFunc";
-import EditFormArchive from "./components/EditForm/EditFormArchive";
+import EditFormArchive from "./components/_EditForms/EditFormArchive/EditFormArchive";
 import LoginForm from "./components/LoginForm/LoginForm";
 import Header from "./components/Header/Header";
 import Contracts from "./components/_Views/_Contracts/Contracts";
@@ -19,7 +19,8 @@ function Root() {
   const [deleteBaner, setDeleteBaner] = useState(false);
   const [editBaner, setEditBaner] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
-  const [credentials, setCredentials] = useState({});
+  const [credentialsArchive, setCredentialsArchive] = useState({});
+  const [credentialsEdicts, setCredentialsEdicts] = useState({});
 
   const getLogInfo = () => {
     const storedIsLogged = localStorage.getItem("isLogged");
@@ -28,11 +29,15 @@ function Root() {
     }
   };
   useEffect(() => {
-    readfromArchive(setCredentials);
+    readfromArchive(setCredentialsArchive);
     // domyślne sortowanie listy chronologicznie
-    sortCredentials(credentials, setCredentials, "dateAsc");
+    sortCredentials(credentialsArchive, setCredentialsArchive, "dateAsc");
     getLogInfo();
     getActualUser(setActualUser);
+  }, []);
+
+  useEffect(() => {
+    readfromEdicts(setCredentialsEdicts);
   }, []);
 
   return (
@@ -40,8 +45,10 @@ function Root() {
       <GlobalStyle />
       <Context.Provider
         value={{
-          credentials,
-          setCredentials,
+          credentialsArchive,
+          setCredentialsArchive,
+          credentialsEdicts,
+          setCredentialsEdicts,
           actualUser,
           setIsLogged,
           logoutBaner,

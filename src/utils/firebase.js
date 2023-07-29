@@ -21,13 +21,35 @@ export const db = getDatabase(app);
 
 export const writeToArchive = (datas) => {
   const uuid = uid();
-  set(ref(db, `files/${uuid}`), datas);
+  set(ref(db, `files/archive/${uuid}`), datas);
 };
 
 export const readfromArchive = (settingFunction) => {
-  onValue(ref(db), (snapshot) => {
+  onValue(ref(db, "files/archive"), (snapshot) => {
     const data = snapshot.val();
-    settingFunction(data ? data.files : {});
+    settingFunction(data ? data : {});
+  });
+};
+
+export const writeToEdicts = (values) => {
+  const uuid = uid();
+  set(ref(db, `files/edicts/${uuid}`), {
+    number: values.number,
+    date: values.date,
+    title: values.title,
+    toWhom: {
+      da: values.toWhom.da,
+      dt: values.toWhom.dt,
+      dk: values.toWhom.dk,
+      k: values.toWhom.k,
+    },
+  });
+};
+
+export const readfromEdicts = (settingFunction) => {
+  onValue(ref(db, "files/edicts"), (snapshot) => {
+    const data = snapshot.val();
+    settingFunction(data ? data : {});
   });
 };
 

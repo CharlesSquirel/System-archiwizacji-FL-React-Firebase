@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useContext } from "react";
 import { StyledSearchBarWrapper, StyledLabel, StyledSearchBarInput, StyledSelectWrapper, StyledSelectInput } from "./StyledSearchBar";
-import { readfromArchive } from "../../utils/firebase";
-import { sortCredentials } from "../../utils/sortingFunc";
-import { Context } from "../../Root";
+import { readfromArchive } from "../../../utils/firebase";
+import { sortCredentials } from "../../../utils/sortingFunc";
+import { Context } from "../../../Root";
 
-const SearchBar = () => {
+const SearchBarArchive = () => {
   const context = useContext(Context);
-  const { credentials, setCredentials } = context;
+  const { credentialsArchive, setCredentialsArchive } = context;
   const [query, setQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("");
 
   // wymuszanie rerenderingu dla poprawnego funkcjonowania select
   useEffect(() => {
-    sortCredentials(credentials, setCredentials, sortOrder);
+    sortCredentials(credentialsArchive, setCredentialsArchive, sortOrder);
   }, [sortOrder]);
 
   // obsługa wyszukiwania
@@ -21,7 +21,7 @@ const SearchBar = () => {
     setQuery(inputValue);
 
     if (inputValue === "") {
-      readfromArchive(setCredentials);
+      readfromArchive(setCredentialsArchive);
     } else {
       readfromArchive((data) => {
         const filteredCredentials = Object.entries(data).filter(([key, value]) => {
@@ -33,7 +33,7 @@ const SearchBar = () => {
           return false;
         });
         const filteredCredentialsObject = Object.fromEntries(filteredCredentials);
-        setCredentials(filteredCredentialsObject);
+        setCredentialsArchive(filteredCredentialsObject);
       });
     }
   };
@@ -65,4 +65,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default SearchBarArchive;
