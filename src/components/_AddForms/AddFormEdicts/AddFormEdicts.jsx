@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { ErrorMessage, StyledButton, StyledForm, StyledFormWrapper, StyledInput, StyledInputBox } from "../../GlobalStyle/GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,6 +9,7 @@ import { Context } from "../../../Root";
 import { changeEmptyString } from "../../../utils/yupvalidation";
 import { writeToEdicts } from "../../../utils/firebase";
 import { setBaner } from "../../../utils/setBaner";
+import Banner from "../../Banner/Banner";
 
 const StyledCheckboxBox = styled.div`
   display: flex;
@@ -47,19 +48,21 @@ const initialValuesEdicts = {
 const AddFormEdicts = () => {
   const context = useContext(Context);
   const { addBaner, setAddBaner, deleteBaner, editBaner } = context;
+
   return (
     <Formik
       initialValues={initialValuesEdicts}
       validationSchema={validationSchemaEdicts}
       onSubmit={(val, { resetForm }) => {
         changeEmptyString(val);
-        resetForm();
         writeToEdicts(val);
         setBaner(setAddBaner);
+        resetForm();
       }}
     >
       {(formik) => {
         const { errors, touched, handleSubmit } = formik;
+
         return (
           <>
             <StyledFormWrapper>
@@ -111,9 +114,9 @@ const AddFormEdicts = () => {
                   </StyledButton>
                 </StyledInputBox>
               </StyledForm>
-              {/* {addBaner && <Banner text="Poprawnie dodano do bazy danych" />}
-          {deleteBaner && <Banner text="Poprawnie usunięto z bazy danych" />}
-        {editBaner && <Banner text="Poprawnie zmieniono dane" />} */}
+              {addBaner && <Banner text="Poprawnie dodano do bazy danych" />}
+              {deleteBaner && <Banner text="Poprawnie usunięto z bazy danych" />}
+              {editBaner && <Banner text="Poprawnie zmieniono dane" />}
             </StyledFormWrapper>
           </>
         );
