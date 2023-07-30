@@ -39,13 +39,13 @@ const Header = () => {
         <StyledNav>
           <StyledNavLinks>
             <li>
-              <Link to="/archive">Archiwizacja</Link>
+              <Link to="/archive">Archiwum</Link>
             </li>
             <li>
               <Link to="/contracts">Rejestr umów</Link>
             </li>
             <li>
-              <Link to="/edicts">Zarządzenia</Link>
+              <Link to="/edicts">Rejestr zarządzeń</Link>
             </li>
           </StyledNavLinks>
         </StyledNav>
