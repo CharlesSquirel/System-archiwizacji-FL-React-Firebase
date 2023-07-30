@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { GlobalStyle } from "./components/GlobalStyle/GlobalStyle";
-import { readfromArchive, getActualUser, readfromEdicts } from "./utils/firebase";
+import { readfromArchive, getActualUser, readfromEdicts, readfromContracts } from "./utils/firebase";
 import { sortCredentials } from "./utils/sortingFunc";
 import EditFormArchive from "./components/_EditForms/EditFormArchive/EditFormArchive";
 import LoginForm from "./components/LoginForm/LoginForm";
@@ -21,6 +21,7 @@ function Root() {
   const [isLogged, setIsLogged] = useState(false);
   const [credentialsArchive, setCredentialsArchive] = useState({});
   const [credentialsEdicts, setCredentialsEdicts] = useState({});
+  const [credentialsContracts, setCredentialsContracts] = useState({});
 
   const getLogInfo = () => {
     const storedIsLogged = localStorage.getItem("isLogged");
@@ -40,6 +41,10 @@ function Root() {
     readfromEdicts(setCredentialsEdicts);
   }, []);
 
+  useEffect(() => {
+    readfromContracts(setCredentialsContracts);
+  }, []);
+
   return (
     <>
       <GlobalStyle />
@@ -49,6 +54,8 @@ function Root() {
           setCredentialsArchive,
           credentialsEdicts,
           setCredentialsEdicts,
+          credentialsContracts,
+          setCredentialsContracts,
           actualUser,
           setIsLogged,
           logoutBaner,

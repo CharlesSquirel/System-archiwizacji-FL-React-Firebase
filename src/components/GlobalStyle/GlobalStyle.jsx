@@ -45,7 +45,7 @@ body {
     padding-top: 100px;
     background: var(--bg-light) no-repeat;
     background-image: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-dark) 100%);
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
 }
 

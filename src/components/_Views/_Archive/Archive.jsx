@@ -1,4 +1,4 @@
-import AddFormArchive from "../../AddFormArchive/AddFormArchive";
+import AddFormArchive from "../../_AddForms/AddFormArchive/AddFormArchive";
 import DataListArchive from "../../_DataLists/DataListArchive/DataListArchive";
 import Title from "../../Title/Title";
 

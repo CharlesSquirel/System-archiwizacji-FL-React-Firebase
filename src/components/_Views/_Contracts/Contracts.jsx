@@ -1,6 +1,6 @@
 import React from "react";
 import Title from "../../Title/Title";
-import AddFormContracts from "../../AddFormContracts/AddFormContracts";
+import AddFormContracts from "../../_AddForms/AddFormContracts/AddFormContracts";
 import DataListContracts from "../../_DataLists/DataListContracts/DataListContracts";
 
 const Contracts = () => {

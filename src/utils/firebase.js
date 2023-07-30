@@ -53,6 +53,18 @@ export const readfromEdicts = (settingFunction) => {
   });
 };
 
+export const writeToContracts = (datas) => {
+  const uuid = uid();
+  set(ref(db, `files/contracts/${uuid}`), datas);
+};
+
+export const readfromContracts = (settingFunction) => {
+  onValue(ref(db, "files/contracts"), (snapshot) => {
+    const data = snapshot.val();
+    settingFunction(data ? data : {});
+  });
+};
+
 export const getActualUser = (func) => {
   const auth = getAuth();
   onAuthStateChanged(auth, (user) => {

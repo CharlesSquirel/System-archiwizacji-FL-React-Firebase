@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { Context } from "../../Root";
+import { Context } from "../../../Root";
 import { Formik } from "formik";
-import { writeToArchive } from "../../utils/firebase";
-import { changeEmptyString, validationSchemaArchive } from "../../utils/yupvalidation";
-import { setBaner } from "../../utils/setBaner";
-import Banner from "../Banner/Banner";
-import { StyledButton, StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm } from "../GlobalStyle/GlobalComponents";
+import { writeToArchive } from "../../../utils/firebase";
+import { changeEmptyString, validationSchemaArchive } from "../../../utils/yupvalidation";
+import { setBaner } from "../../../utils/setBaner";
+import Banner from "../../Banner/Banner";
+import { StyledButton, StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm } from "../../GlobalStyle/GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
