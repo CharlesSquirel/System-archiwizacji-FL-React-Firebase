@@ -6,6 +6,8 @@ import Banner from "../Banner/Banner";
 import Title from "../Title/Title";
 import { StyledLoginForm, LoginContainer, StyledLoginLabel, StyledLoginInputBox } from "./StyledLoginForm";
 import { StyledButton, StyledInput } from "../GlobalStyle/GlobalComponents";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 
 const LoginForm = () => {
   const [errorBaner, setErrorBaner] = useState(false);
@@ -22,7 +24,7 @@ const LoginForm = () => {
     if (logoutBaner) {
       setTimeout(() => {
         setLogoutBaner(false);
-      }, 10000);
+      }, 8000);
     }
   }, []);
 
@@ -53,10 +55,12 @@ const LoginForm = () => {
         <StyledLoginInputBox>
           <StyledLoginLabel>Email</StyledLoginLabel>
           <StyledInput onChange={(e) => setLogin({ ...login, email: e.target.value })} type="text" name="email" placeholder="Email" autoComplete="off" />
+          <FontAwesomeIcon className="icon" icon={faEnvelope} />
         </StyledLoginInputBox>
         <StyledLoginInputBox>
           <StyledLoginLabel>Hasło</StyledLoginLabel>
           <StyledInput onChange={(e) => setLogin({ ...login, password: e.target.value })} type="password" name="password" placeholder="Hasło" autoComplete="off" />
+          <FontAwesomeIcon className="icon" icon={faLock} />
         </StyledLoginInputBox>
         <StyledButton type="submit">Zaloguj</StyledButton>
       </StyledLoginForm>

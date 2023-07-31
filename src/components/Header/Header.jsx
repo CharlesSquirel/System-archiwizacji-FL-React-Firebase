@@ -3,6 +3,8 @@ import { Outlet } from "react-router";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ActualUserInfo from "../ActualUserInfo/ActualUserInfo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBoxArchive, faFileSignature, faFile, faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -30,6 +32,9 @@ const StyledNavLinks = styled.ul`
       opacity: 0.85;
     }
   }
+  .icon {
+    margin-right: 5px;
+  }
 `;
 
 const Header = () => {
@@ -39,16 +44,24 @@ const Header = () => {
         <StyledNav>
           <StyledNavLinks>
             <li>
-              <Link to="/archive">Archiwum</Link>
+              <Link to="/archive">
+                <FontAwesomeIcon className="icon" icon={faBoxArchive}></FontAwesomeIcon>Archiwum
+              </Link>
             </li>
             <li>
-              <Link to="/contracts">Rejestr umów</Link>
+              <Link to="/contracts">
+                <FontAwesomeIcon className="icon" icon={faFileSignature}></FontAwesomeIcon>Rejestr umów
+              </Link>
             </li>
             <li>
-              <Link to="/edicts">Rejestr zarządzeń</Link>
+              <Link to="/edicts">
+                <FontAwesomeIcon className="icon" icon={faFile}></FontAwesomeIcon>Rejestr zarządzeń
+              </Link>
             </li>
             <li>
-              <Link to="/archive">Rejestr koncertów</Link>
+              <Link to="/archive">
+                <FontAwesomeIcon className="icon" icon={faCalendarDays}></FontAwesomeIcon>Rejestr koncertów
+              </Link>
             </li>
           </StyledNavLinks>
         </StyledNav>

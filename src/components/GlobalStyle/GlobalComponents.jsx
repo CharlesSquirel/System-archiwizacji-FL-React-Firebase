@@ -21,6 +21,7 @@ export const StyledForm = styled.form`
 `;
 
 export const StyledButton = styled.button`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,6 +34,17 @@ export const StyledButton = styled.button`
   font-size: 22px;
   background: var(--primary);
   color: var(--white);
+  ::after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    bottom: -10px;
+    width: 260px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: yellow;
+    z-index: -1;
+  }
 `;
 
 export const StyledInputBox = styled.div`

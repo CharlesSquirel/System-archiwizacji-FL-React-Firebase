@@ -15,6 +15,15 @@ export const StyledLoginForm = styled.form`
   -webkit-box-shadow: 0px 0px 28px -12px rgba(255, 255, 255, 1);
   -moz-box-shadow: 0px 0px 28px -12px rgba(255, 255, 255, 1);
   box-shadow: 0px 0px 28px -12px rgba(255, 255, 255, 1);
+  .icon {
+    position: absolute;
+    bottom: 12px;
+    left: 10px;
+    color: var(--primary);
+  }
+  input {
+    padding-left: 38px;
+  }
 `;
 
 export const LoginContainer = styled.main`
@@ -32,7 +41,17 @@ export const StyledLoginLabel = styled.label`
 `;
 
 export const StyledLoginInputBox = styled(StyledInputBox)`
+  position: relative;
   align-items: center;
   min-height: 0;
   gap: 5px;
+  ::after {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    left: 32px;
+    height: 20px;
+    width: 2px;
+    background-color: #a9a9a9;
+  }
 `;

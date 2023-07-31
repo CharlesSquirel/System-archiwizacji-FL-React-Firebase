@@ -31,7 +31,7 @@ export const StyledTableHeader = styled.tr`
     height: 15px;
     margin-bottom: 2px;
     cursor: pointer;
-    color: var(--primary)
+    color: var(--primary);
   }
   & th:nth-of-type(4) {
     position: relative;

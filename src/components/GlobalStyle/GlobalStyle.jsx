@@ -37,9 +37,9 @@ label {
 button {
     border: none;
     cursor: pointer;
-    &:hover{
+    /* &:hover{
         opacity: 0.9;
-    }
+    } */
 }
 body {
     padding-top: 100px;
