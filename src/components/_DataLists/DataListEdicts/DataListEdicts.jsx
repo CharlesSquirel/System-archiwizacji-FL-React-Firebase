@@ -1,14 +1,28 @@
 import React, { useContext } from "react";
 import { Context } from "../../../Root";
-import { StyledButtonBox, StyledButtonDelete, StyledButtonEdit, StyledCell, StyledDataList, StyledRow, StyledTable, StyledTableHeader } from "../DataListArchive/StyledDataList";
+import {
+  StyledButtonBox,
+  StyledButtonDelete,
+  StyledButtonEdit,
+  StyledCell,
+  StyledDataList,
+  StyledRow,
+  StyledTable,
+  StyledTableHeader,
+} from "../DataListArchive/StyledDataList";
 import { Link } from "react-router-dom";
 import { ref, remove } from "firebase/database";
 import { db } from "../../../utils/firebase";
 import { setBaner } from "../../../utils/setBaner";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import EdictsInfoPopup from "../../EdictsInfoPopup/EdictsInfoPopup";
 
 const DataListEdicts = () => {
   const context = useContext(Context);
   const { credentialsEdicts, setDeleteBaner } = context;
+  const [isInfoActive, setIsInfoActive] = useState(false)
   const handleDelete = (index) => {
     // obsługa kasowania wpisu
     const confirm = window.confirm("Czy na pewno chcesz to usunąć?");
@@ -18,6 +32,9 @@ const DataListEdicts = () => {
       setBaner(setDeleteBaner);
     }
   };
+  const handleInfoPopup = () => {
+    setIsInfoActive(!isInfoActive)
+  } 
   return (
     <StyledDataList>
       <StyledTable>
@@ -26,8 +43,9 @@ const DataListEdicts = () => {
             <th>Sygnatura</th>
             <th>Data</th>
             <th>Tytuł</th>
-            <th>Adresaci</th>
+            <th>Adresaci <FontAwesomeIcon className="icon-info" icon={faCircleInfo} onMouseEnter={handleInfoPopup} onMouseLeave={handleInfoPopup}></FontAwesomeIcon> {isInfoActive && <EdictsInfoPopup/>}</th>
             <th>Akcje</th>
+            
           </StyledTableHeader>
         </thead>
         <tbody>
@@ -41,6 +59,7 @@ const DataListEdicts = () => {
                   .filter((whom) => whom.includes(true))
                   .map((whom) => whom[0])
                   .join(", ")
+                  .concat(", S")
                   .toUpperCase()}
               </StyledCell>
               <StyledCell>

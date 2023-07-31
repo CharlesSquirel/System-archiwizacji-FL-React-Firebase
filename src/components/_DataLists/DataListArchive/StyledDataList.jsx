@@ -26,6 +26,16 @@ export const StyledTableHeader = styled.tr`
     bottom: 0;
     left: 0;
   }
+  .icon-info {
+    width: 15px;
+    height: 15px;
+    margin-bottom: 2px;
+    cursor: pointer;
+    color: var(--primary)
+  }
+  & th:nth-of-type(4) {
+    position: relative;
+  }
 `;
 
 export const StyledRow = styled.tr`

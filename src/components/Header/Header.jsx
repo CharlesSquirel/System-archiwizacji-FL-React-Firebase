@@ -47,6 +47,9 @@ const Header = () => {
             <li>
               <Link to="/edicts">Rejestr zarządzeń</Link>
             </li>
+            <li>
+              <Link to="/archive">Rejestr koncertów</Link>
+            </li>
           </StyledNavLinks>
         </StyledNav>
         <ActualUserInfo />
