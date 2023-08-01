@@ -20,6 +20,10 @@ function DataListArchive() {
     }
   };
 
+  if (!credentialsArchive) {
+    return <div>Loading...</div>; // Możesz wyświetlić komunikat "Loading..." lub dowolny inny komponent w trakcie ładowania danych
+  }
+
   return (
     <>
       <SearchBar />

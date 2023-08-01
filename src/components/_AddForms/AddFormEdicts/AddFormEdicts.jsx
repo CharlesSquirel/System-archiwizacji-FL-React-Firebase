@@ -7,7 +7,7 @@ import { Formik } from "formik";
 import { validationSchemaEdicts } from "../../../utils/yupvalidation";
 import { Context } from "../../../Root";
 import { changeEmptyString } from "../../../utils/yupvalidation";
-import { writeToEdicts } from "../../../utils/firebase";
+import { writeToDb} from "../../../utils/firebase";
 import { setBaner } from "../../../utils/setBaner";
 import Banner from "../../Banner/Banner";
 
@@ -53,9 +53,19 @@ const AddFormEdicts = () => {
     <Formik
       initialValues={initialValuesEdicts}
       validationSchema={validationSchemaEdicts}
-      onSubmit={(val, { resetForm }) => {
-        changeEmptyString(val);
-        writeToEdicts(val);
+      onSubmit={(values, { resetForm }) => {
+        changeEmptyString(values);
+        writeToDb("edicts", {
+          number: values.number,
+          date: values.date,
+          title: values.title,
+          toWhom: {
+            da: values.toWhom.da,
+            dt: values.toWhom.dt,
+            dk: values.toWhom.dk,
+            k: values.toWhom.k,
+          },
+        });
         setBaner(setAddBaner);
         resetForm();
       }}
@@ -69,17 +79,38 @@ const AddFormEdicts = () => {
               <StyledForm onSubmit={handleSubmit}>
                 <StyledInputBox>
                   <label htmlFor="number">Numer:</label>
-                  <StyledInput id="number" name="number" className="input" placeholder="1/2023" autoComplete="off" {...formik.getFieldProps("number")}></StyledInput>
+                  <StyledInput
+                    id="number"
+                    name="number"
+                    className="input"
+                    placeholder="1/2023"
+                    autoComplete="off"
+                    {...formik.getFieldProps("number")}
+                  ></StyledInput>
                   {touched.number && errors.number && <ErrorMessage>{errors.number}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="date">Data:</label>
-                  <StyledInput id="date" name="date" className="input" placeholder="01.01.2023" autoComplete="off" {...formik.getFieldProps("date")}></StyledInput>
+                  <StyledInput
+                    id="date"
+                    name="date"
+                    className="input"
+                    placeholder="01.01.2023"
+                    autoComplete="off"
+                    {...formik.getFieldProps("date")}
+                  ></StyledInput>
                   {touched.date && errors.date && <ErrorMessage>{errors.date}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="title">Tytuł:</label>
-                  <StyledInput id="title" name="title" className="input" placeholder="Tytuł..." autoComplete="off" {...formik.getFieldProps("title")}></StyledInput>
+                  <StyledInput
+                    id="title"
+                    name="title"
+                    className="input"
+                    placeholder="Tytuł..."
+                    autoComplete="off"
+                    {...formik.getFieldProps("title")}
+                  ></StyledInput>
                   {touched.title && errors.title && <ErrorMessage>{errors.title}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>

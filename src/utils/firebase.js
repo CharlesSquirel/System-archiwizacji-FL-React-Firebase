@@ -19,51 +19,17 @@ export const auth = getAuth(app);
 
 export const db = getDatabase(app);
 
-export const writeToArchive = (datas) => {
+export const writeToDb = (where, datas) => {
   const uuid = uid();
-  set(ref(db, `files/archive/${uuid}`), datas);
-};
+  set(ref(db, `files/${where}/${uuid}`), datas);
+}
 
-export const readfromArchive = (settingFunction) => {
-  onValue(ref(db, "files/archive"), (snapshot) => {
+export const readFromDb = (where, settingFunction) => {
+  onValue(ref(db, `files/${where}`), (snapshot) => {
     const data = snapshot.val();
     settingFunction(data ? data : {});
   });
-};
-
-export const writeToEdicts = (values) => {
-  const uuid = uid();
-  set(ref(db, `files/edicts/${uuid}`), {
-    number: values.number,
-    date: values.date,
-    title: values.title,
-    toWhom: {
-      da: values.toWhom.da,
-      dt: values.toWhom.dt,
-      dk: values.toWhom.dk,
-      k: values.toWhom.k,
-    },
-  });
-};
-
-export const readfromEdicts = (settingFunction) => {
-  onValue(ref(db, "files/edicts"), (snapshot) => {
-    const data = snapshot.val();
-    settingFunction(data ? data : {});
-  });
-};
-
-export const writeToContracts = (datas) => {
-  const uuid = uid();
-  set(ref(db, `files/contracts/${uuid}`), datas);
-};
-
-export const readfromContracts = (settingFunction) => {
-  onValue(ref(db, "files/contracts"), (snapshot) => {
-    const data = snapshot.val();
-    settingFunction(data ? data : {});
-  });
-};
+}
 
 export const getActualUser = (func) => {
   const auth = getAuth();

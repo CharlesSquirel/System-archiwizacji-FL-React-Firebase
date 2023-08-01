@@ -6,7 +6,7 @@ import { Context } from "../../../Root";
 import { Formik } from "formik";
 import Banner from "../../Banner/Banner";
 import { changeEmptyString, validationSchemaArchive } from "../../../utils/yupvalidation";
-import { writeToContracts } from "../../../utils/firebase";
+import { writeToDb } from "../../../utils/firebase";
 import { setBaner } from "../../../utils/setBaner";
 
 const initialValuesContracts = {
@@ -23,9 +23,9 @@ const AddFormContracts = () => {
     <Formik
       initialValues={initialValuesContracts}
       validationSchema={validationSchemaArchive}
-      onSubmit={(val, { resetForm }) => {
-        changeEmptyString(val);
-        writeToContracts(val);
+      onSubmit={(values, { resetForm }) => {
+        changeEmptyString(values);
+        writeToDb("contracts", values)
         setBaner(setAddBaner);
         resetForm();
       }}

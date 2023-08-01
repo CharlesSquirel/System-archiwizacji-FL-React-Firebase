@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Context } from "../../../Root";
 import { Formik } from "formik";
-import { writeToArchive } from "../../../utils/firebase";
+import { writeToDb } from "../../../utils/firebase";
 import { changeEmptyString, validationSchemaArchive } from "../../../utils/yupvalidation";
 import { setBaner } from "../../../utils/setBaner";
 import Banner from "../../Banner/Banner";
@@ -25,7 +25,7 @@ function AddFormArchive() {
       validationSchema={validationSchemaArchive}
       onSubmit={(values, { resetForm }) => {
         changeEmptyString(values);
-        writeToArchive({ ...values });
+        writeToDb("archive", { ...values })
         resetForm();
         setBaner(setAddBaner);
       }}

@@ -3,10 +3,9 @@ import { Formik } from "formik";
 import { useLocation, useNavigate } from "react-router-dom";
 import { changeEmptyString, validationSchemaArchive } from "../../../utils/yupvalidation";
 import { ref, update } from "firebase/database";
-import { db } from "../../../utils/firebase";
+import { db, readFromDb } from "../../../utils/firebase";
 import { StyledButton, StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm } from "../../GlobalStyle/GlobalComponents";
 import { Context } from "../../../Root";
-import { readfromArchive } from "../../../utils/firebase";
 import { setBaner } from "../../../utils/setBaner";
 
 function EditFormArchive() {
@@ -25,7 +24,7 @@ function EditFormArchive() {
         changeEmptyString(values);
         const toUptade = Object.keys(credentialsArchive)[indexOfEditedData];
         update(ref(db, `files/archive/${toUptade}`), values);
-        readfromArchive(setCredentialsArchive);
+        readFromDb("archive",setCredentialsArchive);
         navigate("/archive");
         setBaner(setEditBaner);
       }}

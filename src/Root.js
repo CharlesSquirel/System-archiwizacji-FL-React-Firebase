@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { GlobalStyle } from "./components/GlobalStyle/GlobalStyle";
-import { readfromArchive, getActualUser, readfromEdicts, readfromContracts } from "./utils/firebase";
+import { getActualUser, readFromDb } from "./utils/firebase";
 import { sortCredentials } from "./utils/sortingFunc";
 import EditFormArchive from "./components/_EditForms/EditFormArchive/EditFormArchive";
 import LoginForm from "./components/LoginForm/LoginForm";
@@ -31,7 +31,7 @@ function Root() {
     }
   };
   useEffect(() => {
-    readfromArchive(setCredentialsArchive);
+    readFromDb("archive", setCredentialsArchive)
     // domyślne sortowanie listy chronologicznie
     sortCredentials(credentialsArchive, setCredentialsArchive, "dateAsc");
     getLogInfo();
@@ -39,11 +39,11 @@ function Root() {
   }, []);
 
   useEffect(() => {
-    readfromEdicts(setCredentialsEdicts);
+    readFromDb("edicts", setCredentialsEdicts)
   }, []);
 
   useEffect(() => {
-    readfromContracts(setCredentialsContracts);
+    readFromDb("contracts", setCredentialsContracts)
   }, []);
 
   return (

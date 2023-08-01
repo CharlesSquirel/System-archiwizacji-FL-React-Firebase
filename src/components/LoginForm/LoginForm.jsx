@@ -26,7 +26,7 @@ const LoginForm = () => {
         setLogoutBaner(false);
       }, 8000);
     }
-  }, []);
+  }, [logoutBaner]);
 
   const handleOnSubmit = (e) => {
     const { email, password } = login;
