@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, onValue } from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { uid } from "uid";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAaiuMwRZ8WJSE--oWSnp9aF2P3-YzD2sg",
@@ -18,6 +19,8 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 export const db = getDatabase(app);
+
+export const storage = getStorage(app);
 
 export const writeToDb = (where, datas) => {
   const uuid = uid();

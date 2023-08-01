@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useRef } from "react";
 import styled from "styled-components";
 import { ErrorMessage, StyledForm, StyledFormWrapper, StyledInput, StyledInputBox, StyledAddButton } from "../../GlobalStyle/GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,6 +10,7 @@ import { changeEmptyString } from "../../../utils/yupvalidation";
 import { writeToDb} from "../../../utils/firebase";
 import { setBaner } from "../../../utils/setBaner";
 import Banner from "../../Banner/Banner";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 const StyledCheckboxBox = styled.div`
   display: flex;
@@ -43,32 +44,50 @@ const initialValuesEdicts = {
     dk: false,
     k: false,
   },
+  file: ""
 };
 
 const AddFormEdicts = () => {
+  const fileInputRef = useRef(null);
+  const storage = getStorage();
   const context = useContext(Context);
   const { addBaner, setAddBaner, deleteBaner, editBaner } = context;
+  const [file, setFile] = useState(null)
 
+  const uploadFile = (values) => {
+    if (file === null) return;
+    const fileRef = ref(storage, `edicts/${values.number}`)
+    uploadBytes(fileRef, file).then(() => {
+      console.log("uploaded")
+    })
+  }
+  
   return (
     <Formik
-      initialValues={initialValuesEdicts}
-      validationSchema={validationSchemaEdicts}
-      onSubmit={(values, { resetForm }) => {
-        changeEmptyString(values);
-        writeToDb("edicts", {
-          number: values.number,
-          date: values.date,
-          title: values.title,
-          toWhom: {
-            da: values.toWhom.da,
-            dt: values.toWhom.dt,
-            dk: values.toWhom.dk,
-            k: values.toWhom.k,
-          },
-        });
+    initialValues={initialValuesEdicts}
+    validationSchema={validationSchemaEdicts}
+    onSubmit={(values, { resetForm }) => {
+      changeEmptyString(values);
+      writeToDb("edicts", {
+        number: values.number,
+        date: values.date,
+        title: values.title,
+        toWhom: {
+          da: values.toWhom.da,
+          dt: values.toWhom.dt,
+          dk: values.toWhom.dk,
+          k: values.toWhom.k,
+        },
+        file: values.number
+      });
+      uploadFile(values)
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ""
+      }
         setBaner(setAddBaner);
         resetForm();
       }}
+    
     >
       {(formik) => {
         const { errors, touched, handleSubmit } = formik;
@@ -117,25 +136,29 @@ const AddFormEdicts = () => {
                   <label>Adresaci:</label>
                   <StyledDoubleCheckboxes>
                     <StyledCheckboxBox>
-                      <StyledCheckbox type="checkbox" id="da" {...formik.getFieldProps("toWhom.da")} />
+                      <StyledCheckbox name="toWhom.da" type="checkbox" id="da" {...formik.getFieldProps("toWhom.da")} />
                       <StyledCheckboxLabel htmlFor="da">Dział Artystyczny</StyledCheckboxLabel>
                     </StyledCheckboxBox>
                     <StyledCheckboxBox>
-                      <StyledCheckbox type="checkbox" id="dt" {...formik.getFieldProps("toWhom.dt")} />
+                      <StyledCheckbox name="toWhom.dt" type="checkbox" id="dt" {...formik.getFieldProps("toWhom.dt")} />
                       <StyledCheckboxLabel htmlFor="dt">Dział Techniczny</StyledCheckboxLabel>
                     </StyledCheckboxBox>
                   </StyledDoubleCheckboxes>
                   <StyledDoubleCheckboxes>
                     <StyledCheckboxBox>
-                      <StyledCheckbox type="checkbox" id="dk" {...formik.getFieldProps("toWhom.dk")} />
+                      <StyledCheckbox name="toWhom.dk" type="checkbox" id="dk" {...formik.getFieldProps("toWhom.dk")} />
                       <StyledCheckboxLabel htmlFor="dk">Dział Księgowy</StyledCheckboxLabel>
                     </StyledCheckboxBox>
                     <StyledCheckboxBox>
-                      <StyledCheckbox type="checkbox" id="k" {...formik.getFieldProps("toWhom.k")} />
+                      <StyledCheckbox name="toWhom.k" type="checkbox" id="k" {...formik.getFieldProps("toWhom.k")} />
                       <StyledCheckboxLabel htmlFor="k">Kasa</StyledCheckboxLabel>
                     </StyledCheckboxBox>
                   </StyledDoubleCheckboxes>
                   {touched.toWhom && errors.toWhom && <ErrorMessage style={{ fontSize: "16px" }}>{errors.toWhom}</ErrorMessage>}
+                </StyledInputBox>
+                <StyledInputBox>
+                  <label htmlFor="file">Załącznik</label>
+                  <input id="file" name="file" type="file" onChange={(e) => setFile(e.target.files[0])} ref={fileInputRef}/>
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="btn">Akcje:</label>

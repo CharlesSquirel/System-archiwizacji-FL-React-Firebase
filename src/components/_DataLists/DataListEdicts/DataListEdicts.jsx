@@ -3,12 +3,13 @@ import { Context } from "../../../Root";
 import { StyledButtonBox, StyledButtonDelete, StyledButtonEdit, StyledCell, StyledDataList, StyledRow, StyledTable, StyledTableHeader } from "../DataListArchive/StyledDataList";
 import { Link } from "react-router-dom";
 import { ref, remove } from "firebase/database";
-import { db } from "../../../utils/firebase";
+import { db, storage } from "../../../utils/firebase";
 import { setBaner } from "../../../utils/setBaner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import EdictsInfoPopup from "../../EdictsInfoPopup/EdictsInfoPopup";
+import { getBytes, getDownloadURL, ref as storageRef} from "firebase/storage";
 
 const DataListEdicts = () => {
   const context = useContext(Context);
@@ -26,6 +27,22 @@ const DataListEdicts = () => {
   const handleInfoPopup = () => {
     setIsInfoActive(!isInfoActive);
   };
+
+  const handleDownload = (fileName) => {
+    getDownloadURL(storageRef(storage, `edicts/${fileName}`))
+    .then((url) => {
+      return getBytes(url);
+    })
+    .then((fileBytes) => {
+      // `fileBytes` zawiera zawartość pliku w postaci tablicy bajtów
+      // Możesz teraz wykonać operacje na pobranym pliku, np. zapisać go na dysku itp.
+      console.log("Pobrano zawartość pliku:", fileBytes);
+    })
+    .catch((error) => {
+      console.error("Błąd pobierania pliku:", error);
+    });
+
+  }
   return (
     <StyledDataList>
       <StyledTable>
@@ -62,6 +79,7 @@ const DataListEdicts = () => {
                     </Link>
                   </StyledButtonEdit>
                   <StyledButtonDelete onClick={() => handleDelete(index)}>Usuń</StyledButtonDelete>
+                  <StyledButtonDelete onClick={() => handleDownload(data.number)}>Pobierz</StyledButtonDelete>
                 </StyledButtonBox>
               </StyledCell>
             </StyledRow>

@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import Title from "../../Title/Title";
+import AddFormRecord from "../../_AddForms/AddFormRecord/AddFormRecord";
+import DataListRecord from "../../_DataLists/DataListRecord/DataListRecord";
 
 const Record = () => {
   return (
-    <h1 style={{color: "white"}}>W budowie...</h1>
-  )
-}
+    <>
+      <Title text="Rejestr koncertów" />
+      <AddFormRecord />
+      <DataListRecord />
+    </>
+  );
+};
 
-export default Record
+export default Record;
