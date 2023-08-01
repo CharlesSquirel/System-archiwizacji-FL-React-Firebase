@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import EdictsInfoPopup from "../../EdictsInfoPopup/EdictsInfoPopup";
-import { getBytes, getDownloadURL, ref as storageRef} from "firebase/storage";
+import { getBytes, getDownloadURL, ref as storageRef } from "firebase/storage";
 
 const DataListEdicts = () => {
   const context = useContext(Context);
@@ -30,19 +30,22 @@ const DataListEdicts = () => {
 
   const handleDownload = (fileName) => {
     getDownloadURL(storageRef(storage, `edicts/${fileName}`))
-    .then((url) => {
-      return getBytes(url);
-    })
-    .then((fileBytes) => {
-      // `fileBytes` zawiera zawartość pliku w postaci tablicy bajtów
-      // Możesz teraz wykonać operacje na pobranym pliku, np. zapisać go na dysku itp.
-      console.log("Pobrano zawartość pliku:", fileBytes);
-    })
-    .catch((error) => {
-      console.error("Błąd pobierania pliku:", error);
-    });
+      .then((url) => {
+        // `url` is the download URL for 'images/stars.jpg'
 
-  }
+        // This can be downloaded directly:
+        const xhr = new XMLHttpRequest();
+        xhr.responseType = "blob";
+        xhr.onload = (event) => {
+          const blob = xhr.response;
+        };
+        xhr.open("GET", url);
+        xhr.send();
+      })
+      .catch((error) => {
+        // Handle any errors
+      });
+  };
   return (
     <StyledDataList>
       <StyledTable>
