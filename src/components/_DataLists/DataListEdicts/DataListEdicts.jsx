@@ -31,19 +31,17 @@ const DataListEdicts = () => {
   const handleDownload = (fileName) => {
     getDownloadURL(storageRef(storage, `edicts/${fileName}`))
       .then((url) => {
-        // `url` is the download URL for 'images/stars.jpg'
-
-        // This can be downloaded directly:
-        const xhr = new XMLHttpRequest();
-        xhr.responseType = "blob";
-        xhr.onload = (event) => {
-          const blob = xhr.response;
-        };
-        xhr.open("GET", url);
-        xhr.send();
+        return fetch(url);
+      })
+      .then((response) => response.blob())
+      .then((blob) => {
+        const downloadLink = document.createElement("a");
+        downloadLink.href = URL.createObjectURL(blob);
+        downloadLink.download = fileName;
+        downloadLink.click();
       })
       .catch((error) => {
-        // Handle any errors
+        console.error("Błąd pobierania pliku:", error);
       });
   };
   return (
