@@ -34,16 +34,25 @@ export const StyledButton = styled.button`
   font-size: 22px;
   background: var(--primary);
   color: var(--white);
+`;
+
+export const StyledAddButton = styled(StyledButton)`
   ::after {
     content: "";
     position: absolute;
-    left: 10px;
-    bottom: -10px;
+    left: 0px;
+    bottom: -8px;
     width: 260px;
     height: 40px;
-    border-radius: 5px;
-    background-color: yellow;
+    border-radius: 12px;
+    background-color: #373733;
     z-index: -1;
+  }
+  :hover::after {
+    bottom: -5px;
+  }
+  :hover {
+    bottom: -3px;
   }
 `;
 

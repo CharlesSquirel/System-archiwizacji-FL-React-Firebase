@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ErrorMessage, StyledButton, StyledForm, StyledFormWrapper, StyledInput, StyledInputBox } from "../../GlobalStyle/GlobalComponents";
+import { ErrorMessage, StyledForm, StyledFormWrapper, StyledInput, StyledInputBox, StyledAddButton } from "../../GlobalStyle/GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Context } from "../../../Root";
@@ -57,10 +57,10 @@ const AddFormContracts = () => {
               </StyledInputBox>
               <StyledInputBox>
                 <label htmlFor="btn">Akcje:</label>
-                <StyledButton id="btn" type="submit">
+                <StyledAddButton id="btn" type="submit">
                   Dodaj
                   <FontAwesomeIcon className="icon" icon={faPlus} />
-                </StyledButton>
+                </StyledAddButton>
               </StyledInputBox>
             </StyledForm>
             {addBaner && <Banner text="Poprawnie dodano do bazy danych" />}
