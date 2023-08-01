@@ -9,6 +9,7 @@ import Header from "./components/Header/Header";
 import Contracts from "./components/_Views/_Contracts/Contracts";
 import Archive from "./components/_Views/_Archive/Archive";
 import Edicts from "./components/_Views/_Edicts/Edicts";
+import Record from "./components/_Views/_Record/Record";
 
 export const Context = React.createContext();
 
@@ -75,6 +76,7 @@ function Root() {
               {isLogged && <Route path="/archive" element={<Archive />} />}
               {isLogged && <Route path="/contracts" element={<Contracts />} />}
               {isLogged && <Route path="/edicts" element={<Edicts />} />}
+              {isLogged && <Route path="/record" element={<Record />} />}
             </Route>
             <Route path="/editarchive" element={<EditFormArchive />} />
           </Routes>

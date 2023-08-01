@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     --bg-light: #686767;
     --bg-dark: #353535;
     --error: #ff2d4b;
+    --btn-shadow: #373733;
     --primary-text-shadow: 2px 1px 5px var(--black);
     --secondary-text-shadow: 2px 1px 5px var(--white);
 }

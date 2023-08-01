@@ -41,15 +41,15 @@ export const StyledAddButton = styled(StyledButton)`
     content: "";
     position: absolute;
     left: 0px;
-    bottom: -8px;
+    bottom: -6px;
     width: 260px;
     height: 40px;
     border-radius: 12px;
-    background-color: #373733;
+    background-color: var(--btn-shadow);
     z-index: -1;
   }
   :hover::after {
-    bottom: -5px;
+    bottom: -3px;
   }
   :hover {
     bottom: -3px;

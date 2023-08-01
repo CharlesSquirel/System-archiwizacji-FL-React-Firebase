@@ -21,6 +21,7 @@ const StyledNavLinks = styled.ul`
   justify-content: space-between;
   gap: 10px;
   li a {
+    position: relative;
     width: 100px;
     height: 50px;
     border-radius: 10px;
@@ -28,9 +29,23 @@ const StyledNavLinks = styled.ul`
     background-color: var(--primary);
     color: var(--white);
     font-weight: 500;
-    :hover {
-      opacity: 0.85;
+    ::after {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      background-color: var(--btn-shadow);
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      border-radius: 15px;
     }
+    :hover::after {
+    bottom: -1px;
+  }
+  :hover {
+    bottom: -1px;
+  }
   }
   .icon {
     margin-right: 5px;
@@ -59,7 +74,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/archive">
+              <Link to="/record">
                 <FontAwesomeIcon className="icon" icon={faCalendarDays}></FontAwesomeIcon>Rejestr koncertów
               </Link>
             </li>
