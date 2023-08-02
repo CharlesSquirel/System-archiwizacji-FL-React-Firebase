@@ -3,8 +3,10 @@ import { Context } from "../../../Root";
 import { ref, remove } from "firebase/database";
 import { db } from "../../../utils/firebase";
 import { setBaner } from "../../../utils/setBaner";
-import { StyledButtonBox, StyledButtonDelete, StyledButtonEdit, StyledCell, StyledDataList, StyledRow, StyledTable, StyledTableHeader } from "../DataListArchive/StyledDataList";
+import { StyledButtonBox, StyledCell, StyledDataButton, StyledDataList, StyledRow, StyledTable, StyledTableHeader } from "../DataListArchive/StyledDataList";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 const DataListContracts = () => {
   const context = useContext(Context);
@@ -39,12 +41,12 @@ const DataListContracts = () => {
               <StyledCell>{data.tags}</StyledCell>
               <StyledCell>
                 <StyledButtonBox>
-                  <StyledButtonEdit>
+                  <StyledDataButton>
                     <Link to="/editarchive" state={{ data, index }}>
-                      Edytuj
+                    <FontAwesomeIcon icon={faPenToSquare} />
                     </Link>
-                  </StyledButtonEdit>
-                  <StyledButtonDelete onClick={() => handleDelete(index)}>Usuń</StyledButtonDelete>
+                  </StyledDataButton>
+                  <StyledDataButton onClick={() => handleDelete(index)}><FontAwesomeIcon icon={faTrash} /></StyledDataButton>
                 </StyledButtonBox>
               </StyledCell>
             </StyledRow>

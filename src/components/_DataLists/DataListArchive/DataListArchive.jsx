@@ -5,7 +5,9 @@ import { ref, remove } from "firebase/database";
 import { Link } from "react-router-dom";
 import { db } from "../../../utils/firebase";
 import SearchBar from "../../_SearchBars/SearchBarArchive/SearchBarArchive";
-import { StyledDataList, StyledButtonBox, StyledButtonEdit, StyledButtonDelete, StyledCell, StyledTableHeader, StyledTable, StyledRow } from "./StyledDataList";
+import { StyledDataList, StyledButtonBox, StyledCell, StyledTableHeader, StyledTable, StyledRow, StyledDataButton } from "./StyledDataList";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 function DataListArchive() {
   const context = useContext(Context);
@@ -47,12 +49,12 @@ function DataListArchive() {
                 <StyledCell>{data.tags}</StyledCell>
                 <StyledCell>
                   <StyledButtonBox>
-                    <StyledButtonEdit>
+                    <StyledDataButton>
                       <Link to="/editarchive" state={{ data, index }}>
-                        Edytuj
+                      <FontAwesomeIcon icon={faPenToSquare} />
                       </Link>
-                    </StyledButtonEdit>
-                    <StyledButtonDelete onClick={() => handleDelete(index)}>Usuń</StyledButtonDelete>
+                    </StyledDataButton>
+                    <StyledDataButton onClick={() => handleDelete(index)}><FontAwesomeIcon icon={faTrash} /></StyledDataButton>
                   </StyledButtonBox>
                 </StyledCell>
               </StyledRow>

@@ -1,15 +1,23 @@
 import React, { useContext } from "react";
 import { Context } from "../../../Root";
-import { StyledButtonBox, StyledButtonDelete, StyledButtonEdit, StyledCell, StyledDataList, StyledRow, StyledTable, StyledTableHeader } from "../DataListArchive/StyledDataList";
+import {
+  StyledButtonBox,
+  StyledCell,
+  StyledDataButton,
+  StyledDataList,
+  StyledRow,
+  StyledTable,
+  StyledTableHeader,
+} from "../DataListArchive/StyledDataList";
 import { Link } from "react-router-dom";
 import { ref, remove } from "firebase/database";
 import { db, storage } from "../../../utils/firebase";
 import { setBaner } from "../../../utils/setBaner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo, faDownload, faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import EdictsInfoPopup from "../../EdictsInfoPopup/EdictsInfoPopup";
-import { getBytes, getDownloadURL, ref as storageRef } from "firebase/storage";
+import { getDownloadURL, ref as storageRef } from "firebase/storage";
 
 const DataListEdicts = () => {
   const context = useContext(Context);
@@ -53,7 +61,14 @@ const DataListEdicts = () => {
             <th>Data</th>
             <th>Tytuł</th>
             <th>
-              Adresaci <FontAwesomeIcon className="icon-info" icon={faCircleInfo} onMouseEnter={handleInfoPopup} onMouseLeave={handleInfoPopup}></FontAwesomeIcon> {isInfoActive && <EdictsInfoPopup />}
+              Adresaci{" "}
+              <FontAwesomeIcon
+                className="icon-info"
+                icon={faCircleInfo}
+                onMouseEnter={handleInfoPopup}
+                onMouseLeave={handleInfoPopup}
+              ></FontAwesomeIcon>{" "}
+              {isInfoActive && <EdictsInfoPopup />}
             </th>
             <th>Akcje</th>
           </StyledTableHeader>
@@ -74,13 +89,17 @@ const DataListEdicts = () => {
               </StyledCell>
               <StyledCell>
                 <StyledButtonBox>
-                  <StyledButtonEdit>
+                  <StyledDataButton>
                     <Link to="/editarchive" state={{ data, index }}>
-                      Edytuj
+                      <FontAwesomeIcon icon={faPenToSquare} />
                     </Link>
-                  </StyledButtonEdit>
-                  <StyledButtonDelete onClick={() => handleDelete(index)}>Usuń</StyledButtonDelete>
-                  <StyledButtonDelete onClick={() => handleDownload(data.number)}>Pobierz</StyledButtonDelete>
+                  </StyledDataButton>
+                  <StyledDataButton onClick={() => handleDelete(index)}>
+                    <FontAwesomeIcon icon={faTrash} />
+                  </StyledDataButton>
+                  <StyledDataButton onClick={() => handleDownload(data.number)}>
+                    <FontAwesomeIcon icon={faDownload} />
+                  </StyledDataButton>
                 </StyledButtonBox>
               </StyledCell>
             </StyledRow>
