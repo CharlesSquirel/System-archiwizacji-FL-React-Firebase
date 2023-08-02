@@ -4,38 +4,16 @@ import { Context } from "../../Root";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Banner from "../Banner/Banner";
 import Title from "../Title/Title";
-import { StyledLoginForm, LoginContainer, StyledLoginLabel, StyledLoginInputBox } from "./StyledLoginForm";
-import { StyledButton, StyledInput } from "../GlobalStyle/GlobalComponents";
+import { StyledLoginForm, LoginContainer, StyledLoginLabel, StyledLoginInputBox, Container, TitleBox, LogoImg } from "./StyledLoginForm";
+import { StyledLoginButton, StyledInput } from "../GlobalStyle/GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import logoFL from "../../assets/logo.FL.svg";
-import styled from "styled-components";
-
-const Container = styled.main`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 80%;
-  height: 430px;
-`;
-
-const TitleBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 536px;
-  margin-right: 20px;
-`;
-const LogoImg = styled.img`
-  width: 120px;
-  height: 120px;
-`;
 
 const LoginForm = () => {
   const [errorBaner, setErrorBaner] = useState(false);
   const context = useContext(Context);
-  const { logoutBaner, setIsLogged, setLogoutBaner } = context;
+  const { logoutBaner, setIsLogged, setLogoutBaner, start } = context;
   const navigate = useNavigate();
   const [login, setLogin] = useState({
     email: "",
@@ -59,6 +37,7 @@ const LoginForm = () => {
       .then(() => {
         setIsLogged(true);
         localStorage.setItem("isLogged", "true");
+        start()
         navigate("/archive");
         setErrorBaner(false);
       })
@@ -102,7 +81,7 @@ const LoginForm = () => {
             />
             <FontAwesomeIcon className="icon" icon={faLock} />
           </StyledLoginInputBox>
-          <StyledButton type="submit">Zaloguj</StyledButton>
+          <StyledLoginButton type="submit">Zaloguj</StyledLoginButton>
         </StyledLoginForm>
       </LoginContainer>
     </Container>

@@ -54,3 +54,24 @@ export const StyledLoginInputBox = styled(StyledInputBox)`
     background-color: #a9a9a9;
   }
 `;
+
+export const Container = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  height: 430px;
+`;
+
+export const TitleBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 536px;
+  margin-right: 20px;
+`;
+export const LogoImg = styled.img`
+  width: 120px;
+  height: 120px;
+`;

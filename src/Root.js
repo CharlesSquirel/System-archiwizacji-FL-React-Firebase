@@ -40,9 +40,6 @@ function Root() {
   };
   useEffect(() => {
     start()
-    if (credentialsArchive === {}) {
-      start()
-    }
   }, []);
 
   useEffect(() => {
@@ -58,6 +55,7 @@ function Root() {
       <GlobalStyle />
       <Context.Provider
         value={{
+          start,
           credentialsArchive,
           setCredentialsArchive,
           credentialsEdicts,
