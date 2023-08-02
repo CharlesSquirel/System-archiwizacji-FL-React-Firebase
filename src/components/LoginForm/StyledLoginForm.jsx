@@ -7,7 +7,7 @@ export const StyledLoginForm = styled.form`
   align-items: center;
   flex-direction: column;
   gap: 20px;
-  width: 30%;
+  width: 536px;
   padding: 20px 0;
   color: var(--black);
   border-radius: 10px;
@@ -26,14 +26,13 @@ export const StyledLoginForm = styled.form`
   }
 `;
 
-export const LoginContainer = styled.main`
+export const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   height: auto;
   width: 100%;
-  height: 370px;
 `;
 
 export const StyledLoginLabel = styled.label`

@@ -8,6 +8,29 @@ import { StyledLoginForm, LoginContainer, StyledLoginLabel, StyledLoginInputBox 
 import { StyledButton, StyledInput } from "../GlobalStyle/GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import logoFL from "../../assets/logo.FL.svg";
+import styled from "styled-components";
+
+const Container = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 80%;
+`
+
+const TitleBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 536px;
+  margin-right: 20px;
+
+`
+const LogoImg = styled.img`
+width: 120px;
+height: 120px;
+`
 
 const LoginForm = () => {
   const [errorBaner, setErrorBaner] = useState(false);
@@ -47,24 +70,42 @@ const LoginForm = () => {
   };
 
   return (
-    <LoginContainer>
-      <Title />
-      {logoutBaner && <Banner text="Zostałeś poprawnie wylogowany!" />}
-      {errorBaner && <Banner text={login.error} error={login.error} />}
-      <StyledLoginForm onSubmit={handleOnSubmit}>
-        <StyledLoginInputBox>
-          <StyledLoginLabel>Email</StyledLoginLabel>
-          <StyledInput onChange={(e) => setLogin({ ...login, email: e.target.value })} type="text" name="email" placeholder="Email" autoComplete="off" />
-          <FontAwesomeIcon className="icon" icon={faEnvelope} />
-        </StyledLoginInputBox>
-        <StyledLoginInputBox>
-          <StyledLoginLabel>Hasło</StyledLoginLabel>
-          <StyledInput onChange={(e) => setLogin({ ...login, password: e.target.value })} type="password" name="password" placeholder="Hasło" autoComplete="off" />
-          <FontAwesomeIcon className="icon" icon={faLock} />
-        </StyledLoginInputBox>
-        <StyledButton type="submit">Zaloguj</StyledButton>
-      </StyledLoginForm>
-    </LoginContainer>
+    <Container>
+    <TitleBox>
+      <LogoImg src={logoFL} alt="logo" />
+      <Title text="System dokumentacji FL"/>
+    </TitleBox>
+      <LoginContainer>
+        <Title />
+        {logoutBaner && <Banner text="Zostałeś poprawnie wylogowany!" />}
+        {errorBaner && <Banner text={login.error} error={login.error} />}
+        <StyledLoginForm onSubmit={handleOnSubmit}>
+          <StyledLoginInputBox>
+            <StyledLoginLabel>Email</StyledLoginLabel>
+            <StyledInput
+              onChange={(e) => setLogin({ ...login, email: e.target.value })}
+              type="text"
+              name="email"
+              placeholder="Email"
+              autoComplete="off"
+            />
+            <FontAwesomeIcon className="icon" icon={faEnvelope} />
+          </StyledLoginInputBox>
+          <StyledLoginInputBox>
+            <StyledLoginLabel>Hasło</StyledLoginLabel>
+            <StyledInput
+              onChange={(e) => setLogin({ ...login, password: e.target.value })}
+              type="password"
+              name="password"
+              placeholder="Hasło"
+              autoComplete="off"
+            />
+            <FontAwesomeIcon className="icon" icon={faLock} />
+          </StyledLoginInputBox>
+          <StyledButton type="submit">Zaloguj</StyledButton>
+        </StyledLoginForm>
+      </LoginContainer>
+    </Container>
   );
 };
 
