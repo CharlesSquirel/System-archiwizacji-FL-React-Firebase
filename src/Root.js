@@ -24,6 +24,14 @@ function Root() {
   const [credentialsEdicts, setCredentialsEdicts] = useState({});
   const [credentialsContracts, setCredentialsContracts] = useState({});
 
+  const start = () => {
+    readFromDb("archive", setCredentialsArchive)
+    // domyślne sortowanie listy chronologicznie
+    sortCredentials(credentialsArchive, setCredentialsArchive, "dateAsc");
+    getLogInfo();
+    getActualUser(setActualUser);
+  }
+
   const getLogInfo = () => {
     const storedIsLogged = localStorage.getItem("isLogged");
     if (storedIsLogged === "true") {
@@ -31,11 +39,10 @@ function Root() {
     }
   };
   useEffect(() => {
-    readFromDb("archive", setCredentialsArchive)
-    // domyślne sortowanie listy chronologicznie
-    sortCredentials(credentialsArchive, setCredentialsArchive, "dateAsc");
-    getLogInfo();
-    getActualUser(setActualUser);
+    start()
+    if (credentialsArchive === {}) {
+      start()
+    }
   }, []);
 
   useEffect(() => {
