@@ -17,19 +17,30 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo, faDownload, faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import EdictsInfoPopup from "../../EdictsInfoPopup/EdictsInfoPopup";
-import { getDownloadURL, ref as storageRef } from "firebase/storage";
+import { deleteObject, getDownloadURL, ref as storageRef } from "firebase/storage";
+
+
 
 const DataListEdicts = () => {
   const context = useContext(Context);
   const { credentialsEdicts, setDeleteBaner } = context;
   const [isInfoActive, setIsInfoActive] = useState(false);
-  const handleDelete = (index) => {
+  const deleteFile = (fileName) => {
+    const fileRef = storageRef(storage, `edicts/${fileName}`)
+    deleteObject(fileRef).then(() => {
+      console.log("deleted")
+    }).catch((error) => {
+      throw error
+    });
+  }
+  const handleDelete = (fileName, index) => {
     // obsługa kasowania wpisu
     const confirm = window.confirm("Czy na pewno chcesz to usunąć?");
     if (confirm) {
       const toRemove = Object.keys(credentialsEdicts)[index];
       remove(ref(db, `/files/edicts/${toRemove}`));
       setBaner(setDeleteBaner);
+      deleteFile(fileName)
     }
   };
   const handleInfoPopup = () => {
@@ -94,7 +105,7 @@ const DataListEdicts = () => {
                       <FontAwesomeIcon icon={faPenToSquare} />
                     </Link>
                   </StyledDataButton>
-                  <StyledDataButton onClick={() => handleDelete(index)}>
+                  <StyledDataButton onClick={() => handleDelete(data.file, index)}>
                     <FontAwesomeIcon icon={faTrash} />
                   </StyledDataButton>
                   <StyledDataButton onClick={() => handleDownload(data.number)}>

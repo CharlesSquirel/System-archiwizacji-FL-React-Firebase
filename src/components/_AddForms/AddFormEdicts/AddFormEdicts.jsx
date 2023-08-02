@@ -59,8 +59,11 @@ const AddFormEdicts = () => {
     const fileRef = ref(storage, `edicts/${values.number}`)
     uploadBytes(fileRef, file).then(() => {
       console.log("uploaded")
+      console.log(values.number)
     })
   }
+
+
   
   return (
     <Formik
