@@ -15,9 +15,10 @@ const Container = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  justify-content: space-between;
   width: 80%;
-`
+  height: 430px;
+`;
 
 const TitleBox = styled.div`
   display: flex;
@@ -25,12 +26,11 @@ const TitleBox = styled.div`
   justify-content: space-between;
   width: 536px;
   margin-right: 20px;
-
-`
+`;
 const LogoImg = styled.img`
-width: 120px;
-height: 120px;
-`
+  width: 120px;
+  height: 120px;
+`;
 
 const LoginForm = () => {
   const [errorBaner, setErrorBaner] = useState(false);
@@ -71,14 +71,14 @@ const LoginForm = () => {
 
   return (
     <Container>
-    <TitleBox>
-      <LogoImg src={logoFL} alt="logo" />
-      <Title text="System dokumentacji FL"/>
-    </TitleBox>
+      <TitleBox>
+        <LogoImg src={logoFL} alt="logo" />
+        <Title text="System dokumentacji FL" />
+      </TitleBox>
+      {logoutBaner && <Banner text="Zostałeś poprawnie wylogowany!" />}
+      {errorBaner && <Banner text={login.error} error={login.error} />}
       <LoginContainer>
         <Title />
-        {logoutBaner && <Banner text="Zostałeś poprawnie wylogowany!" />}
-        {errorBaner && <Banner text={login.error} error={login.error} />}
         <StyledLoginForm onSubmit={handleOnSubmit}>
           <StyledLoginInputBox>
             <StyledLoginLabel>Email</StyledLoginLabel>
