@@ -78,24 +78,6 @@ export const StyledButtonBox = styled.div`
   align-self: center;
   gap: 5px;
 `;
-export const StyledButtonEdit = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  gap: 5px;
-  width: 68px;
-  height: 28px;
-  padding: 5px;
-  border-radius: 5px;
-  background: var(--primary);
-  color: var(--white);
-  font-weight: 600;
-  font-size: 15px;
-`;
-export const StyledButtonDelete = styled(StyledButtonEdit)`
-  /* margin-left: 5px; */
-`;
 
 export const StyledDataButton = styled.button`
   display: grid;
