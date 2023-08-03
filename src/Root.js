@@ -10,6 +10,7 @@ import Contracts from "./components/_Views/_Contracts/Contracts";
 import Archive from "./components/_Views/_Archive/Archive";
 import Edicts from "./components/_Views/_Edicts/Edicts";
 import Record from "./components/_Views/_Record/Record";
+import EditFormEdicts from "./components/_EditForms/EditFormEdicts/EditFormEdicts";
 
 export const Context = React.createContext();
 
@@ -23,6 +24,7 @@ function Root() {
   const [credentialsArchive, setCredentialsArchive] = useState({});
   const [credentialsEdicts, setCredentialsEdicts] = useState({});
   const [credentialsContracts, setCredentialsContracts] = useState({});
+  const [file, setFile] = useState(null)
 
   const start = () => {
     readFromDb("archive", setCredentialsArchive)
@@ -55,6 +57,8 @@ function Root() {
       <GlobalStyle />
       <Context.Provider
         value={{
+          file,
+          setFile,
           start,
           credentialsArchive,
           setCredentialsArchive,
@@ -84,6 +88,7 @@ function Root() {
               {isLogged && <Route path="/record" element={<Record />} />}
             </Route>
             <Route path="/editarchive" element={<EditFormArchive />} />
+            <Route path="/editedicts" element={<EditFormEdicts />} />
           </Routes>
         </BrowserRouter>
       </Context.Provider>

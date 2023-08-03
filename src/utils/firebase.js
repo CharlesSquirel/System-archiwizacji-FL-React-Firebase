@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, onValue } from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { uid } from "uid";
-import { getStorage } from "firebase/storage";
+import { deleteObject, getStorage, ref as storageRef, uploadBytes } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAaiuMwRZ8WJSE--oWSnp9aF2P3-YzD2sg",
@@ -32,6 +32,29 @@ export const readFromDb = (where, settingFunction) => {
     const data = snapshot.val();
     settingFunction(data ? data : {});
   });
+}
+
+export const deleteFromStorage = (fileName) => {
+  const fileRef = storageRef(storage, `edicts/${fileName}`)
+  deleteObject(fileRef).then(() => {
+    console.log("deleted")
+  }).catch((error) => {
+    throw error
+  });
+}
+
+export const uploadToStorage = (filename, file) => {
+  const fileRef = storageRef(storage, `edicts/${filename}`)
+  uploadBytes(fileRef, file).then(() => {
+    console.log("uploaded")
+  }).catch((error) => {
+    throw error
+  })
+}
+
+export const uptadeInStorage = (fileName, file) => {
+  deleteFromStorage(fileName)
+  uploadToStorage(fileName, file)
 }
 
 export const getActualUser = (func) => {

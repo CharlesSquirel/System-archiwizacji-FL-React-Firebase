@@ -80,6 +80,7 @@ export const StyledButtonBox = styled.div`
 `;
 
 export const StyledDataButton = styled.button`
+  position: relative;
   display: grid;
   place-items: center;
   width: 35px;

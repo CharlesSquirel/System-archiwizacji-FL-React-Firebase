@@ -1,83 +1,51 @@
 import React, { useContext, useRef } from "react";
-import styled from "styled-components";
-import { ErrorMessage, StyledForm, StyledFormWrapper, StyledInput, StyledInputBox, StyledAddButton } from "../../GlobalStyle/GlobalComponents";
+import { Context } from "../../../Root";
+import { useLocation, useNavigate } from "react-router";
+import { Formik } from "formik";
+import { StyledCheckbox, StyledCheckboxBox, StyledCheckboxLabel, StyledDoubleCheckboxes } from "../../_AddForms/AddFormEdicts/AddFormEdicts";
+import { changeEmptyString, validationSchemaEdicts } from "../../../utils/yupvalidation";
+import { setBaner } from "../../../utils/setBaner";
+import { ErrorMessage, StyledAddButton, StyledForm, StyledFormWrapper, StyledInput, StyledInputBox } from "../../GlobalStyle/GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { Formik } from "formik";
-import { validationSchemaEdicts } from "../../../utils/yupvalidation";
-import { Context } from "../../../Root";
-import { changeEmptyString } from "../../../utils/yupvalidation";
-import { uploadToStorage, writeToDb} from "../../../utils/firebase";
-import { setBaner } from "../../../utils/setBaner";
-import Banner from "../../Banner/Banner";
+import { ref, update } from "firebase/database";
+import { db, uptadeInStorage } from "../../../utils/firebase";
 
-export const StyledCheckboxBox = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 3px;
-`;
-
-export const StyledCheckboxLabel = styled.label`
-  font-size: 15px;
-  font-weight: 500;
-`;
-
-export const StyledCheckbox = styled.input`
-  width: 16px;
-  height: 16px;
-`;
-
-export const StyledDoubleCheckboxes = styled.div`
-  display: flex;
-  gap: 10px;
-  width: 407px;
-`;
-
-const initialValuesEdicts = {
-  number: "",
-  date: "",
-  title: "",
-  toWhom: {
-    da: false,
-    dt: false,
-    dk: false,
-    k: false,
-  },
-  file: ""
-};
-
-const AddFormEdicts = () => {
+const EditFormEdicts = () => {
   const fileInputRef = useRef(null);
   const context = useContext(Context);
-  const { addBaner, setAddBaner, deleteBaner, editBaner, file, setFile } = context;
+  const { credentialsEdicts, setEditBaner, setFile, file } = context;
+  const location = useLocation();
+  const dataToEdit = location.state.data;
+  const indexOfEditedData = location.state.index;
+  const navigate = useNavigate();
 
   return (
     <Formik
-    initialValues={initialValuesEdicts}
-    validationSchema={validationSchemaEdicts}
-    onSubmit={(values, { resetForm }) => {
-      changeEmptyString(values);
-      writeToDb("edicts", {
-        number: values.number,
-        date: values.date,
-        title: values.title,
-        toWhom: {
-          da: values.toWhom.da,
-          dt: values.toWhom.dt,
-          dk: values.toWhom.dk,
-          k: values.toWhom.k,
-        },
-        file: values.number
-      });
-      uploadToStorage(values.number, file)
-      setFile(null)
-      if (fileInputRef.current) {
-        fileInputRef.current.value = ""
-      }
-        setBaner(setAddBaner);
+      initialValues={dataToEdit}
+      validationSchema={validationSchemaEdicts}
+      onSubmit={(values, { resetForm }) => {
+        changeEmptyString(values);
+        const toUptade = Object.keys(credentialsEdicts)[indexOfEditedData];
+        update(ref(db, `files/edicts/${toUptade}`), {
+          number: values.number,
+          date: values.date,
+          title: values.title,
+          toWhom: {
+            da: values.toWhom.da,
+            dt: values.toWhom.dt,
+            dk: values.toWhom.dk,
+            k: values.toWhom.k,
+          },
+          file: values.number,
+        });
+        if (file !== null) {
+          uptadeInStorage(dataToEdit.number, file);
+        }
+        setBaner(setEditBaner);
         resetForm();
+        navigate("/edicts");
       }}
-    
     >
       {(formik) => {
         const { errors, touched, handleSubmit } = formik;
@@ -134,6 +102,7 @@ const AddFormEdicts = () => {
                       <StyledCheckboxLabel htmlFor="dt">Dział Techniczny</StyledCheckboxLabel>
                     </StyledCheckboxBox>
                   </StyledDoubleCheckboxes>
+
                   <StyledDoubleCheckboxes>
                     <StyledCheckboxBox>
                       <StyledCheckbox name="toWhom.dk" type="checkbox" id="dk" {...formik.getFieldProps("toWhom.dk")} />
@@ -148,7 +117,15 @@ const AddFormEdicts = () => {
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="file">Załącznik</label>
-                  <input id="file" name="file" type="file" onChange={(e) => setFile(e.target.files[0])} ref={fileInputRef}/>
+                  <input
+                    id="file"
+                    name="file"
+                    type="file"
+                    onChange={(e) => {
+                      setFile(e.target.files[0]);
+                    }}
+                    ref={fileInputRef}
+                  />
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="btn">Akcje:</label>
@@ -158,9 +135,6 @@ const AddFormEdicts = () => {
                   </StyledAddButton>
                 </StyledInputBox>
               </StyledForm>
-              {addBaner && <Banner text="Poprawnie dodano do bazy danych" />}
-              {deleteBaner && <Banner text="Poprawnie usunięto z bazy danych" />}
-              {editBaner && <Banner text="Poprawnie zmieniono dane" />}
             </StyledFormWrapper>
           </>
         );
@@ -169,4 +143,4 @@ const AddFormEdicts = () => {
   );
 };
 
-export default AddFormEdicts;
+export default EditFormEdicts;

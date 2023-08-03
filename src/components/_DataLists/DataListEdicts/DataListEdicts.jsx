@@ -11,13 +11,13 @@ import {
 } from "../DataListArchive/StyledDataList";
 import { Link } from "react-router-dom";
 import { ref, remove } from "firebase/database";
-import { db, storage } from "../../../utils/firebase";
+import { db, deleteFromStorage, storage } from "../../../utils/firebase";
 import { setBaner } from "../../../utils/setBaner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo, faDownload, faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import EdictsInfoPopup from "../../EdictsInfoPopup/EdictsInfoPopup";
-import { deleteObject, getDownloadURL, ref as storageRef } from "firebase/storage";
+import { getDownloadURL, ref as storageRef } from "firebase/storage";
 
 
 
@@ -25,14 +25,7 @@ const DataListEdicts = () => {
   const context = useContext(Context);
   const { credentialsEdicts, setDeleteBaner } = context;
   const [isInfoActive, setIsInfoActive] = useState(false);
-  const deleteFile = (fileName) => {
-    const fileRef = storageRef(storage, `edicts/${fileName}`)
-    deleteObject(fileRef).then(() => {
-      console.log("deleted")
-    }).catch((error) => {
-      throw error
-    });
-  }
+
   const handleDelete = (fileName, index) => {
     // obsługa kasowania wpisu
     const confirm = window.confirm("Czy na pewno chcesz to usunąć?");
@@ -40,7 +33,7 @@ const DataListEdicts = () => {
       const toRemove = Object.keys(credentialsEdicts)[index];
       remove(ref(db, `/files/edicts/${toRemove}`));
       setBaner(setDeleteBaner);
-      deleteFile(fileName)
+      deleteFromStorage(fileName)
     }
   };
   const handleInfoPopup = () => {
@@ -101,7 +94,7 @@ const DataListEdicts = () => {
               <StyledCell>
                 <StyledButtonBox>
                   <StyledDataButton>
-                    <Link to="/editarchive" state={{ data, index }}>
+                    <Link to="/editedicts" state={{ data, index }}>
                       <FontAwesomeIcon icon={faPenToSquare} />
                     </Link>
                   </StyledDataButton>
