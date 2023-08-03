@@ -102,7 +102,6 @@ const EditFormEdicts = () => {
                       <StyledCheckboxLabel htmlFor="dt">Dział Techniczny</StyledCheckboxLabel>
                     </StyledCheckboxBox>
                   </StyledDoubleCheckboxes>
-
                   <StyledDoubleCheckboxes>
                     <StyledCheckboxBox>
                       <StyledCheckbox name="toWhom.dk" type="checkbox" id="dk" {...formik.getFieldProps("toWhom.dk")} />
