@@ -56,38 +56,17 @@ const EditFormEdicts = () => {
               <StyledForm onSubmit={handleSubmit}>
                 <StyledInputBox>
                   <label htmlFor="number">Numer:</label>
-                  <StyledInput
-                    id="number"
-                    name="number"
-                    className="input"
-                    placeholder="1/2023"
-                    autoComplete="off"
-                    {...formik.getFieldProps("number")}
-                  ></StyledInput>
+                  <StyledInput id="number" name="number" className="input" placeholder="1/2023" autoComplete="off" {...formik.getFieldProps("number")}></StyledInput>
                   {touched.number && errors.number && <ErrorMessage>{errors.number}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="date">Data:</label>
-                  <StyledInput
-                    id="date"
-                    name="date"
-                    className="input"
-                    placeholder="01.01.2023"
-                    autoComplete="off"
-                    {...formik.getFieldProps("date")}
-                  ></StyledInput>
+                  <StyledInput id="date" name="date" className="input" placeholder="01.01.2023" autoComplete="off" {...formik.getFieldProps("date")}></StyledInput>
                   {touched.date && errors.date && <ErrorMessage>{errors.date}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="title">Tytuł:</label>
-                  <StyledInput
-                    id="title"
-                    name="title"
-                    className="input"
-                    placeholder="Tytuł..."
-                    autoComplete="off"
-                    {...formik.getFieldProps("title")}
-                  ></StyledInput>
+                  <StyledInput id="title" name="title" className="input" placeholder="Tytuł..." autoComplete="off" {...formik.getFieldProps("title")}></StyledInput>
                   {touched.title && errors.title && <ErrorMessage>{errors.title}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>

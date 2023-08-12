@@ -7,7 +7,7 @@ import { Formik } from "formik";
 import { validationSchemaEdicts } from "../../../utils/yupvalidation";
 import { Context } from "../../../Root";
 import { changeEmptyString } from "../../../utils/yupvalidation";
-import { uploadToStorage, writeToDb} from "../../../utils/firebase";
+import { uploadToStorage, writeToDb } from "../../../utils/firebase";
 import { setBaner } from "../../../utils/setBaner";
 import Banner from "../../Banner/Banner";
 
@@ -43,7 +43,7 @@ const initialValuesEdicts = {
     dk: false,
     k: false,
   },
-  file: ""
+  file: "",
 };
 
 const AddFormEdicts = () => {
@@ -53,31 +53,30 @@ const AddFormEdicts = () => {
 
   return (
     <Formik
-    initialValues={initialValuesEdicts}
-    validationSchema={validationSchemaEdicts}
-    onSubmit={(values, { resetForm }) => {
-      changeEmptyString(values);
-      writeToDb("edicts", {
-        number: values.number,
-        date: values.date,
-        title: values.title,
-        toWhom: {
-          da: values.toWhom.da,
-          dt: values.toWhom.dt,
-          dk: values.toWhom.dk,
-          k: values.toWhom.k,
-        },
-        file: values.number
-      });
-      uploadToStorage(values.number, file)
-      setFile(null)
-      if (fileInputRef.current) {
-        fileInputRef.current.value = ""
-      }
+      initialValues={initialValuesEdicts}
+      validationSchema={validationSchemaEdicts}
+      onSubmit={(values, { resetForm }) => {
+        changeEmptyString(values);
+        writeToDb("edicts", {
+          number: values.number,
+          date: values.date,
+          title: values.title,
+          toWhom: {
+            da: values.toWhom.da,
+            dt: values.toWhom.dt,
+            dk: values.toWhom.dk,
+            k: values.toWhom.k,
+          },
+          file: values.number,
+        });
+        uploadToStorage(values.number, file);
+        setFile(null);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
         setBaner(setAddBaner);
         resetForm();
       }}
-    
     >
       {(formik) => {
         const { errors, touched, handleSubmit } = formik;
@@ -88,38 +87,17 @@ const AddFormEdicts = () => {
               <StyledForm onSubmit={handleSubmit}>
                 <StyledInputBox>
                   <label htmlFor="number">Numer:</label>
-                  <StyledInput
-                    id="number"
-                    name="number"
-                    className="input"
-                    placeholder="1/2023"
-                    autoComplete="off"
-                    {...formik.getFieldProps("number")}
-                  ></StyledInput>
+                  <StyledInput id="number" name="number" className="input" placeholder="1/2023" autoComplete="off" {...formik.getFieldProps("number")}></StyledInput>
                   {touched.number && errors.number && <ErrorMessage>{errors.number}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="date">Data:</label>
-                  <StyledInput
-                    id="date"
-                    name="date"
-                    className="input"
-                    placeholder="01.01.2023"
-                    autoComplete="off"
-                    {...formik.getFieldProps("date")}
-                  ></StyledInput>
+                  <StyledInput id="date" name="date" className="input" placeholder="01.01.2023" autoComplete="off" {...formik.getFieldProps("date")}></StyledInput>
                   {touched.date && errors.date && <ErrorMessage>{errors.date}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="title">Tytuł:</label>
-                  <StyledInput
-                    id="title"
-                    name="title"
-                    className="input"
-                    placeholder="Tytuł..."
-                    autoComplete="off"
-                    {...formik.getFieldProps("title")}
-                  ></StyledInput>
+                  <StyledInput id="title" name="title" className="input" placeholder="Tytuł..." autoComplete="off" {...formik.getFieldProps("title")}></StyledInput>
                   {touched.title && errors.title && <ErrorMessage>{errors.title}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>
@@ -148,7 +126,7 @@ const AddFormEdicts = () => {
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="file">Załącznik</label>
-                  <input id="file" name="file" type="file" onChange={(e) => setFile(e.target.files[0])} ref={fileInputRef}/>
+                  <input id="file" name="file" type="file" onChange={(e) => setFile(e.target.files[0])} ref={fileInputRef} />
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="btn">Akcje:</label>
