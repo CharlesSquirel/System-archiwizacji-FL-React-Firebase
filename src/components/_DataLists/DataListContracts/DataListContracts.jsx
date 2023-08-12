@@ -7,6 +7,7 @@ import { StyledButtonBox, StyledCell, StyledDataButton, StyledDataList, StyledRo
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import SearchBarContracts from "../../_SearchBars/SearchBarContracts/SearchBarContracts";
 
 const DataListContracts = () => {
   const context = useContext(Context);
@@ -21,39 +22,44 @@ const DataListContracts = () => {
     }
   };
   return (
-    <StyledDataList>
-      <StyledTable>
-        <thead>
-          <StyledTableHeader>
-            <th>Sygnatura</th>
-            <th>Data</th>
-            <th>Opis</th>
-            <th>Tagi</th>
-            <th>Akcje</th>
-          </StyledTableHeader>
-        </thead>
-        <tbody>
-          {Object.values(credentialsContracts).map((data, index) => (
-            <StyledRow key={index}>
-              <StyledCell>{data.signature}</StyledCell>
-              <StyledCell>{data.date}</StyledCell>
-              <StyledCell>{data.description}</StyledCell>
-              <StyledCell>{data.tags}</StyledCell>
-              <StyledCell>
-                <StyledButtonBox>
-                  <StyledDataButton>
-                    <Link to="/editarchive" state={{ data, index }}>
-                    <FontAwesomeIcon icon={faPenToSquare} />
-                    </Link>
-                  </StyledDataButton>
-                  <StyledDataButton onClick={() => handleDelete(index)}><FontAwesomeIcon icon={faTrash} /></StyledDataButton>
-                </StyledButtonBox>
-              </StyledCell>
-            </StyledRow>
-          ))}
-        </tbody>
-      </StyledTable>
-    </StyledDataList>
+    <>
+      <SearchBarContracts />
+      <StyledDataList>
+        <StyledTable>
+          <thead>
+            <StyledTableHeader>
+              <th>Sygnatura</th>
+              <th>Data</th>
+              <th>Opis</th>
+              <th>Tagi</th>
+              <th>Akcje</th>
+            </StyledTableHeader>
+          </thead>
+          <tbody>
+            {Object.values(credentialsContracts).map((data, index) => (
+              <StyledRow key={index}>
+                <StyledCell>{data.signature}</StyledCell>
+                <StyledCell>{data.date}</StyledCell>
+                <StyledCell>{data.description}</StyledCell>
+                <StyledCell>{data.tags}</StyledCell>
+                <StyledCell>
+                  <StyledButtonBox>
+                    <StyledDataButton>
+                      <Link to="/editarchive" state={{ data, index }}>
+                        <FontAwesomeIcon icon={faPenToSquare} />
+                      </Link>
+                    </StyledDataButton>
+                    <StyledDataButton onClick={() => handleDelete(index)}>
+                      <FontAwesomeIcon icon={faTrash} />
+                    </StyledDataButton>
+                  </StyledButtonBox>
+                </StyledCell>
+              </StyledRow>
+            ))}
+          </tbody>
+        </StyledTable>
+      </StyledDataList>
+    </>
   );
 };
 

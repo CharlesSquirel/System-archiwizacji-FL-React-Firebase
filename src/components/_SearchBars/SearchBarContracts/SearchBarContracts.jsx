@@ -4,15 +4,15 @@ import { readFromDb } from "../../../utils/firebase";
 import { sortCredentials } from "../../../utils/sortingFunc";
 import { Context } from "../../../Root";
 
-const SearchBarEdicts = () => {
+const SearchBarContracts = () => {
   const context = useContext(Context);
-  const { credentialsEdicts, setCredentialsEdicts } = context;
+  const { credentialsContracts, setCredentialsContracts } = context;
   const [query, setQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("");
 
   // wymuszanie rerenderingu dla poprawnego funkcjonowania select
   useEffect(() => {
-    sortCredentials(credentialsEdicts, setCredentialsEdicts, sortOrder);
+    sortCredentials(credentialsContracts, setCredentialsContracts, sortOrder);
   }, [sortOrder]);
 
   // obsługa wyszukiwania
@@ -21,31 +21,19 @@ const SearchBarEdicts = () => {
     setQuery(inputValue);
 
     if (inputValue === "") {
-      readFromDb("edicts", setCredentialsEdicts);
+      readFromDb("contracts", setCredentialsContracts);
     } else {
-      readFromDb("edicts", (data) => {
+      readFromDb("contracts", (data) => {
         const filteredCredentials = Object.entries(data).filter(([key, value]) => {
           for (const prop in value) {
-            const propValue = value[prop];
-
-            if (typeof propValue === "string" && propValue.toLowerCase().includes(inputValue)) {
+            if (value[prop].toLowerCase().includes(inputValue)) {
               return true;
-            }
-
-            if (typeof propValue === "object") {
-              for (const nestedProp in propValue) {
-                const nestedPropValue = propValue[nestedProp];
-
-                if (nestedPropValue === true && nestedProp.toLowerCase().includes(inputValue)) {
-                  return true;
-                }
-              }
             }
           }
           return false;
         });
         const filteredCredentialsObject = Object.fromEntries(filteredCredentials);
-        setCredentialsEdicts(filteredCredentialsObject);
+        setCredentialsContracts(filteredCredentialsObject);
       });
     }
   };
@@ -68,13 +56,13 @@ const SearchBarEdicts = () => {
           {/* Wg daty opadająco */}
           <option value="dateDesc">Wg daty malejąco</option>
           {/* Wg sygnatury wznosząco */}
-          <option value="signAsEdicts">Wg sygnatury rosnąco</option>
+          <option value="signAsc">Wg sygnatury rosnąco</option>
           {/* Wg sygnatury opadająco */}
-          <option value="signDescEdicts">Wg sygnatury malejąco</option>
+          <option value="signDesc">Wg sygnatury malejąco</option>
         </StyledSelectInput>
       </StyledSelectWrapper>
     </StyledSearchBarWrapper>
   );
 };
 
-export default SearchBarEdicts;
+export default SearchBarContracts;
