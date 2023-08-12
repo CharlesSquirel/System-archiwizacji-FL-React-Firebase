@@ -12,7 +12,7 @@ const SearchBarEdicts = () => {
 
   // wymuszanie rerenderingu dla poprawnego funkcjonowania select
   useEffect(() => {
-    sortCredentialsEdicts(credentialsEdicts, setCredentialsEdicts, sortOrder);
+    sortCredentials(credentialsEdicts, setCredentialsEdicts, sortOrder);
   }, [sortOrder]);
 
   // obsługa wyszukiwania
@@ -68,9 +68,9 @@ const SearchBarEdicts = () => {
           {/* Wg daty opadająco */}
           <option value="dateDesc">Wg daty malejąco</option>
           {/* Wg sygnatury wznosząco */}
-          <option value="signAsc">Wg sygnatury rosnąco</option>
+          <option value="signAsEdicts">Wg sygnatury rosnąco</option>
           {/* Wg sygnatury opadająco */}
-          <option value="signDesc">Wg sygnatury malejąco</option>
+          <option value="signDescEdicts">Wg sygnatury malejąco</option>
         </StyledSelectInput>
       </StyledSelectWrapper>
     </StyledSearchBarWrapper>
