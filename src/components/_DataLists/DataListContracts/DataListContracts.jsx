@@ -45,7 +45,7 @@ const DataListContracts = () => {
                 <StyledCell>
                   <StyledButtonBox>
                     <StyledDataButton>
-                      <Link to="/editarchive" state={{ data, index }}>
+                      <Link to="/editcontracts" state={{ data, index }}>
                         <FontAwesomeIcon icon={faPenToSquare} />
                       </Link>
                     </StyledDataButton>

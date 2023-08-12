@@ -11,6 +11,7 @@ import Archive from "./components/_Views/_Archive/Archive";
 import Edicts from "./components/_Views/_Edicts/Edicts";
 import Record from "./components/_Views/_Record/Record";
 import EditFormEdicts from "./components/_EditForms/EditFormEdicts/EditFormEdicts";
+import EditFormContracts from "./components/_EditForms/EditFormContracts/EditFormContracts";
 
 export const Context = React.createContext();
 
@@ -24,15 +25,15 @@ function Root() {
   const [credentialsArchive, setCredentialsArchive] = useState({});
   const [credentialsEdicts, setCredentialsEdicts] = useState({});
   const [credentialsContracts, setCredentialsContracts] = useState({});
-  const [file, setFile] = useState(null)
+  const [file, setFile] = useState(null);
 
   const start = () => {
-    readFromDb("archive", setCredentialsArchive)
+    readFromDb("archive", setCredentialsArchive);
     // domyślne sortowanie listy chronologicznie
     sortCredentials(credentialsArchive, setCredentialsArchive, "dateAsc");
     getLogInfo();
     getActualUser(setActualUser);
-  }
+  };
 
   const getLogInfo = () => {
     const storedIsLogged = localStorage.getItem("isLogged");
@@ -41,15 +42,15 @@ function Root() {
     }
   };
   useEffect(() => {
-    start()
+    start();
   }, []);
 
   useEffect(() => {
-    readFromDb("edicts", setCredentialsEdicts)
+    readFromDb("edicts", setCredentialsEdicts);
   }, []);
 
   useEffect(() => {
-    readFromDb("contracts", setCredentialsContracts)
+    readFromDb("contracts", setCredentialsContracts);
   }, []);
 
   return (
@@ -88,6 +89,7 @@ function Root() {
               {isLogged && <Route path="/record" element={<Record />} />}
             </Route>
             <Route path="/editarchive" element={<EditFormArchive />} />
+            <Route path="/editcontracts" element={<EditFormContracts />} />
             <Route path="/editedicts" element={<EditFormEdicts />} />
           </Routes>
         </BrowserRouter>
