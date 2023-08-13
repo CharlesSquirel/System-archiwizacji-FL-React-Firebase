@@ -5,19 +5,14 @@ import { writeToDb } from "../../../utils/firebase";
 import { changeEmptyString, validationSchemaRecords } from "../../../utils/yupvalidation";
 import { setBaner } from "../../../utils/setBaner";
 import Banner from "../../Banner/Banner";
-import { StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm, StyledAddButton } from "../../GlobalStyle/GlobalComponents";
+import { StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm, StyledAddButton, StyledSelectRecords } from "../../GlobalStyle/GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { StyledCheckbox, StyledCheckboxBox, StyledCheckboxLabel, StyledDoubleCheckboxes } from "../AddFormEdicts/AddFormEdicts";
 
 const initialValues = {
   date: "",
   title: "",
-  type: {
-    symphonic: false,
-    chamber: false,
-    solo: false,
-  },
+  type: "",
   musicians: {},
   music: {},
   description: "",
@@ -31,15 +26,12 @@ function AddFormRecord() {
       initialValues={initialValues}
       validationSchema={validationSchemaRecords}
       onSubmit={(values, { resetForm }) => {
+        console.log(values);
         changeEmptyString(values);
         writeToDb("records", {
           date: values.date,
           title: values.title,
-          type: {
-            symphonic: values.type.symphonic,
-            chamber: values.type.chamber,
-            solo: values.type.solo,
-          },
+          type: values.type,
           musicians: values.musicians,
           music: values.music,
           description: values.description,
@@ -69,20 +61,14 @@ function AddFormRecord() {
                   <StyledInput id="description" name="description" className="input" placeholder="Opis..." autoComplete="off" type="textarea" {...formik.getFieldProps("description")}></StyledInput>
                   {touched.description && errors.description && <ErrorMessage>{errors.description}</ErrorMessage>}
                 </StyledInputBox>
-                <StyledDoubleCheckboxes>
-                  <StyledCheckboxBox>
-                    <StyledCheckbox name="type.symphonic" type="checkbox" id="symphonic" {...formik.getFieldProps("type.symphonic")} />
-                    <StyledCheckboxLabel htmlFor="symphonic">Koncert symfoniczny</StyledCheckboxLabel>
-                  </StyledCheckboxBox>
-                  <StyledCheckboxBox>
-                    <StyledCheckbox name="type.chamber" type="checkbox" id="chamber" {...formik.getFieldProps("type.chamber")} />
-                    <StyledCheckboxLabel htmlFor="chamber">Koncert kameralny</StyledCheckboxLabel>
-                  </StyledCheckboxBox>
-                  <StyledCheckboxBox>
-                    <StyledCheckbox name="type.solo" type="checkbox" id="solo" {...formik.getFieldProps("type.solo")} />
-                    <StyledCheckboxLabel htmlFor="solo">Recital</StyledCheckboxLabel>
-                  </StyledCheckboxBox>
-                </StyledDoubleCheckboxes>
+                <StyledInputBox>
+                  <label htmlFor="type">Typ:</label>
+                  <StyledSelectRecords id="type" name="type" {...formik.getFieldProps("type")}>
+                    <option value="symphonic">koncert symfoniczny</option>
+                    <option value="chamber">koncert kameralny</option>
+                    <option value="solo">recital</option>
+                  </StyledSelectRecords>
+                </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="btn">Akcje:</label>
                   <StyledAddButton id="btn" type="submit">

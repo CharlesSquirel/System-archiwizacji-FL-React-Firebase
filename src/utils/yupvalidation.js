@@ -25,10 +25,7 @@ export const validationSchemaRecords = Yup.object().shape({
     .required("Pole jest wymagane!")
     .test("długość inputa jest równa 10", "Pole musi zawierać 10 znaków", (value) => value.length === 10),
   title: Yup.string(),
-  type: Yup.object().test("only one is checked", "Tylko jeden typ może być zaznaczony!", (type) => {
-    const checkedCount = Object.values(type).filter((value) => value === true).length;
-    return checkedCount === 1;
-  }),
+  type: Yup.string(),
   musicians: Yup.object(),
   music: Yup.object(),
   description: Yup.string(),

@@ -34,7 +34,6 @@ export const StyledButton = styled.button`
   font-size: 22px;
   background: var(--primary);
   color: var(--white);
-  
 `;
 
 export const StyledAddButton = styled(StyledButton)`
@@ -58,7 +57,7 @@ export const StyledAddButton = styled(StyledButton)`
 `;
 
 export const StyledLoginButton = styled(StyledButton)`
-    ::after {
+  ::after {
     content: "";
     position: absolute;
     left: 0px;
@@ -75,7 +74,7 @@ export const StyledLoginButton = styled(StyledButton)`
   :hover {
     bottom: -3px;
   }
-`
+`;
 
 export const StyledInputBox = styled.div`
   display: flex;
@@ -96,4 +95,12 @@ export const StyledInput = styled.input`
 export const ErrorMessage = styled.p`
   font-weight: 500;
   color: var(--error);
+`;
+
+export const StyledSelectRecords = styled.select`
+  width: 260px;
+  height: 40px;
+  padding-left: 8px;
+  border: 1px solid var(--primary);
+  font-size: 18px;
 `;
