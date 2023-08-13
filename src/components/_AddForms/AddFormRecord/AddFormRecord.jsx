@@ -64,10 +64,10 @@ function AddFormRecord() {
                 <StyledInputBox>
                   <label htmlFor="type">Typ:</label>
                   <StyledSelectRecords id="type" name="type" {...formik.getFieldProps("type")}>
-                    <option value="symphonic">koncert symfoniczny</option>
-                    <option value="chamber">koncert kameralny</option>
-                    <option value="solo">recital</option>
-                    <option value="audition">audycja umuzykalniająca</option>
+                    <option value="koncert symfoniczny">koncert symfoniczny</option>
+                    <option value="koncert kameralny">koncert kameralny</option>
+                    <option value="recital">recital</option>
+                    <option value="audycja umuzykalniająca">audycja umuzykalniająca</option>
                   </StyledSelectRecords>
                 </StyledInputBox>
                 <StyledInputBox>

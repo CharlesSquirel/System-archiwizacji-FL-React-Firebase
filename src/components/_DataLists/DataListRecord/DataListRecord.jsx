@@ -7,6 +7,7 @@ import { db } from "../../../utils/firebase";
 import { StyledDataList, StyledButtonBox, StyledCell, StyledTableHeader, StyledTable, StyledRow, StyledDataButton } from "../DataListArchive/StyledDataList.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import SearchBarRecord from "../../_SearchBars/SerachBarRecords/SearchBarRecords";
 
 function DataListRecord() {
   const context = useContext(Context);
@@ -27,6 +28,7 @@ function DataListRecord() {
 
   return (
     <>
+      <SearchBarRecord />
       <StyledDataList>
         <StyledTable>
           <thead>
@@ -45,7 +47,7 @@ function DataListRecord() {
               <StyledRow key={index}>
                 <StyledCell>{data.date}</StyledCell>
                 <StyledCell>{data.title}</StyledCell>
-                <StyledCell>{data.type === "symphonic" ? "KS" : data.type === "chamber" ? "KK" : data.type === "solo" ? "R" : "AU"}</StyledCell>
+                <StyledCell>{data.type === "koncert symfoniczny" ? "KS" : data.type === "koncert kameralny" ? "KK" : data.type === "recital" ? "R" : "AU"}</StyledCell>
                 <StyledCell>{data.musicians}</StyledCell>
                 <StyledCell>{data.music}</StyledCell>
                 <StyledCell>{data.description}</StyledCell>
