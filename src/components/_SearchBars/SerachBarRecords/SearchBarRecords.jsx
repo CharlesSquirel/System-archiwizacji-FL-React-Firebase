@@ -7,7 +7,7 @@ import { Context } from "../../../Root";
 const SearchBarRecord = () => {
   const context = useContext(Context);
   const { credentialsRecord, setCredentialsRecord } = context;
-  const [query, setQuery] = useState("");
+  const [setQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("");
 
   // wymuszanie rerenderingu dla poprawnego funkcjonowania select
