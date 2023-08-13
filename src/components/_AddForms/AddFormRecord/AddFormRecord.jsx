@@ -67,6 +67,7 @@ function AddFormRecord() {
                     <option value="symphonic">koncert symfoniczny</option>
                     <option value="chamber">koncert kameralny</option>
                     <option value="solo">recital</option>
+                    <option value="audition">audycja umuzykalniająca</option>
                   </StyledSelectRecords>
                 </StyledInputBox>
                 <StyledInputBox>

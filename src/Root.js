@@ -12,6 +12,7 @@ import Edicts from "./components/_Views/_Edicts/Edicts";
 import Record from "./components/_Views/_Record/Record";
 import EditFormEdicts from "./components/_EditForms/EditFormEdicts/EditFormEdicts";
 import EditFormContracts from "./components/_EditForms/EditFormContracts/EditFormContracts";
+import EditFormRecord from "./components/_EditForms/EditFormRecord/EditFormRecord";
 
 export const Context = React.createContext();
 
@@ -25,6 +26,7 @@ function Root() {
   const [credentialsArchive, setCredentialsArchive] = useState({});
   const [credentialsEdicts, setCredentialsEdicts] = useState({});
   const [credentialsContracts, setCredentialsContracts] = useState({});
+  const [credentialsRecord, setCredentialsRecord] = useState({});
   const [file, setFile] = useState(null);
 
   const start = () => {
@@ -53,6 +55,9 @@ function Root() {
     readFromDb("contracts", setCredentialsContracts);
   }, []);
 
+  useEffect(() => {
+    readFromDb("records", setCredentialsRecord);
+  }, []);
   return (
     <>
       <GlobalStyle />
@@ -67,6 +72,8 @@ function Root() {
           setCredentialsEdicts,
           credentialsContracts,
           setCredentialsContracts,
+          credentialsRecord,
+          setCredentialsRecord,
           actualUser,
           setIsLogged,
           logoutBaner,
@@ -91,6 +98,7 @@ function Root() {
             <Route path="/editarchive" element={<EditFormArchive />} />
             <Route path="/editcontracts" element={<EditFormContracts />} />
             <Route path="/editedicts" element={<EditFormEdicts />} />
+            <Route path="/editrecord" element={<EditFormRecord />} />
           </Routes>
         </BrowserRouter>
       </Context.Provider>
