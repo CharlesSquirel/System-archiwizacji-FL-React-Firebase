@@ -8,6 +8,18 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import SearchBarContracts from "../../_SearchBars/SearchBarContracts/SearchBarContracts";
+import styled from "styled-components";
+
+const StyledTableHead = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 65px;
+  background-color: var(--gray);
+  border-radius: 10px 10px 0 0;
+  border-bottom: 3px solid var(--primary);
+  padding: 20px;
+`;
 
 const DataListContracts = () => {
   const context = useContext(Context);
@@ -22,44 +34,44 @@ const DataListContracts = () => {
     }
   };
   return (
-    <>
-      <SearchBarContracts />
-      <StyledDataList>
-        <StyledTable>
-          <thead>
-            <StyledTableHeader>
-              <th>Sygnatura</th>
-              <th>Data</th>
-              <th>Opis</th>
-              <th>Tagi</th>
-              <th>Akcje</th>
-            </StyledTableHeader>
-          </thead>
-          <tbody>
-            {Object.values(credentialsContracts).map((data, index) => (
-              <StyledRow key={index}>
-                <StyledCell>{data.signature}</StyledCell>
-                <StyledCell>{data.date}</StyledCell>
-                <StyledCell>{data.description}</StyledCell>
-                <StyledCell>{data.tags}</StyledCell>
-                <StyledCell>
-                  <StyledButtonBox>
-                    <StyledDataButton>
-                      <Link to="/editcontracts" state={{ data, index }}>
-                        <FontAwesomeIcon icon={faPenToSquare} />
-                      </Link>
-                    </StyledDataButton>
-                    <StyledDataButton onClick={() => handleDelete(index)}>
-                      <FontAwesomeIcon icon={faTrash} />
-                    </StyledDataButton>
-                  </StyledButtonBox>
-                </StyledCell>
-              </StyledRow>
-            ))}
-          </tbody>
-        </StyledTable>
-      </StyledDataList>
-    </>
+    <StyledDataList>
+      <StyledTableHead>
+        <SearchBarContracts />
+      </StyledTableHead>
+      <StyledTable>
+        <thead>
+          <StyledTableHeader>
+            <th>Sygnatura</th>
+            <th>Data</th>
+            <th>Opis</th>
+            <th>Tagi</th>
+            <th>Akcje</th>
+          </StyledTableHeader>
+        </thead>
+        <tbody>
+          {Object.values(credentialsContracts).map((data, index) => (
+            <StyledRow key={index}>
+              <StyledCell>{data.signature}</StyledCell>
+              <StyledCell>{data.date}</StyledCell>
+              <StyledCell>{data.description}</StyledCell>
+              <StyledCell>{data.tags}</StyledCell>
+              <StyledCell>
+                <StyledButtonBox>
+                  <StyledDataButton>
+                    <Link to="/editcontracts" state={{ data, index }}>
+                      <FontAwesomeIcon icon={faPenToSquare} />
+                    </Link>
+                  </StyledDataButton>
+                  <StyledDataButton onClick={() => handleDelete(index)}>
+                    <FontAwesomeIcon icon={faTrash} />
+                  </StyledDataButton>
+                </StyledButtonBox>
+              </StyledCell>
+            </StyledRow>
+          ))}
+        </tbody>
+      </StyledTable>
+    </StyledDataList>
   );
 };
 

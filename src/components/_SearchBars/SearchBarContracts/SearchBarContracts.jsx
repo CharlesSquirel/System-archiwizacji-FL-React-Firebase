@@ -3,12 +3,26 @@ import { StyledSearchBarWrapper, StyledLabel, StyledSearchBarInput, StyledSelect
 import { readFromDb } from "../../../utils/firebase";
 import { sortCredentials } from "../../../utils/sortingFunc";
 import { Context } from "../../../Root";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSort } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
+
+const StyledSelectPopup = styled.div`
+  position: absolute;
+  left: 0;
+  bottom: -200px;
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  z-index: 1;
+`;
 
 const SearchBarContracts = () => {
   const context = useContext(Context);
   const { credentialsContracts, setCredentialsContracts } = context;
   const [query, setQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("");
+  const [isSortOpen, setIsSortOpen] = useState(false);
 
   // wymuszanie rerenderingu dla poprawnego funkcjonowania select
   useEffect(() => {
@@ -45,22 +59,38 @@ const SearchBarContracts = () => {
   };
   return (
     <StyledSearchBarWrapper>
-      <StyledLabel htmlFor="search">Wyszukaj</StyledLabel>
-      <StyledSearchBarInput onChange={handleOnChange} name="search" id="search" value={query} type="text" placeholder="Wyszukaj" autoComplete="off" />
-      <StyledSelectWrapper>
+      <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
         <StyledLabel htmlFor="select">Sortuj według</StyledLabel>
+        <FontAwesomeIcon icon={faSort} id="select" onClick={() => setIsSortOpen(!isSortOpen)} />
+      </div>
+      {isSortOpen && (
+        <StyledSelectPopup>
+          <ul>
+            <li
+              onClick={(e) => {
+                setSortOrder("dateAsc");
+                setIsSortOpen(!isSortOpen);
+              }}
+            >
+              Wg daty rosnąco
+            </li>
+            <li onClick={(e) => setSortOrder("dateDesc")}>Wg daty malejąc</li>
+            <li onClick={(e) => setSortOrder("signAsc")}>Wg sygnatury rosnąco</li>
+            <li onClick={(e) => setSortOrder("signDesc")}>Wg sygnatury malejąco</li>
+          </ul>
+        </StyledSelectPopup>
+      )}
+      {/* <StyledSelectWrapper>
         <StyledSelectInput id="select" name="select" onChange={handleOnSelect}>
           <option value="default">--Wybierz opcję--</option>
-          {/* Wg daty wznosząco */}
           <option value="dateAsc">Wg daty rosnąco</option>
-          {/* Wg daty opadająco */}
           <option value="dateDesc">Wg daty malejąco</option>
-          {/* Wg sygnatury wznosząco */}
           <option value="signAsc">Wg sygnatury rosnąco</option>
-          {/* Wg sygnatury opadająco */}
           <option value="signDesc">Wg sygnatury malejąco</option>
         </StyledSelectInput>
-      </StyledSelectWrapper>
+      </StyledSelectWrapper> */}
+      {/* <StyledLabel htmlFor="search">Wyszukaj</StyledLabel> */}
+      <StyledSearchBarInput onChange={handleOnChange} name="search" id="search" value={query} type="text" placeholder="Wyszukaj" autoComplete="off" />
     </StyledSearchBarWrapper>
   );
 };

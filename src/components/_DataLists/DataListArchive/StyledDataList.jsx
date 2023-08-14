@@ -2,13 +2,12 @@ import styled from "styled-components";
 
 export const StyledDataList = styled.main`
   width: 80%;
-  border-radius: 10px;
   padding-bottom: 20px;
 `;
 export const StyledTable = styled.table`
   width: 100%;
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 0 0 10px 10px;
   text-align: center;
   background-color: var(--gray);
 `;
@@ -20,7 +19,7 @@ export const StyledTableHeader = styled.tr`
   ::after {
     content: "";
     width: 100%;
-    height: 3px;
+    height: 1px;
     background-color: var(--primary);
     position: absolute;
     bottom: 0;
