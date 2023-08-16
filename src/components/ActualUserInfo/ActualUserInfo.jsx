@@ -8,6 +8,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 const UserInfoWrapper = styled.div`
+  position: absolute;
+  top: 30px;
+  right: 20px;
   display: flex;
   align-items: center;
   gap: 8px;
