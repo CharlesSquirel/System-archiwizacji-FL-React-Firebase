@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import ActualUserInfo from "../ActualUserInfo/ActualUserInfo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,6 +28,18 @@ const StyledHeader = styled.header`
       display: block;
     }
   }
+  .active::after {
+    content: "";
+    width: 32px;
+    height: 2px;
+    background-color: var(--white);
+    position: absolute;
+    bottom: 0;
+    left: 7px;
+  }
+  li a:not(.active) {
+    opacity: 0.7
+  }
 `;
 
 const StyledLogoMenu = styled.img`
@@ -50,6 +62,9 @@ const StyledNavLinks = styled.ul`
     color: var(--white);
     font-weight: 500;
     width: 208px;
+    :hover {
+      opacity: 1;
+    }
     span {
       display: none;
     }
@@ -80,28 +95,28 @@ const Header = () => {
         <StyledNav>
           <StyledNavLinks>
             <li>
-              <Link to="/archive" data-text="Archiwum">
+              <NavLink to="/archive" data-text="Archiwum">
                 <FontAwesomeIcon className="icon" icon={faBoxArchive}></FontAwesomeIcon>
                 <span>Archiwum</span>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/contracts" data-text="Rejestr umów">
+              <NavLink to="/contracts" data-text="Rejestr umów">
                 <FontAwesomeIcon className="icon" icon={faFileSignature}></FontAwesomeIcon>
                 <span>Rejestr umów</span>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/edicts" data-text="Rejestr zarządzeń">
+              <NavLink to="/edicts" data-text="Rejestr zarządzeń">
                 <FontAwesomeIcon className="icon" icon={faFile}></FontAwesomeIcon>
                 <span>Rejestr zarządzeń</span>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/record" data-text="Rejestr koncertów">
+              <NavLink to="/record" data-text="Rejestr koncertów">
                 <FontAwesomeIcon className="icon" icon={faCalendarDays}></FontAwesomeIcon>
                 <span>Rejestr koncertów</span>
-              </Link>
+              </NavLink>
             </li>
           </StyledNavLinks>
         </StyledNav>
