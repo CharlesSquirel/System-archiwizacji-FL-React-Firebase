@@ -1,13 +1,17 @@
 import styled from "styled-components";
 
 export const StyledFormWrapper = styled.header`
+  position: absolute;
+  top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  width: 100%;
-  height: 123px;
-  color: var(--white);
+  width: 85%;
+  color: var(--black);
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: 20px;
   .icon {
     font-size: 20px;
     color: var(--white);

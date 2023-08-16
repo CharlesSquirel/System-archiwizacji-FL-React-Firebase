@@ -1,10 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
-import { StyledSearchBarWrapper, StyledLabel, StyledSearchBarInput, StyledSelectWrapper, StyledSelectInput } from "../SearchBarArchive/StyledSearchBar.jsx";
+import {
+  StyledSearchBarWrapper,
+  StyledLabel,
+  StyledSearchBarInput,
+  StyledSelectWrapper,
+  StyledSelectInput,
+} from "../SearchBarArchive/StyledSearchBar.jsx";
 import { readFromDb } from "../../../utils/firebase";
 import { sortCredentials } from "../../../utils/sortingFunc";
 import { Context } from "../../../Root";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSort } from "@fortawesome/free-solid-svg-icons";
+import { faSort, faPlus } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
 const StyledSelectPopup = styled.div`
@@ -16,6 +22,8 @@ const StyledSelectPopup = styled.div`
   background-color: white;
   z-index: 1;
 `;
+
+
 
 const SearchBarContracts = () => {
   const context = useContext(Context);
@@ -60,7 +68,9 @@ const SearchBarContracts = () => {
   return (
     <StyledSearchBarWrapper>
       <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
-        <StyledLabel htmlFor="select">Sortuj według</StyledLabel>
+        <StyledLabel style={{ color: "black" }} htmlFor="select">
+          Sortuj według
+        </StyledLabel>
         <FontAwesomeIcon icon={faSort} id="select" onClick={() => setIsSortOpen(!isSortOpen)} />
       </div>
       {isSortOpen && (
@@ -80,16 +90,6 @@ const SearchBarContracts = () => {
           </ul>
         </StyledSelectPopup>
       )}
-      {/* <StyledSelectWrapper>
-        <StyledSelectInput id="select" name="select" onChange={handleOnSelect}>
-          <option value="default">--Wybierz opcję--</option>
-          <option value="dateAsc">Wg daty rosnąco</option>
-          <option value="dateDesc">Wg daty malejąco</option>
-          <option value="signAsc">Wg sygnatury rosnąco</option>
-          <option value="signDesc">Wg sygnatury malejąco</option>
-        </StyledSelectInput>
-      </StyledSelectWrapper> */}
-      {/* <StyledLabel htmlFor="search">Wyszukaj</StyledLabel> */}
       <StyledSearchBarInput onChange={handleOnChange} name="search" id="search" value={query} type="text" placeholder="Wyszukaj" autoComplete="off" />
     </StyledSearchBarWrapper>
   );

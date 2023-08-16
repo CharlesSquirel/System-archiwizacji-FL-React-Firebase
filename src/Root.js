@@ -28,6 +28,7 @@ function Root() {
   const [credentialsContracts, setCredentialsContracts] = useState({});
   const [credentialsRecord, setCredentialsRecord] = useState({});
   const [file, setFile] = useState(null);
+  const [isAddFormContractsOpen, setIsAddFormContractsOpen] = useState(false);
 
   const start = () => {
     readFromDb("archive", setCredentialsArchive);
@@ -84,6 +85,8 @@ function Root() {
           setDeleteBaner,
           editBaner,
           setEditBaner,
+          isAddFormContractsOpen,
+          setIsAddFormContractsOpen,
         }}
       >
         <BrowserRouter>
