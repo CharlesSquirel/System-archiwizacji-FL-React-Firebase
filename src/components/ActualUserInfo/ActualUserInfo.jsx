@@ -17,7 +17,7 @@ const UserInfoWrapper = styled.div`
   color: var(--white);
 `;
 const UserInfoText = styled.p`
-  text-shadow: var(--primary-text-shadow);
+  
 `;
 const LogoutButton = styled(StyledButton)`
   width: 115px;

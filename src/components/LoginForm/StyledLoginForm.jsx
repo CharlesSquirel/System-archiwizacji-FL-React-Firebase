@@ -36,7 +36,7 @@ export const LoginContainer = styled.div`
 `;
 
 export const StyledLoginLabel = styled.label`
-  text-shadow: var(--secondary-text-shadow);
+  
 `;
 
 export const StyledLoginInputBox = styled(StyledInputBox)`
