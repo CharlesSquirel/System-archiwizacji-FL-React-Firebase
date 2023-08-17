@@ -14,9 +14,10 @@ import {
 } from "../DataListArchive/StyledDataList";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faPenToSquare, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import SearchBarContracts from "../../_SearchBars/SearchBarContracts/SearchBarContracts";
 import styled from "styled-components";
+import TableAddButton from "../../../TableAddButton/TableAddButton";
 
 const StyledTableHead = styled.div`
   display: flex;
@@ -29,22 +30,9 @@ const StyledTableHead = styled.div`
   padding: 20px;
 `;
 
-const TableAddButton = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  background-color: var(--primary);
-  width: 170px;
-  height: 30px;
-  color: var(--white);
-  border-radius: 8px;
-  cursor: pointer;
-`;
-
 const DataListContracts = () => {
   const context = useContext(Context);
-  const { credentialsContracts, setDeleteBaner, setIsAddFormContractsOpen } = context;
+  const { credentialsContracts, setDeleteBaner} = context;
   const handleDelete = (index) => {
     // obsługa kasowania wpisu
     const confirm = window.confirm("Czy na pewno chcesz to usunąć?");
@@ -58,18 +46,18 @@ const DataListContracts = () => {
     <StyledDataList>
       <StyledTableHead>
         <SearchBarContracts />
-        <TableAddButton onClick={() => setIsAddFormContractsOpen(true)}>
-          <FontAwesomeIcon icon={faPlus} />
-          <p>Dodaj umowę</p>
-        </TableAddButton>
+        <TableAddButton text="Dodaj umowę" type="addContract"/>
       </StyledTableHead>
       <StyledTable>
         <thead>
           <StyledTableHeader>
             <th>Sygnatura</th>
             <th>Data</th>
-            <th>Opis</th>
-            <th>Tagi</th>
+            <th>Podmiot</th>
+            <th>Kwota</th>
+            <th>Rodzaj</th>
+            <th>Osoba odpowiedzialna</th>
+            <th>Uwagi</th>
             <th>Akcje</th>
           </StyledTableHeader>
         </thead>
@@ -78,8 +66,11 @@ const DataListContracts = () => {
             <StyledRow key={index}>
               <StyledCell>{data.signature}</StyledCell>
               <StyledCell>{data.date}</StyledCell>
+              <StyledCell>{data.contractor}</StyledCell>
+              <StyledCell>{(+data.price).toFixed(2) + " zł"}</StyledCell>
+              <StyledCell>{data.type}</StyledCell>
+              <StyledCell>{data.person_in_charge}</StyledCell>
               <StyledCell>{data.description}</StyledCell>
-              <StyledCell>{data.tags}</StyledCell>
               <StyledCell>
                 <StyledButtonBox>
                   <StyledDataButton>

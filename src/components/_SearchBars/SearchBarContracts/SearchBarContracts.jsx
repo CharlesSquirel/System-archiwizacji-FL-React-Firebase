@@ -68,8 +68,8 @@ const SearchBarContracts = () => {
   return (
     <StyledSearchBarWrapper>
       <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
-        <StyledLabel style={{ color: "black" }} htmlFor="select">
-          Sortuj według
+        <StyledLabel style={{ color: "black", fontSize: "16px" }} htmlFor="select">
+          Sortuj
         </StyledLabel>
         <FontAwesomeIcon icon={faSort} id="select" onClick={() => setIsSortOpen(!isSortOpen)} />
       </div>

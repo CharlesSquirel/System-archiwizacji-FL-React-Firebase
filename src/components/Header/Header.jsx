@@ -22,7 +22,7 @@ const StyledHeader = styled.header`
   padding: 10px 0 0 0px;
   z-index: 1;
   :hover {
-    /* transition: width 0.3s ease-out; */
+    transition: width 0.3s ease-out;
     width: 240px;
     span {
       display: block;

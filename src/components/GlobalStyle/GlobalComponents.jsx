@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const StyledFormWrapper = styled.header`
+export const StyledFormWrapper = styled.div`
   position: absolute;
-  top: 0;
+  top: 155px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,6 +12,7 @@ export const StyledFormWrapper = styled.header`
   background-color: var(--white);
   padding: 20px;
   border-radius: 20px;
+  z-index: 1;
   .icon {
     font-size: 20px;
     color: var(--white);

@@ -29,6 +29,9 @@ function Root() {
   const [credentialsRecord, setCredentialsRecord] = useState({});
   const [file, setFile] = useState(null);
   const [isAddFormContractsOpen, setIsAddFormContractsOpen] = useState(false);
+  const [isAddFormArchiveOpen, setIsAddFormArchiveOpen] = useState(false);
+  const [isAddFormEdictsOpen, setIsAddFormEdictsOpen] = useState(false);
+  const [isAddFormRecordsOpen, setIsAddFormRecordsOpen] = useState(false);
 
   const start = () => {
     readFromDb("archive", setCredentialsArchive);
@@ -87,6 +90,12 @@ function Root() {
           setEditBaner,
           isAddFormContractsOpen,
           setIsAddFormContractsOpen,
+          isAddFormArchiveOpen,
+          setIsAddFormArchiveOpen,
+          isAddFormEdictsOpen,
+          setIsAddFormEdictsOpen,
+          isAddFormRecordsOpen,
+          setIsAddFormRecordsOpen,
         }}
       >
         <BrowserRouter>
