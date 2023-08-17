@@ -8,6 +8,7 @@ import { StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledFor
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Context } from "@root";
+import TextInput from "../../TextInput";
 
 const initialValues = {
   signature: "",
@@ -25,7 +26,7 @@ function AddFormArchive() {
       validationSchema={validationSchemaArchive}
       onSubmit={(values, { resetForm }) => {
         changeEmptyString(values);
-        writeToDb("archive", { ...values })
+        writeToDb("archive", { ...values });
         resetForm();
         setBaner(setAddBaner);
       }}
@@ -38,51 +39,18 @@ function AddFormArchive() {
               <StyledForm onSubmit={handleSubmit}>
                 <StyledInputBox>
                   <label htmlFor="signature">Sygnatura:</label>
-                  <StyledInput
-                    id="singature"
-                    name="signature"
-                    className="input"
-                    placeholder="DA..."
-                    autoComplete="off"
-                    {...formik.getFieldProps("signature")}
-                  ></StyledInput>
+                  <StyledInput id="singature" name="signature" className="input" placeholder="DA..." autoComplete="off" {...formik.getFieldProps("signature")}></StyledInput>
                   {touched.signature && errors.signature && <ErrorMessage>{errors.signature}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="date">Data:</label>
-                  <StyledInput
-                    id="date"
-                    name="date"
-                    className="input"
-                    placeholder="01.01.2023"
-                    autoComplete="off"
-                    {...formik.getFieldProps("date")}
-                  ></StyledInput>
+                  <StyledInput id="date" name="date" className="input" placeholder="01.01.2023" autoComplete="off" {...formik.getFieldProps("date")}></StyledInput>
                   {touched.date && errors.date && <ErrorMessage>{errors.date}</ErrorMessage>}
                 </StyledInputBox>
-                <StyledInputBox>
-                  <label htmlFor="description">Opis:</label>
-                  <StyledInput
-                    id="description"
-                    name="description"
-                    className="input"
-                    placeholder="Opis..."
-                    autoComplete="off"
-                    type="textarea"
-                    {...formik.getFieldProps("description")}
-                  ></StyledInput>
-                  {touched.description && errors.description && <ErrorMessage>{errors.description}</ErrorMessage>}
-                </StyledInputBox>
+                <TextInput formik={formik} credential="description" label="Opis:" placeholder="Opis..." />
                 <StyledInputBox>
                   <label htmlFor="tags">Tagi:</label>
-                  <StyledInput
-                    id="tags"
-                    name="tags"
-                    className="input"
-                    placeholder="symfoniczny, Mozart,.."
-                    autoComplete="off"
-                    {...formik.getFieldProps("tags")}
-                  ></StyledInput>
+                  <StyledInput id="tags" name="tags" className="input" placeholder="symfoniczny, Mozart,.." autoComplete="off" {...formik.getFieldProps("tags")}></StyledInput>
                   {touched.tags && errors.tags && <ErrorMessage>{errors.tags}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>
