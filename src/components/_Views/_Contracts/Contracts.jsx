@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import Title from "../../Title/Title";
-import AddFormContracts from "../../_AddForms/AddFormContracts/AddFormContracts.jsx";
-import DataListContracts from "../../_DataLists/DataListContracts/DataListContracts";
-import { Context } from "../../../Root";
+import Title from "@Title";
+import AddFormContracts from "@AddFormContracts";
+import DataListContracts from "@DataListContracts";
+import { Context } from "@root";
 
 const Contracts = () => {
   const context = useContext(Context)

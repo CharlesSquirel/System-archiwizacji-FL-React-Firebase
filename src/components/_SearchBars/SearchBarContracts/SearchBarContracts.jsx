@@ -1,16 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
-import {
-  StyledSearchBarWrapper,
-  StyledLabel,
-  StyledSearchBarInput,
-  StyledSelectWrapper,
-  StyledSelectInput,
-} from "../SearchBarArchive/StyledSearchBar.jsx";
-import { readFromDb } from "../../../utils/firebase";
-import { sortCredentials } from "../../../utils/sortingFunc";
-import { Context } from "../../../Root";
+import { StyledSearchBarWrapper, StyledLabel, StyledSearchBarInput } from "@StyledSearchBar";
+import { readFromDb } from "@firebase";
+import { sortCredentials } from "@sortingFunc";
+import { Context } from "@root";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSort, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faSort } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
 const StyledSelectPopup = styled.div`
@@ -22,8 +16,6 @@ const StyledSelectPopup = styled.div`
   background-color: white;
   z-index: 1;
 `;
-
-
 
 const SearchBarContracts = () => {
   const context = useContext(Context);

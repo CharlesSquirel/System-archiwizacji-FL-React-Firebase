@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { Formik } from "formik";
 import { useLocation, useNavigate } from "react-router-dom";
-import { changeEmptyString, validationSchemaArchive } from "../../../utils/yupvalidation";
+import { changeEmptyString, validationSchemaArchive } from "@yupvalidation";
 import { ref, update } from "firebase/database";
-import { db, readFromDb } from "../../../utils/firebase";
-import { StyledButton, StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm } from "../../GlobalStyle/GlobalComponents";
-import { Context } from "../../../Root";
-import { setBaner } from "../../../utils/setBaner";
+import { db, readFromDb } from "@firebase";
+import { StyledButton, StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm } from "@GlobalComponents";
+import { Context } from "@root";
+import { setBaner } from "@setBaner";
 
 function EditFormArchive() {
   const context = useContext(Context);

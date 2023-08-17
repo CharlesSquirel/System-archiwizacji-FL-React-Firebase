@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
-import { Context } from "../../../Root";
-import { setBaner } from "../../../utils/setBaner";
+import { Context } from "@root";
+import { setBaner } from "@setBaner";
 import { ref, remove } from "firebase/database";
 import { Link } from "react-router-dom";
-import { db } from "../../../utils/firebase";
-import { StyledDataList, StyledButtonBox, StyledCell, StyledTableHeader, StyledTable, StyledRow, StyledDataButton } from "../DataListArchive/StyledDataList.jsx";
+import { db } from "@firebase";
+import { StyledDataList, StyledButtonBox, StyledCell, StyledTableHeader, StyledTable, StyledRow, StyledDataButton } from "@StyledDataList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import SearchBarRecord from "../../_SearchBars/SerachBarRecords/SearchBarRecords";
+import SearchBarRecord from "@SearchBarRecords";
 
 function DataListRecord() {
   const context = useContext(Context);

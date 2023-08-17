@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
-import { Context } from "../../../Root";
-import { StyledButtonBox, StyledCell, StyledDataButton, StyledDataList, StyledRow, StyledTable, StyledTableHeader } from "../DataListArchive/StyledDataList";
+import { Context } from "@root";
+import { StyledButtonBox, StyledCell, StyledDataButton, StyledDataList, StyledRow, StyledTable, StyledTableHeader } from "@StyledDataList";
 import { Link } from "react-router-dom";
 import { ref, remove } from "firebase/database";
-import { db, deleteFromStorage, storage } from "../../../utils/firebase";
-import { setBaner } from "../../../utils/setBaner";
+import { db, deleteFromStorage, storage } from "@firebase";
+import { setBaner } from "@setBaner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo, faDownload, faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import EdictsInfoPopup from "../../EdictsInfoPopup/EdictsInfoPopup";
+import EdictsInfoPopup from "@EdictsInfoPopup";
 import { getDownloadURL, ref as storageRef } from "firebase/storage";
-import SearchBarEdicts from "../../_SearchBars/SearchBarEdicts/SearchBarEdicts";
+import SearchBarEdicts from "@SearchBarEdicts";
 
 const DataListEdicts = () => {
   const context = useContext(Context);

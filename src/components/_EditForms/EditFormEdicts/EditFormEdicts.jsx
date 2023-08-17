@@ -1,15 +1,15 @@
 import React, { useContext, useRef } from "react";
-import { Context } from "../../../Root";
+import { Context } from "@root";
 import { useLocation, useNavigate } from "react-router";
 import { Formik } from "formik";
-import { StyledCheckbox, StyledCheckboxBox, StyledCheckboxLabel, StyledDoubleCheckboxes } from "../../_AddForms/AddFormEdicts/AddFormEdicts";
-import { changeEmptyString, validationSchemaEdicts } from "../../../utils/yupvalidation";
-import { setBaner } from "../../../utils/setBaner";
-import { ErrorMessage, StyledAddButton, StyledForm, StyledFormWrapper, StyledInput, StyledInputBox } from "../../GlobalStyle/GlobalComponents";
+import { StyledCheckbox, StyledCheckboxBox, StyledCheckboxLabel, StyledDoubleCheckboxes } from "@AddFormEdicts";
+import { changeEmptyString, validationSchemaEdicts } from "@yupvalidation";
+import { setBaner } from "@setBaner";
+import { ErrorMessage, StyledAddButton, StyledForm, StyledFormWrapper, StyledInput, StyledInputBox } from "@GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { ref, update } from "firebase/database";
-import { db, uptadeInStorage } from "../../../utils/firebase";
+import { db, uptadeInStorage } from "@firebase";
 
 const EditFormEdicts = () => {
   const fileInputRef = useRef(null);

@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { Context } from "../Root";
+import { Context } from "@root";
+
 
 const StyledTableAddButton = styled.div`
   display: flex;

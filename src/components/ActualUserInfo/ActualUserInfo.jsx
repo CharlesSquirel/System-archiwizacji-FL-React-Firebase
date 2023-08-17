@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { StyledButton } from "../GlobalStyle/GlobalComponents";
-import { Context } from "../../Root";
+import { StyledButton } from "@GlobalComponents";
+import { Context } from "@root";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,22 +25,6 @@ const LogoutButton = styled(StyledButton)`
   font-size: 16px;
   padding: 5px;
   position: relative;
-  ::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    background-color: var(--btn-shadow);
-    position: absolute;
-    bottom: -3px;
-    z-index: -1;
-    border-radius: 10px;
-  }
-  :hover::after {
-    bottom: -1px;
-  }
-  :hover {
-    bottom: -1px;
-  }
 `;
 
 const ActualUserInfo = () => {

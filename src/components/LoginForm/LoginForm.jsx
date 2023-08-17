@@ -1,14 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Context } from "../../Root";
+import { Context } from "@root";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import Banner from "../Banner/Banner";
-import Title from "../Title/Title";
-import { StyledLoginForm, LoginContainer, StyledLoginLabel, StyledLoginInputBox, Container, TitleBox, LogoImg } from "./StyledLoginForm";
-import { StyledLoginButton, StyledInput } from "../GlobalStyle/GlobalComponents";
+import Banner from "@Banner";
+import Title from "@Title";
+import { StyledLoginForm, LoginContainer, StyledLoginLabel, StyledLoginInputBox, Container, TitleBox, LogoImg } from "@StyledLoginForm";
+import { StyledLoginButton, StyledInput } from "@GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
-import logoFL from "../../assets/logo.FL.svg";
+import logoFL from "../../_assets/logo.svg";
 
 const LoginForm = () => {
   const [errorBaner, setErrorBaner] = useState(false);

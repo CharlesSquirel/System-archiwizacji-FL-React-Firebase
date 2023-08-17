@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { Context } from "../../../Root";
+import { Context } from "@root";
 import { ref, remove } from "firebase/database";
-import { db } from "../../../utils/firebase";
-import { setBaner } from "../../../utils/setBaner";
+import { db } from "@firebase";
+import { setBaner } from "@setBaner";
 import {
   StyledButtonBox,
   StyledCell,
@@ -17,7 +17,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import SearchBarContracts from "../../_SearchBars/SearchBarContracts/SearchBarContracts";
 import styled from "styled-components";
-import TableAddButton from "../../../TableAddButton/TableAddButton";
+import TableAddButton from "../../TableAddButton/TableAddButton";
+
 
 const StyledTableHead = styled.div`
   display: flex;

@@ -1,13 +1,13 @@
 import { useContext } from "react";
-import { Context } from "../../../Root";
 import { Formik } from "formik";
-import { writeToDb } from "../../../utils/firebase";
-import { changeEmptyString, validationSchemaArchive } from "../../../utils/yupvalidation";
-import { setBaner } from "../../../utils/setBaner";
-import Banner from "../../Banner/Banner";
-import { StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm, StyledAddButton } from "../../GlobalStyle/GlobalComponents";
+import { writeToDb } from "@firebase";
+import { changeEmptyString, validationSchemaArchive } from "@yupvalidation";
+import { setBaner } from "@setBaner";
+import Banner from "@Banner";
+import { StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm, StyledAddButton } from "@GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { Context } from "@root";
 
 const initialValues = {
   signature: "",

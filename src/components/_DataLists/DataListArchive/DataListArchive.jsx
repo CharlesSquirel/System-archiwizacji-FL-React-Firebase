@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { Context } from "../../../Root";
-import { setBaner } from "../../../utils/setBaner";
+import { Context } from "@root";
+import { setBaner } from "@setBaner";
 import { ref, remove } from "firebase/database";
 import { Link } from "react-router-dom";
-import { db } from "../../../utils/firebase";
-import SearchBar from "../../_SearchBars/SearchBarArchive/SearchBarArchive";
-import { StyledDataList, StyledButtonBox, StyledCell, StyledTableHeader, StyledTable, StyledRow, StyledDataButton } from "./StyledDataList";
+import { db } from "@firebase";
+import SearchBar from "@SearchBarArchive";
+import { StyledDataList, StyledButtonBox, StyledCell, StyledTableHeader, StyledTable, StyledRow, StyledDataButton } from "@StyledDataList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 

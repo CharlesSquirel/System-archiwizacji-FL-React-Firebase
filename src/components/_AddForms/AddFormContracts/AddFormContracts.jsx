@@ -7,15 +7,15 @@ import {
   StyledInputBox,
   StyledAddButton,
   StyledSelectRecords,
-} from "../../GlobalStyle/GlobalComponents";
+} from "@GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faClose } from "@fortawesome/free-solid-svg-icons";
-import { Context } from "../../../Root";
+import { Context } from "@root";
 import { Formik } from "formik";
-import Banner from "../../Banner/Banner";
-import { changeEmptyString, validationSchemaContracts } from "../../../utils/yupvalidation";
-import { writeToDb } from "../../../utils/firebase";
-import { setBaner } from "../../../utils/setBaner";
+import Banner from "@Banner";
+import { changeEmptyString, validationSchemaContracts } from "@yupvalidation";
+import { writeToDb } from "@firebase";
+import { setBaner } from "@setBaner";
 import styled from "styled-components";
 
 const StyledExitIcon = styled.div`

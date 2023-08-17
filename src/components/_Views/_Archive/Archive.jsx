@@ -1,6 +1,6 @@
-import AddFormArchive from "../../_AddForms/AddFormArchive/AddFormArchive";
-import DataListArchive from "../../_DataLists/DataListArchive/DataListArchive";
-import Title from "../../Title/Title";
+import AddFormArchive from "@AddFormArchive";
+import DataListArchive from "@DataListArchive";
+import Title from "@Title";
 
 function Archive() {
   return (

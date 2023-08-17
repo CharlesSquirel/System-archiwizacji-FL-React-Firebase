@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import { StyledSearchBarWrapper, StyledLabel, StyledSearchBarInput, StyledSelectWrapper, StyledSelectInput } from "./StyledSearchBar";
-import { readFromDb } from "../../../utils/firebase";
-import { sortCredentials } from "../../../utils/sortingFunc";
-import { Context } from "../../../Root";
+import { StyledSearchBarWrapper, StyledLabel, StyledSearchBarInput, StyledSelectWrapper, StyledSelectInput } from "@StyledSearchBar";
+import { readFromDb } from "@firebase";
+import { sortCredentials } from "@sortingFunc";
+import { Context } from "@root";
 
 const SearchBarArchive = () => {
   const context = useContext(Context);

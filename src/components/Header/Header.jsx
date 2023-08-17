@@ -1,11 +1,11 @@
 import React from "react";
 import { Outlet } from "react-router";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import ActualUserInfo from "../ActualUserInfo/ActualUserInfo";
+import ActualUserInfo from "@ActualUserInfo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBoxArchive, faFileSignature, faFile, faCalendarDays } from "@fortawesome/free-solid-svg-icons";
-import logoFL from "../../assets/logo.FL.svg";
+import logoFL from "../../_assets/logo.svg";
 
 const StyledHeader = styled.header`
   position: fixed;
