@@ -11,6 +11,7 @@ import { useState } from "react";
 import EdictsInfoPopup from "@EdictsInfoPopup";
 import { getDownloadURL, ref as storageRef } from "firebase/storage";
 import SearchBarEdicts from "@SearchBarEdicts";
+import TableAddButton from "@TableAddButton"
 
 const DataListEdicts = () => {
   const context = useContext(Context);
@@ -62,6 +63,7 @@ const DataListEdicts = () => {
                 {isInfoActive && <EdictsInfoPopup />}
               </th>
               <th>Akcje</th>
+              <TableAddButton text="Dodaj zarządzenie" type="addEdicts"/>
             </StyledTableHeader>
           </thead>
           <tbody>

@@ -16,14 +16,7 @@ import Banner from "@Banner";
 import { changeEmptyString, validationSchemaContracts } from "@yupvalidation";
 import { writeToDb } from "@firebase";
 import { setBaner } from "@setBaner";
-import styled from "styled-components";
-
-const StyledExitIcon = styled.div`
-  position: absolute;
-  right: 50px;
-  top: 10px;
-  cursor: pointer;
-`;
+import { StyledExitIcon } from "@GlobalComponents";
 
 const initialValuesContracts = {
   signature: "",

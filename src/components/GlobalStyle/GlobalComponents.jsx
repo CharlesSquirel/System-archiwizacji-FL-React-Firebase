@@ -109,3 +109,10 @@ export const StyledSelectRecords = styled.select`
   border: 1px solid var(--primary);
   font-size: 18px;
 `;
+
+export const StyledExitIcon = styled.div`
+  position: absolute;
+  right: 50px;
+  top: 10px;
+  cursor: pointer;
+`;

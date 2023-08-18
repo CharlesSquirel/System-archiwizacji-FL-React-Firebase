@@ -2,7 +2,7 @@ import React, { useContext, useRef } from "react";
 import styled from "styled-components";
 import { ErrorMessage, StyledForm, StyledFormWrapper, StyledInput, StyledInputBox, StyledAddButton } from "@GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faClose } from "@fortawesome/free-solid-svg-icons";
 import { Formik } from "formik";
 import { validationSchemaEdicts } from "@yupvalidation";
 import { Context } from "@root";
@@ -10,6 +10,7 @@ import { changeEmptyString } from "@yupvalidation";
 import { uploadToStorage, writeToDb } from "@firebase";
 import { setBaner } from "@setBaner";
 import Banner from "@Banner";
+import { StyledExitIcon } from "@GlobalComponents";
 
 export const StyledCheckboxBox = styled.div`
   display: flex;
@@ -49,7 +50,7 @@ const initialValuesEdicts = {
 const AddFormEdicts = () => {
   const fileInputRef = useRef(null);
   const context = useContext(Context);
-  const { addBaner, setAddBaner, deleteBaner, editBaner, file, setFile } = context;
+  const { addBaner, setAddBaner, deleteBaner, editBaner, file, setFile, setIsAddFormEdictsOpen } = context;
 
   return (
     <Formik
@@ -136,9 +137,13 @@ const AddFormEdicts = () => {
                   </StyledAddButton>
                 </StyledInputBox>
               </StyledForm>
+                <StyledExitIcon onClick={() => setIsAddFormEdictsOpen(false)}>
+                <FontAwesomeIcon style={{fontSize: "28px"}} icon={faClose} />
+              </StyledExitIcon>
               {addBaner && <Banner text="Poprawnie dodano do bazy danych" />}
               {deleteBaner && <Banner text="Poprawnie usunięto z bazy danych" />}
               {editBaner && <Banner text="Poprawnie zmieniono dane" />}
+
             </StyledFormWrapper>
           </>
         );
