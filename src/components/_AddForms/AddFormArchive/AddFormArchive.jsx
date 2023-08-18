@@ -4,11 +4,10 @@ import { writeToDb } from "../../../utils/firebase";
 import { changeEmptyString, validationSchemaArchive } from "../../../utils/yupvalidation";
 import { setBaner } from "../../../utils/setBaner";
 import Banner from "../../Banner/Banner.jsx";
-import { StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm, StyledAddButton } from "../../GlobalStyle/GlobalComponents.jsx";
+import { StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm, StyledAddButton, StyledExitIcon } from "../../GlobalStyle/GlobalComponents.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faClose } from "@fortawesome/free-solid-svg-icons";
 import { Context } from "../../../Root";
-import TextInput from "../../TextInput";
 
 const initialValues = {
   signature: "",
@@ -19,7 +18,7 @@ const initialValues = {
 
 function AddFormArchive() {
   const context = useContext(Context);
-  const { addBaner, setAddBaner, deleteBaner, editBaner } = context;
+  const { addBaner, setAddBaner, deleteBaner, editBaner, setIsAddFormArchiveOpen } = context;
   return (
     <Formik
       initialValues={initialValues}
@@ -29,6 +28,7 @@ function AddFormArchive() {
         writeToDb("archive", { ...values });
         resetForm();
         setBaner(setAddBaner);
+        setIsAddFormArchiveOpen(false)
       }}
     >
       {(formik) => {
@@ -49,7 +49,7 @@ function AddFormArchive() {
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="description">Opis:</label>
-                  <StyledInput id="description" name="description" className="input" placeholder="01.01.2023" autoComplete="off" {...formik.getFieldProps("description")}></StyledInput>
+                  <StyledInput id="description" name="description" className="input" placeholder="Opis..." autoComplete="off" {...formik.getFieldProps("description")}></StyledInput>
                   {touched.description && errors.description && <ErrorMessage>{errors.description}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>
@@ -64,6 +64,9 @@ function AddFormArchive() {
                     <FontAwesomeIcon className="icon" icon={faPlus} />
                   </StyledAddButton>
                 </StyledInputBox>
+                <StyledExitIcon onClick={() => setIsAddFormArchiveOpen(false)}>
+                <FontAwesomeIcon style={{fontSize: "28px"}} icon={faClose} />
+              </StyledExitIcon>
               </StyledForm>
               {addBaner && <Banner text="Poprawnie dodano do bazy danych" />}
               {deleteBaner && <Banner text="Poprawnie usunięto z bazy danych" />}

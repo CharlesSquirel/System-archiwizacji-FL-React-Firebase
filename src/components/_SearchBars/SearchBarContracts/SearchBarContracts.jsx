@@ -5,7 +5,7 @@ import { sortCredentials } from "../../../utils/sortingFunc";
 import { Context } from "../../../Root";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSort } from "@fortawesome/free-solid-svg-icons";
-import { StyledSelectPopup } from "../../GlobalStyle/GlobalComponents.jsx";
+import { StyledSelectPopup, StyledSortBox } from "../../GlobalStyle/GlobalComponents.jsx";
 
 const SearchBarContracts = () => {
   const context = useContext(Context);
@@ -13,6 +13,16 @@ const SearchBarContracts = () => {
   const [query, setQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("");
   const [isSortOpen, setIsSortOpen] = useState(false);
+
+  const handleOnClick = (e) => {
+    const sortOrder = e.target.classList.value;
+    setSortOrder(sortOrder);
+    setIsSortOpen(false);
+  };
+
+  const handleOnClickPopup = () => {
+    setIsSortOpen(!isSortOpen);
+  };
 
   // wymuszanie rerenderingu dla poprawnego funkcjonowania select
   useEffect(() => {
@@ -41,34 +51,27 @@ const SearchBarContracts = () => {
       });
     }
   };
-
-  // obsługa selecta
-  const handleOnSelect = (e) => {
-    const value = e.target.value;
-    setSortOrder(value);
-  };
   return (
     <StyledSearchBarWrapper>
-      <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
-        <StyledLabel style={{ color: "black", fontSize: "16px" }} htmlFor="select">
-          Sortuj
-        </StyledLabel>
-        <FontAwesomeIcon icon={faSort} id="select" onClick={() => setIsSortOpen(!isSortOpen)} />
-      </div>
+      <StyledSortBox>
+        <StyledLabel htmlFor="select">Sortuj</StyledLabel>
+        <FontAwesomeIcon icon={faSort} id="select" onClick={handleOnClickPopup} />
+      </StyledSortBox>
       {isSortOpen && (
         <StyledSelectPopup>
           <ul>
-            <li
-              onClick={(e) => {
-                setSortOrder("dateAsc");
-                setIsSortOpen(!isSortOpen);
-              }}
-            >
+            <li className="dateAsc" onClick={handleOnClick}>
               Wg daty rosnąco
             </li>
-            <li onClick={(e) => setSortOrder("dateDesc")}>Wg daty malejąc</li>
-            <li onClick={(e) => setSortOrder("signAsc")}>Wg sygnatury rosnąco</li>
-            <li onClick={(e) => setSortOrder("signDesc")}>Wg sygnatury malejąco</li>
+            <li className="dateDesc" onClick={handleOnClick}>
+              Wg daty malejąc
+            </li>
+            <li className="signAsc" onClick={handleOnClick}>
+              Wg sygnatury rosnąco
+            </li>
+            <li className="signDesc" onClick={handleOnClick}>
+              Wg sygnatury malejąco
+            </li>
           </ul>
         </StyledSelectPopup>
       )}

@@ -4,13 +4,12 @@ import { setBaner } from "../../../utils/setBaner";
 import { ref, remove } from "firebase/database";
 import { Link } from "react-router-dom";
 import { db } from "../../../utils/firebase";
-import SearchBar from "../../_SearchBars/SearchBarArchive/SearchBarArchive.jsx";
 import { StyledDataList, StyledButtonBox, StyledCell, StyledTableHeader, StyledTable, StyledRow, StyledDataButton } from "./StyledDataList.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import TableAddButton from "../../TableAddButton/TableAddButton";
-import SearchBarContracts from "../../_SearchBars/SearchBarContracts/SearchBarContracts";
 import { StyledTableHead } from "../../GlobalStyle/GlobalComponents";
+import SearchBarArchive from "../../_SearchBars/SearchBarArchive/SearchBarArchive";
 
 function DataListArchive() {
   const context = useContext(Context);
@@ -33,7 +32,7 @@ function DataListArchive() {
     <>
       <StyledDataList>
         <StyledTableHead>
-          <SearchBarContracts />
+          <SearchBarArchive />
           <TableAddButton text="Dodaj pozycję" type="addArchive" />
         </StyledTableHead>
         <StyledTable>

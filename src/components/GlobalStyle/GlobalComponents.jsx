@@ -131,9 +131,37 @@ export const StyledTableHead = styled.div`
 export const StyledSelectPopup = styled.div`
   position: absolute;
   left: 0;
-  bottom: -200px;
-  width: 200px;
-  height: 200px;
+  bottom: -152px;
+  width: 244px;
+  height: 152px;
   background-color: white;
   z-index: 1;
+  border-radius: 10px;
+  padding: 10px;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  li {
+    cursor: pointer;
+    padding: 5px;
+    :hover {
+      color: var(--white);
+      background-color: var(--primary);
+      border-radius: 10px;
+    }
+  }
+`;
+
+export const StyledSortBox = styled.div`
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  label {
+    color: var(--black);
+    font-size: 18px;
+  }
 `;

@@ -47,6 +47,7 @@ const AddFormContracts = () => {
           description: values.description,
         });
         setBaner(setAddBaner);
+        setIsAddFormContractsOpen(false)
         resetForm();
       }}
     >
