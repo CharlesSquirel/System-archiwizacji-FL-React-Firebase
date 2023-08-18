@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledInputBox, StyledInput, ErrorMessage } from "@GlobalComponents";
+import { StyledInputBox, StyledInput, ErrorMessage } from "./GlobalStyle/GlobalComponents.jsx";
 
 const TextInput = ({ formik, credential, label, placeholder }) => {
   const { touched, errors } = formik;

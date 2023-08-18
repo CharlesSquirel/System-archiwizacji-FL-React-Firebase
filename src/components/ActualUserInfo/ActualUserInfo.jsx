@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { StyledButton } from "@GlobalComponents";
-import { Context } from "@root";
+import { StyledButton } from "../GlobalStyle/GlobalComponents.jsx";
+import { Context } from "../../Root";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

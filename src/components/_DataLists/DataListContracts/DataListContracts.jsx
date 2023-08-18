@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { Context } from "@root";
+import { Context } from "../../../Root";
 import { ref, remove } from "firebase/database";
-import { db } from "@firebase";
-import { setBaner } from "@setBaner";
+import { db } from "../../../utils/firebase";
+import { setBaner } from "../../../utils/setBaner";
 import {
   StyledButtonBox,
   StyledCell,
@@ -16,20 +16,8 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import SearchBarContracts from "../../_SearchBars/SearchBarContracts/SearchBarContracts";
-import styled from "styled-components";
 import TableAddButton from "../../TableAddButton/TableAddButton";
-
-
-const StyledTableHead = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 65px;
-  background-color: var(--gray);
-  border-radius: 10px 10px 0 0;
-  border-bottom: 3px solid var(--primary);
-  padding: 20px;
-`;
+import { StyledTableHead } from "../../GlobalStyle/GlobalComponents";
 
 const DataListContracts = () => {
   const context = useContext(Context);

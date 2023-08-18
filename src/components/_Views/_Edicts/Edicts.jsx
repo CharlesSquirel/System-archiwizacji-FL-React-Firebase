@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import Title from "@Title";
-import AddFormEdicts from "@AddFormEdicts";
-import DataListEdicts from "@DataListEdicts";
-import { Context } from "@root";
+import Title from "../../Title/Title.jsx";
+import AddFormEdicts from "../../_AddForms/AddFormEdicts/AddFormEdicts.jsx";
+import DataListEdicts from "../../_DataLists/DataListEdicts/DataListEdicts.jsx";
+import { Context } from "../../../Root";
 
 const Edicts = () => {
   const context = useContext(Context)

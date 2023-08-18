@@ -1,16 +1,14 @@
 import React, { useContext, useRef } from "react";
 import styled from "styled-components";
-import { ErrorMessage, StyledForm, StyledFormWrapper, StyledInput, StyledInputBox, StyledAddButton } from "@GlobalComponents";
+import { ErrorMessage, StyledForm, StyledFormWrapper, StyledInput, StyledInputBox, StyledAddButton, StyledExitIcon } from "../../GlobalStyle/GlobalComponents.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faClose } from "@fortawesome/free-solid-svg-icons";
 import { Formik } from "formik";
-import { validationSchemaEdicts } from "@yupvalidation";
-import { Context } from "@root";
-import { changeEmptyString } from "@yupvalidation";
-import { uploadToStorage, writeToDb } from "@firebase";
-import { setBaner } from "@setBaner";
-import Banner from "@Banner";
-import { StyledExitIcon } from "@GlobalComponents";
+import { validationSchemaEdicts, changeEmptyString } from "../../../utils/yupvalidation";
+import { Context } from "../../../Root";
+import { uploadToStorage, writeToDb } from "../../../utils/firebase";
+import { setBaner } from "../../../utils/setBaner";
+import Banner from "../../Banner/Banner.jsx";
 
 export const StyledCheckboxBox = styled.div`
   display: flex;

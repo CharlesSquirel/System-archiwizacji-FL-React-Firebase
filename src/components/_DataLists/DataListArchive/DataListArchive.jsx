@@ -1,13 +1,16 @@
 import React, { useContext } from "react";
-import { Context } from "@root";
-import { setBaner } from "@setBaner";
+import { Context } from "../../../Root";
+import { setBaner } from "../../../utils/setBaner";
 import { ref, remove } from "firebase/database";
 import { Link } from "react-router-dom";
-import { db } from "@firebase";
-import SearchBar from "@SearchBarArchive";
-import { StyledDataList, StyledButtonBox, StyledCell, StyledTableHeader, StyledTable, StyledRow, StyledDataButton } from "@StyledDataList";
+import { db } from "../../../utils/firebase";
+import SearchBar from "../../_SearchBars/SearchBarArchive/SearchBarArchive.jsx";
+import { StyledDataList, StyledButtonBox, StyledCell, StyledTableHeader, StyledTable, StyledRow, StyledDataButton } from "./StyledDataList.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import TableAddButton from "../../TableAddButton/TableAddButton";
+import SearchBarContracts from "../../_SearchBars/SearchBarContracts/SearchBarContracts";
+import { StyledTableHead } from "../../GlobalStyle/GlobalComponents";
 
 function DataListArchive() {
   const context = useContext(Context);
@@ -28,8 +31,11 @@ function DataListArchive() {
 
   return (
     <>
-      <SearchBar />
       <StyledDataList>
+        <StyledTableHead>
+          <SearchBarContracts />
+          <TableAddButton text="Dodaj pozycję" type="addArchive" />
+        </StyledTableHead>
         <StyledTable>
           <thead>
             <StyledTableHeader>
@@ -51,10 +57,12 @@ function DataListArchive() {
                   <StyledButtonBox>
                     <StyledDataButton>
                       <Link to="/editarchive" state={{ data, index }}>
-                      <FontAwesomeIcon icon={faPenToSquare} />
+                        <FontAwesomeIcon icon={faPenToSquare} />
                       </Link>
                     </StyledDataButton>
-                    <StyledDataButton onClick={() => handleDelete(index)}><FontAwesomeIcon icon={faTrash} /></StyledDataButton>
+                    <StyledDataButton onClick={() => handleDelete(index)}>
+                      <FontAwesomeIcon icon={faTrash} />
+                    </StyledDataButton>
                   </StyledButtonBox>
                 </StyledCell>
               </StyledRow>

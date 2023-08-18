@@ -7,16 +7,16 @@ import {
   StyledInputBox,
   StyledAddButton,
   StyledSelectRecords,
-} from "@GlobalComponents";
+  StyledExitIcon,
+} from "../../GlobalStyle/GlobalComponents.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faClose } from "@fortawesome/free-solid-svg-icons";
-import { Context } from "@root";
+import { Context } from "../../../Root";
 import { Formik } from "formik";
-import Banner from "@Banner";
-import { changeEmptyString, validationSchemaContracts } from "@yupvalidation";
-import { writeToDb } from "@firebase";
-import { setBaner } from "@setBaner";
-import { StyledExitIcon } from "@GlobalComponents";
+import Banner from "../../Banner/Banner.jsx";
+import { changeEmptyString, validationSchemaContracts } from "../../../utils/yupvalidation";
+import { writeToDb } from "../../../utils/firebase";
+import { setBaner } from "../../../utils/setBaner";
 
 const initialValuesContracts = {
   signature: "",

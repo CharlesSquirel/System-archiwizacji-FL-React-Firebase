@@ -1,7 +1,7 @@
 import React from "react";
-import Title from "@Title";
-import AddFormRecord from "@AddFormRecord";
-import DataListRecord from "@DataListRecord";
+import Title from "../../Title/Title.jsx";
+import AddFormRecord from "../../_AddForms/AddFormRecord/AddFormRecord.jsx";
+import DataListRecord from "../../_DataLists/DataListRecord/DataListRecord.jsx";
 
 const Record = () => {
   return (

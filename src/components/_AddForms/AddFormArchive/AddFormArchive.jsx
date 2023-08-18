@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { Formik } from "formik";
-import { writeToDb } from "@firebase";
-import { changeEmptyString, validationSchemaArchive } from "@yupvalidation";
-import { setBaner } from "@setBaner";
-import Banner from "@Banner";
-import { StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm, StyledAddButton } from "@GlobalComponents";
+import { writeToDb } from "../../../utils/firebase";
+import { changeEmptyString, validationSchemaArchive } from "../../../utils/yupvalidation";
+import { setBaner } from "../../../utils/setBaner";
+import Banner from "../../Banner/Banner.jsx";
+import { StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm, StyledAddButton } from "../../GlobalStyle/GlobalComponents.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { Context } from "@root";
+import { Context } from "../../../Root";
 import TextInput from "../../TextInput";
 
 const initialValues = {
@@ -47,7 +47,11 @@ function AddFormArchive() {
                   <StyledInput id="date" name="date" className="input" placeholder="01.01.2023" autoComplete="off" {...formik.getFieldProps("date")}></StyledInput>
                   {touched.date && errors.date && <ErrorMessage>{errors.date}</ErrorMessage>}
                 </StyledInputBox>
-                <TextInput formik={formik} credential="description" label="Opis:" placeholder="Opis..." />
+                <StyledInputBox>
+                  <label htmlFor="description">Opis:</label>
+                  <StyledInput id="description" name="description" className="input" placeholder="01.01.2023" autoComplete="off" {...formik.getFieldProps("description")}></StyledInput>
+                  {touched.description && errors.description && <ErrorMessage>{errors.description}</ErrorMessage>}
+                </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="tags">Tagi:</label>
                   <StyledInput id="tags" name="tags" className="input" placeholder="symfoniczny, Mozart,.." autoComplete="off" {...formik.getFieldProps("tags")}></StyledInput>

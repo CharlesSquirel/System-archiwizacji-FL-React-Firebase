@@ -116,3 +116,24 @@ export const StyledExitIcon = styled.div`
   top: 10px;
   cursor: pointer;
 `;
+
+export const StyledTableHead = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 65px;
+  background-color: var(--gray);
+  border-radius: 10px 10px 0 0;
+  border-bottom: 3px solid var(--primary);
+  padding: 20px;
+`;
+
+export const StyledSelectPopup = styled.div`
+  position: absolute;
+  left: 0;
+  bottom: -200px;
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  z-index: 1;
+`;
