@@ -7,12 +7,11 @@ export const GlobalStyle = createGlobalStyle`
     --white: #fff;
     --black: #000;
     --gray: #e7e7e7;
-    --bg-light: #686767;
-    --bg-dark: #353535;
-    --error: #ff2d4b;
-    --btn-shadow: #373733;
-    --primary-text-shadow: 2px 1px 5px var(--black);
-    --secondary-text-shadow: 2px 1px 5px var(--white);
+    --bg: #323f4d;
+    --error: #c3021e;
+    --btn-shadow: #fff;
+    /* --primary-text-shadow: 2px 1px 5px var(--black);
+    --secondary-text-shadow: 2px 1px 5px var(--white); */
 }
 
 * {
@@ -32,22 +31,17 @@ input {
 
 label {
     font-size: 22px;
-    text-shadow: var(--primary-text-shadow);
 }
 
 button {
     border: none;
     cursor: pointer;
-    /* &:hover{
-        opacity: 0.9;
-    } */
 }
 body {
     padding-top: 100px;
-    background: var(--bg-light) no-repeat;
-    background-image: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-dark) 100%);
     min-height: 100vh;
     width: 100vw;
+    background-color: var(--bg)
 }
 
 #root{

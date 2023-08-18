@@ -7,7 +7,7 @@ import { db } from "../../../utils/firebase";
 import { StyledDataList, StyledButtonBox, StyledCell, StyledTableHeader, StyledTable, StyledRow, StyledDataButton } from "../DataListArchive/StyledDataList.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import SearchBarRecord from "../../_SearchBars/SerachBarRecords/SearchBarRecords";
+import SearchBarRecord from "../../_SearchBars/SearchBarRecords/SearchBarRecords.jsx";
 
 function DataListRecord() {
   const context = useContext(Context);

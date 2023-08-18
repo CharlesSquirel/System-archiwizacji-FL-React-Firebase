@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { GlobalStyle } from "./components/GlobalStyle/GlobalStyle";
+import { GlobalStyle } from "./components/GlobalStyle/GlobalStyle.jsx";
 import { getActualUser, readFromDb } from "./utils/firebase";
 import { sortCredentials } from "./utils/sortingFunc";
-import EditFormArchive from "./components/_EditForms/EditFormArchive/EditFormArchive";
-import LoginForm from "./components/LoginForm/LoginForm";
-import Header from "./components/Header/Header";
-import Contracts from "./components/_Views/_Contracts/Contracts";
-import Archive from "./components/_Views/_Archive/Archive";
-import Edicts from "./components/_Views/_Edicts/Edicts";
-import Record from "./components/_Views/_Record/Record";
-import EditFormEdicts from "./components/_EditForms/EditFormEdicts/EditFormEdicts";
-import EditFormContracts from "./components/_EditForms/EditFormContracts/EditFormContracts";
-import EditFormRecord from "./components/_EditForms/EditFormRecord/EditFormRecord";
+import EditFormArchive from "./components/_EditForms/EditFormArchive/EditFormArchive.jsx";
+import LoginForm from "./components/LoginForm/LoginForm.jsx";
+import Header from "./components/Header/Header.jsx";
+import Contracts from "./components/_Views/_Contracts/Contracts.jsx";
+import Archive from "./components/_Views/_Archive/Archive.jsx";
+import Edicts from "./components/_Views/_Edicts/Edicts.jsx";
+import Record from "./components/_Views/_Record/Record.jsx";
+import EditFormEdicts from "./components/_EditForms/EditFormEdicts/EditFormEdicts.jsx";
+import EditFormContracts from "./components/_EditForms/EditFormContracts/EditFormContracts.jsx";
+import EditFormRecord from "./components/_EditForms/EditFormRecord/EditFormRecord.jsx";
 
 export const Context = React.createContext();
 
@@ -28,6 +28,10 @@ function Root() {
   const [credentialsContracts, setCredentialsContracts] = useState({});
   const [credentialsRecord, setCredentialsRecord] = useState({});
   const [file, setFile] = useState(null);
+  const [isAddFormContractsOpen, setIsAddFormContractsOpen] = useState(false);
+  const [isAddFormArchiveOpen, setIsAddFormArchiveOpen] = useState(false);
+  const [isAddFormEdictsOpen, setIsAddFormEdictsOpen] = useState(false);
+  const [isAddFormRecordsOpen, setIsAddFormRecordsOpen] = useState(false);
 
   const start = () => {
     readFromDb("archive", setCredentialsArchive);
@@ -84,6 +88,14 @@ function Root() {
           setDeleteBaner,
           editBaner,
           setEditBaner,
+          isAddFormContractsOpen,
+          setIsAddFormContractsOpen,
+          isAddFormArchiveOpen,
+          setIsAddFormArchiveOpen,
+          isAddFormEdictsOpen,
+          setIsAddFormEdictsOpen,
+          isAddFormRecordsOpen,
+          setIsAddFormRecordsOpen,
         }}
       >
         <BrowserRouter>

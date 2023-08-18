@@ -4,8 +4,8 @@ import { Formik } from "formik";
 import { writeToDb } from "../../../utils/firebase";
 import { changeEmptyString, validationSchemaRecords } from "../../../utils/yupvalidation";
 import { setBaner } from "../../../utils/setBaner";
-import Banner from "../../Banner/Banner";
-import { StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm, StyledAddButton, StyledSelectRecords } from "../../GlobalStyle/GlobalComponents";
+import Banner from "../../Banner/Banner.jsx";
+import { StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm, StyledAddButton, StyledSelectRecords } from "../../GlobalStyle/GlobalComponents.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 

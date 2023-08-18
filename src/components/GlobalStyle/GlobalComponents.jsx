@@ -1,13 +1,18 @@
 import styled from "styled-components";
 
-export const StyledFormWrapper = styled.header`
+export const StyledFormWrapper = styled.div`
+  position: absolute;
+  top: 155px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  width: 100%;
-  height: 123px;
-  color: var(--white);
+  width: 85%;
+  color: var(--black);
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: 20px;
+  z-index: 1;
   .icon {
     font-size: 20px;
     color: var(--white);
@@ -103,4 +108,60 @@ export const StyledSelectRecords = styled.select`
   padding-left: 8px;
   border: 1px solid var(--primary);
   font-size: 18px;
+`;
+
+export const StyledExitIcon = styled.div`
+  position: absolute;
+  right: 50px;
+  top: 10px;
+  cursor: pointer;
+`;
+
+export const StyledTableHead = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 65px;
+  background-color: var(--gray);
+  border-radius: 10px 10px 0 0;
+  border-bottom: 3px solid var(--primary);
+  padding: 30px 30px 30px 50px;
+`;
+
+export const StyledSelectPopup = styled.div`
+  position: absolute;
+  left: 0;
+  bottom: -152px;
+  width: 244px;
+  height: 152px;
+  background-color: white;
+  z-index: 1;
+  border-radius: 10px;
+  padding: 10px;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  li {
+    cursor: pointer;
+    padding: 5px;
+    :hover {
+      color: var(--white);
+      background-color: var(--primary);
+      border-radius: 10px;
+    }
+  }
+`;
+
+export const StyledSortBox = styled.div`
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  label {
+    color: var(--black);
+    font-size: 18px;
+  }
 `;

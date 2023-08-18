@@ -1,24 +1,28 @@
 import styled from "styled-components";
 
 export const StyledSearchBarWrapper = styled.div`
+  position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 20px;
   width: 100%;
+  .search-icon{
+position: absolute;
+right: 10px;
+  }
 `;
 export const StyledLabel = styled.label`
   color: var(--white);
   font-size: 22px;
 `;
 export const StyledSearchBarInput = styled.input`
-  width: 50%;
-  height: 40px;
+  height: 36px;
   padding-left: 8px;
   border-radius: 5px;
   border: 1px solid var(--primary);
   font-size: 18px;
+  transition: width 0.3s ease-in-out;
 `;
 
 export const StyledSelectWrapper = styled.div`

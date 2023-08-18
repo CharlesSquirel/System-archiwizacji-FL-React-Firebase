@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { changeEmptyString, validationSchemaArchive } from "../../../utils/yupvalidation";
 import { ref, update } from "firebase/database";
 import { db, readFromDb } from "../../../utils/firebase";
-import { StyledButton, StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm } from "../../GlobalStyle/GlobalComponents";
+import { StyledButton, StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm } from "../../GlobalStyle/GlobalComponents.jsx";
 import { Context } from "../../../Root";
 import { setBaner } from "../../../utils/setBaner";
 
