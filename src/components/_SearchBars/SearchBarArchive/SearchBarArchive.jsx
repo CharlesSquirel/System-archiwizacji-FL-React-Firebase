@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { StyledSearchBarWrapper, StyledLabel, StyledSearchBarInput } from "./StyledSearchBar.jsx";
 import { readFromDb } from "../../../utils/firebase";
 import { sortCredentials } from "../../../utils/sortingFunc";
 import { Context } from "../../../Root";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSort } from "@fortawesome/free-solid-svg-icons";
+import { faSort, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { StyledSelectPopup, StyledSortBox } from "../../GlobalStyle/GlobalComponents.jsx";
 
 const SearchBarArchive = () => {
@@ -13,6 +13,9 @@ const SearchBarArchive = () => {
   const [query, setQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("");
   const [isSortOpen, setIsSortOpen] = useState(false);
+  const searchBarRef = useRef(null)
+  const [searchBarWidth, setSearchBarWidth] = useState("20%");
+
 
   // wymuszanie rerenderingu dla poprawnego funkcjonowania select
   useEffect(() => {
@@ -22,6 +25,14 @@ const SearchBarArchive = () => {
   const handleOnClickPopup = () => {
     setIsSortOpen(!isSortOpen);
   };
+
+  const handleSearchWidthBlur = () => {
+    setSearchBarWidth("20%")
+  }
+
+  const handleSearchWidthClick = () => {
+     setSearchBarWidth("40%") 
+  }
 
   const handleOnClick = (e) => {
     const sortOrder = e.target.classList.value
@@ -75,7 +86,8 @@ const SearchBarArchive = () => {
           </ul>
         </StyledSelectPopup>
       )}
-      <StyledSearchBarInput onChange={handleOnChange} name="search" id="search" value={query} type="text" placeholder="Wyszukaj" autoComplete="off" />
+      <StyledSearchBarInput style={{width: searchBarWidth}} ref={searchBarRef} onClick={handleSearchWidthClick} onBlur={handleSearchWidthBlur} onChange={handleOnChange} name="search" id="search" value={query} type="text" placeholder="Wyszukaj" autoComplete="off" />
+    {searchBarWidth === "20%" && <FontAwesomeIcon className="search-icon" icon={faSearch}/>}
     </StyledSearchBarWrapper>
   );
 };

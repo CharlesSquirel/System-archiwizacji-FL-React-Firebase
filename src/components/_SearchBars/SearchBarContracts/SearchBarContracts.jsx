@@ -4,7 +4,7 @@ import { readFromDb } from "../../../utils/firebase";
 import { sortCredentials } from "../../../utils/sortingFunc";
 import { Context } from "../../../Root";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSort } from "@fortawesome/free-solid-svg-icons";
+import { faSort, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { StyledSelectPopup, StyledSortBox } from "../../GlobalStyle/GlobalComponents.jsx";
 
 const SearchBarContracts = () => {
@@ -13,6 +13,7 @@ const SearchBarContracts = () => {
   const [query, setQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("");
   const [isSortOpen, setIsSortOpen] = useState(false);
+  const [searchBarWidth, setSearchBarWidth] = useState("20%");
 
   const handleOnClick = (e) => {
     const sortOrder = e.target.classList.value;
@@ -23,6 +24,14 @@ const SearchBarContracts = () => {
   const handleOnClickPopup = () => {
     setIsSortOpen(!isSortOpen);
   };
+
+  const handleSearchWidthBlur = () => {
+    setSearchBarWidth("20%")
+  }
+
+  const handleSearchWidthClick = () => {
+     setSearchBarWidth("40%") 
+  }
 
   // wymuszanie rerenderingu dla poprawnego funkcjonowania select
   useEffect(() => {
@@ -75,7 +84,8 @@ const SearchBarContracts = () => {
           </ul>
         </StyledSelectPopup>
       )}
-      <StyledSearchBarInput onChange={handleOnChange} name="search" id="search" value={query} type="text" placeholder="Wyszukaj" autoComplete="off" />
+      <StyledSearchBarInput style={{width: searchBarWidth}} onClick={handleSearchWidthClick} onBlur={handleSearchWidthBlur} onChange={handleOnChange} name="search" id="search" value={query} type="text" placeholder="Wyszukaj" autoComplete="off" />
+      {searchBarWidth === "20%" && <FontAwesomeIcon className="search-icon" icon={faSearch}/>}
     </StyledSearchBarWrapper>
   );
 };

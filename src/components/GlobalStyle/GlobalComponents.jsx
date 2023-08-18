@@ -125,7 +125,7 @@ export const StyledTableHead = styled.div`
   background-color: var(--gray);
   border-radius: 10px 10px 0 0;
   border-bottom: 3px solid var(--primary);
-  padding: 20px;
+  padding: 30px 30px 30px 50px;
 `;
 
 export const StyledSelectPopup = styled.div`
