@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import SearchBarContracts from "../../_SearchBars/SearchBarContracts/SearchBarContracts";
-import TableAddButton from "../../TableAddButton/TableAddButton";
+import TableAddButton from "../TableAddButton/TableAddButton";
 import { StyledTableHead } from "../../GlobalStyle/GlobalComponents";
 
 const DataListContracts = () => {

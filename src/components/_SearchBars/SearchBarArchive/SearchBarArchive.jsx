@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
-import { StyledSearchBarWrapper, StyledLabel, StyledSearchBarInput } from "../StyledSearchBar.jsx";
+import { StyledSearchBarWrapper, StyledSearchBarInput } from "../StyledSearchBar";
 import { readFromDb } from "../../../utils/firebase";
 import { sortCredentials } from "../../../utils/sortingFunc";
 import { Context } from "../../../Root";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSort, faSearch } from "@fortawesome/free-solid-svg-icons";
-import { StyledSelectPopup, StyledSortBox } from "../../GlobalStyle/GlobalComponents.jsx";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import SortDataInput from "components/_DataLists/SortDataInput/SortDataInput";
 
 const SearchBarArchive = () => {
   const context = useContext(Context);
@@ -13,17 +13,13 @@ const SearchBarArchive = () => {
   const [query, setQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("");
   const [isSortOpen, setIsSortOpen] = useState(false);
-  const searchBarRef = useRef(null);
   const [searchBarWidth, setSearchBarWidth] = useState("20%");
+  const searchBarRef = useRef(null);
 
   // wymuszanie rerenderingu dla poprawnego funkcjonowania select
   useEffect(() => {
     sortCredentials(credentialsArchive, setCredentialsArchive, sortOrder);
   }, [sortOrder]);
-
-  const handleOnClickPopup = () => {
-    setIsSortOpen(!isSortOpen);
-  };
 
   const handleSearchWidthBlur = () => {
     setSearchBarWidth("20%");
@@ -31,12 +27,6 @@ const SearchBarArchive = () => {
 
   const handleSearchWidthClick = () => {
     setSearchBarWidth("40%");
-  };
-
-  const handleOnClick = (e) => {
-    const sortOrder = e.target.classList.value;
-    setSortOrder(sortOrder);
-    setIsSortOpen(false);
   };
 
   // obsługa wyszukiwania
@@ -63,28 +53,7 @@ const SearchBarArchive = () => {
   };
   return (
     <StyledSearchBarWrapper>
-      <StyledSortBox onClick={handleOnClickPopup}>
-        <StyledLabel htmlFor="select">Sortuj</StyledLabel>
-        <FontAwesomeIcon icon={faSort} id="select" />
-      </StyledSortBox>
-      {isSortOpen && (
-        <StyledSelectPopup>
-          <ul>
-            <li className="dateAsc" onClick={handleOnClick}>
-              Wg daty rosnąco
-            </li>
-            <li className="dateDesc" onClick={handleOnClick}>
-              Wg daty malejąco
-            </li>
-            <li className="signAsc" onClick={handleOnClick}>
-              Wg sygnatury rosnąco
-            </li>
-            <li className="signDescc" onClick={handleOnClick}>
-              Wg sygnatury malejąco
-            </li>
-          </ul>
-        </StyledSelectPopup>
-      )}
+      <SortDataInput setSortOrder={setSortOrder} isSortOpen={isSortOpen} setIsSortOpen={setIsSortOpen} />
       <StyledSearchBarInput
         style={{ width: searchBarWidth }}
         ref={searchBarRef}

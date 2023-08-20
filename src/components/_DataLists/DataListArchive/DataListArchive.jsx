@@ -7,7 +7,7 @@ import { db } from "../../../utils/firebase";
 import { StyledDataList, StyledButtonBox, StyledCell, StyledTableHeader, StyledTable, StyledRow, StyledDataButton } from "../StyledDataList.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import TableAddButton from "../../TableAddButton/TableAddButton";
+import TableAddButton from "../TableAddButton/TableAddButton";
 import { StyledTableHead } from "../../GlobalStyle/GlobalComponents";
 import SearchBarArchive from "../../_SearchBars/SearchBarArchive/SearchBarArchive";
 

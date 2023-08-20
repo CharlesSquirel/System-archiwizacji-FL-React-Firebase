@@ -8,10 +8,10 @@ import { setBaner } from "../../../utils/setBaner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo, faDownload, faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import EdictsInfoPopup from "../../EdictsInfoPopup/EdictsInfoPopup.jsx";
+import EdictsInfoPopup from "../EdictsInfoPopup/EdictsInfoPopup.jsx";
 import { getDownloadURL, ref as storageRef } from "firebase/storage";
 import SearchBarEdicts from "../../_SearchBars/SearchBarEdicts/SearchBarEdicts.jsx";
-import TableAddButton from "../../TableAddButton/TableAddButton.jsx";
+import TableAddButton from "../TableAddButton/TableAddButton.jsx";
 
 const DataListEdicts = () => {
   const context = useContext(Context);
