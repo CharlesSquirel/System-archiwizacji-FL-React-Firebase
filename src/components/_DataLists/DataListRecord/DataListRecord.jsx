@@ -4,7 +4,7 @@ import { setBaner } from "../../../utils/setBaner";
 import { ref, remove } from "firebase/database";
 import { Link } from "react-router-dom";
 import { db } from "../../../utils/firebase";
-import { StyledDataList, StyledButtonBox, StyledCell, StyledTableHeader, StyledTable, StyledRow, StyledDataButton } from "../DataListArchive/StyledDataList.jsx";
+import { StyledDataList, StyledButtonBox, StyledCell, StyledTableHeader, StyledTable, StyledRow, StyledDataButton } from "../StyledDataList.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import SearchBarRecord from "../../_SearchBars/SearchBarRecords/SearchBarRecords.jsx";

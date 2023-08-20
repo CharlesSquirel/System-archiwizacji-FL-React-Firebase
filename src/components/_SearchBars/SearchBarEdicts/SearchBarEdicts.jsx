@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { StyledSearchBarWrapper, StyledLabel, StyledSearchBarInput, StyledSelectWrapper, StyledSelectInput } from "../SearchBarArchive/StyledSearchBar.jsx";
+import { StyledSearchBarWrapper, StyledLabel, StyledSearchBarInput, StyledSelectWrapper, StyledSelectInput } from "../StyledSearchBar.jsx";
 import { readFromDb } from "../../../utils/firebase";
 import { sortCredentials } from "../../../utils/sortingFunc";
 import { Context } from "../../../Root";

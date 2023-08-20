@@ -3,15 +3,7 @@ import { Context } from "../../../Root";
 import { ref, remove } from "firebase/database";
 import { db } from "../../../utils/firebase";
 import { setBaner } from "../../../utils/setBaner";
-import {
-  StyledButtonBox,
-  StyledCell,
-  StyledDataButton,
-  StyledDataList,
-  StyledRow,
-  StyledTable,
-  StyledTableHeader,
-} from "../DataListArchive/StyledDataList";
+import { StyledButtonBox, StyledCell, StyledDataButton, StyledDataList, StyledRow, StyledTable, StyledTableHeader } from "../StyledDataList";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
@@ -21,7 +13,7 @@ import { StyledTableHead } from "../../GlobalStyle/GlobalComponents";
 
 const DataListContracts = () => {
   const context = useContext(Context);
-  const { credentialsContracts, setDeleteBaner} = context;
+  const { credentialsContracts, setDeleteBaner } = context;
   const handleDelete = (index) => {
     // obsługa kasowania wpisu
     const confirm = window.confirm("Czy na pewno chcesz to usunąć?");
@@ -35,7 +27,7 @@ const DataListContracts = () => {
     <StyledDataList>
       <StyledTableHead>
         <SearchBarContracts />
-        <TableAddButton text="Dodaj umowę" type="addContract"/>
+        <TableAddButton text="Dodaj umowę" type="addContract" />
       </StyledTableHead>
       <StyledTable>
         <thead>

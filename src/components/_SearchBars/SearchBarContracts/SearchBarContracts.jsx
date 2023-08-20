@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { StyledSearchBarWrapper, StyledLabel, StyledSearchBarInput } from "../SearchBarArchive/StyledSearchBar.jsx";
+import { StyledSearchBarWrapper, StyledLabel, StyledSearchBarInput } from "../StyledSearchBar.jsx";
 import { readFromDb } from "../../../utils/firebase";
 import { sortCredentials } from "../../../utils/sortingFunc";
 import { Context } from "../../../Root";
@@ -26,12 +26,12 @@ const SearchBarContracts = () => {
   };
 
   const handleSearchWidthBlur = () => {
-    setSearchBarWidth("20%")
-  }
+    setSearchBarWidth("20%");
+  };
 
   const handleSearchWidthClick = () => {
-     setSearchBarWidth("40%") 
-  }
+    setSearchBarWidth("40%");
+  };
 
   // wymuszanie rerenderingu dla poprawnego funkcjonowania select
   useEffect(() => {
@@ -84,8 +84,19 @@ const SearchBarContracts = () => {
           </ul>
         </StyledSelectPopup>
       )}
-      <StyledSearchBarInput style={{width: searchBarWidth}} onClick={handleSearchWidthClick} onBlur={handleSearchWidthBlur} onChange={handleOnChange} name="search" id="search" value={query} type="text" placeholder="Wyszukaj" autoComplete="off" />
-      {searchBarWidth === "20%" && <FontAwesomeIcon className="search-icon" icon={faSearch}/>}
+      <StyledSearchBarInput
+        style={{ width: searchBarWidth }}
+        onClick={handleSearchWidthClick}
+        onBlur={handleSearchWidthBlur}
+        onChange={handleOnChange}
+        name="search"
+        id="search"
+        value={query}
+        type="text"
+        placeholder="Wyszukaj"
+        autoComplete="off"
+      />
+      {searchBarWidth === "20%" && <FontAwesomeIcon className="search-icon" icon={faSearch} />}
     </StyledSearchBarWrapper>
   );
 };
