@@ -1,14 +1,5 @@
 import React, { useContext } from "react";
-import {
-  ErrorMessage,
-  StyledForm,
-  StyledFormWrapper,
-  StyledInput,
-  StyledInputBox,
-  StyledAddButton,
-  StyledSelectRecords,
-  StyledExitIcon,
-} from "../../GlobalStyle/GlobalComponents.jsx";
+import { ErrorMessage, StyledForm, StyledFormWrapper, StyledInput, StyledInputBox, StyledAddButton, StyledSelectRecords, StyledExitIcon } from "../../GlobalStyle/GlobalComponents.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faClose } from "@fortawesome/free-solid-svg-icons";
 import { Context } from "../../../Root";
@@ -47,7 +38,7 @@ const AddFormContracts = () => {
           description: values.description,
         });
         setBaner(setAddBaner);
-        setIsAddFormContractsOpen(false)
+        setIsAddFormContractsOpen(false);
         resetForm();
       }}
     >
@@ -59,67 +50,32 @@ const AddFormContracts = () => {
               <div style={{ display: "flex" }}>
                 <StyledInputBox>
                   <label htmlFor="signature">Sygnatura:</label>
-                  <StyledInput
-                    id="signature"
-                    name="signature"
-                    className="input"
-                    placeholder="DG..."
-                    autoComplete="off"
-                    {...formik.getFieldProps("signature")}
-                  ></StyledInput>
+                  <StyledInput id="signature" name="signature" className="input" placeholder="DG..." autoComplete="off" {...formik.getFieldProps("signature")}></StyledInput>
                   {touched.signature && errors.signature && <ErrorMessage>{errors.signature}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="date">Data:</label>
-                  <StyledInput
-                    id="date"
-                    name="date"
-                    className="input"
-                    placeholder="01.01.2023"
-                    autoComplete="off"
-                    {...formik.getFieldProps("date")}
-                  ></StyledInput>
+                  <StyledInput id="date" name="date" className="input" placeholder="01.01.2023" autoComplete="off" {...formik.getFieldProps("date")}></StyledInput>
                   {touched.date && errors.date && <ErrorMessage>{errors.date}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="contractor">Podmiot:</label>
-                  <StyledInput
-                    id="contractor"
-                    name="contractor"
-                    className="input"
-                    placeholder="Jan Kowalski"
-                    autoComplete="off"
-                    {...formik.getFieldProps("contractor")}
-                  ></StyledInput>
+                  <StyledInput id="contractor" name="contractor" className="input" placeholder="Jan Kowalski" autoComplete="off" {...formik.getFieldProps("contractor")}></StyledInput>
                   {touched.contractor && errors.contractor && <ErrorMessage>{errors.contractor}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="price">Kwota:</label>
-                  <StyledInput
-                    id="price"
-                    name="price"
-                    className="input"
-                    placeholder="500,00"
-                    autoComplete="off"
-                    {...formik.getFieldProps("price")}
-                  ></StyledInput>
+                  <StyledInput id="price" name="price" className="input" placeholder="500,00" autoComplete="off" type="number" {...formik.getFieldProps("price")}></StyledInput>
                   {touched.price && errors.price && <ErrorMessage>{errors.price}</ErrorMessage>}
                 </StyledInputBox>
                 <StyledInputBox>
                   <label htmlFor="description">Uwagi:</label>
-                  <StyledInput
-                    id="description"
-                    name="description"
-                    className="input"
-                    placeholder="Opis..."
-                    autoComplete="off"
-                    {...formik.getFieldProps("description")}
-                  ></StyledInput>
+                  <StyledInput id="description" name="description" className="input" placeholder="Opis..." autoComplete="off" {...formik.getFieldProps("description")}></StyledInput>
                   {touched.description && errors.description && <ErrorMessage>{errors.description}</ErrorMessage>}
                 </StyledInputBox>
               </div>
-              <div style={{display: "flex", gap: "5px"}}>
-                <div style={{display: "flex", gap: "5px", alignItems: "center"}}>
+              <div style={{ display: "flex", gap: "5px" }}>
+                <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
                   <label htmlFor="type">Rodzaj umowy:</label>
                   <StyledSelectRecords id="type" name="type" {...formik.getFieldProps("type")}>
                     <option value="umowa zlecenie">umowa zlecenie</option>
@@ -128,7 +84,7 @@ const AddFormContracts = () => {
                     <option value="umowa licencyjna">umowa licencyjna</option>
                   </StyledSelectRecords>
                 </div>
-                <div style={{display: "flex", gap: "5px", alignItems: "center"}}>
+                <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
                   <label htmlFor="person_in_charge">Osoba odpowiedzialna:</label>
                   <StyledSelectRecords id="person_in_charge" name="person_in_charge" {...formik.getFieldProps("person_in_charge")}>
                     <option value="Anna Król">Anna Król</option>
@@ -137,13 +93,13 @@ const AddFormContracts = () => {
                 </div>
               </div>
               <StyledInputBox>
-                <StyledAddButton id="btn" type="submit" style={{backgroundColor: "green"}}>
+                <StyledAddButton id="btn" type="submit" style={{ backgroundColor: "green" }}>
                   Dodaj
                   <FontAwesomeIcon className="icon" icon={faPlus} />
                 </StyledAddButton>
               </StyledInputBox>
               <StyledExitIcon onClick={() => setIsAddFormContractsOpen(false)}>
-                <FontAwesomeIcon style={{fontSize: "28px"}} icon={faClose} />
+                <FontAwesomeIcon style={{ fontSize: "28px" }} icon={faClose} />
               </StyledExitIcon>
             </StyledForm>
             {addBaner && <Banner text="Poprawnie dodano do bazy danych" />}

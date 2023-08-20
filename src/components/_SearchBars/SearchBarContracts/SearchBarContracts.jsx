@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import { StyledSearchBarWrapper, StyledLabel, StyledSearchBarInput } from "../StyledSearchBar.jsx";
+import { StyledSearchBarWrapper, StyledSearchBarInput } from "../StyledSearchBar.jsx";
 import { readFromDb } from "../../../utils/firebase";
 import { sortCredentials } from "../../../utils/sortingFunc";
 import { Context } from "../../../Root";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSort, faSearch } from "@fortawesome/free-solid-svg-icons";
-import { StyledSelectPopup, StyledSortBox } from "../../GlobalStyle/GlobalComponents.jsx";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import SortDataInput from "../../_DataLists/SortDataInput/SortDataInput";
 
 const SearchBarContracts = () => {
   const context = useContext(Context);
@@ -14,16 +14,6 @@ const SearchBarContracts = () => {
   const [sortOrder, setSortOrder] = useState("");
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [searchBarWidth, setSearchBarWidth] = useState("20%");
-
-  const handleOnClick = (e) => {
-    const sortOrder = e.target.classList.value;
-    setSortOrder(sortOrder);
-    setIsSortOpen(false);
-  };
-
-  const handleOnClickPopup = () => {
-    setIsSortOpen(!isSortOpen);
-  };
 
   const handleSearchWidthBlur = () => {
     setSearchBarWidth("20%");
@@ -62,28 +52,7 @@ const SearchBarContracts = () => {
   };
   return (
     <StyledSearchBarWrapper>
-      <StyledSortBox>
-        <StyledLabel htmlFor="select">Sortuj</StyledLabel>
-        <FontAwesomeIcon icon={faSort} id="select" onClick={handleOnClickPopup} />
-      </StyledSortBox>
-      {isSortOpen && (
-        <StyledSelectPopup>
-          <ul>
-            <li className="dateAsc" onClick={handleOnClick}>
-              Wg daty rosnąco
-            </li>
-            <li className="dateDesc" onClick={handleOnClick}>
-              Wg daty malejąc
-            </li>
-            <li className="signAsc" onClick={handleOnClick}>
-              Wg sygnatury rosnąco
-            </li>
-            <li className="signDesc" onClick={handleOnClick}>
-              Wg sygnatury malejąco
-            </li>
-          </ul>
-        </StyledSelectPopup>
-      )}
+      <SortDataInput setIsSortOpen={setIsSortOpen} isSortOpen={isSortOpen} setSortOrder={setSortOrder} />
       <StyledSearchBarInput
         style={{ width: searchBarWidth }}
         onClick={handleSearchWidthClick}
