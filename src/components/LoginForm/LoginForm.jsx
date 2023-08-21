@@ -11,7 +11,7 @@ import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import logoFL from "../../_assets/logo.svg";
 
 const LoginForm = () => {
-  const [errorBaner, setErrorBaner] = useState(false);
+  const [errorBaner, setErrorBaner] = useState(true);
   const context = useContext(Context);
   const { logoutBaner, setIsLogged, setLogoutBaner, start } = context;
   const navigate = useNavigate();
@@ -43,7 +43,6 @@ const LoginForm = () => {
       })
       .catch(() => {
         setLogin({ ...login, error: "Nieprawidłowy email lub hasło" });
-
         setErrorBaner(true);
       });
   };
@@ -54,8 +53,8 @@ const LoginForm = () => {
         <LogoImg src={logoFL} alt="logo" />
         <Title text="System dokumentacji FL" />
       </TitleBox>
-      {logoutBaner && <Banner text="Zostałeś poprawnie wylogowany!" />}
-      {errorBaner && <Banner text={login.error} error={login.error} />}
+      {logoutBaner && <Banner baner="logout" text="Zostałeś poprawnie wylogowany!" />}
+      {errorBaner && <Banner baner="logout" text={login.error} error={login.error} />}
       <LoginContainer>
         <Title />
         <StyledLoginForm onSubmit={handleOnSubmit}>
