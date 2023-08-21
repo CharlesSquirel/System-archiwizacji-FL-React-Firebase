@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { StyledSearchBarInput } from "../StyledSearchBar";
-import { readFromDb } from "../../../utils/firebase";
-import { sortCredentials } from "../../../utils/sortingFunc";
+import { StyledSearchBarInput } from "./StyledSearchBar";
+import { readFromDb } from "../../utils/firebase";
+import { sortCredentials } from "../../utils/sortingFunc";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 

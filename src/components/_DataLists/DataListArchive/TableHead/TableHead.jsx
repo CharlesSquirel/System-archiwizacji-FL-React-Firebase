@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { StyledTableHead, StyledTableHeadBox } from "../../../GlobalStyle/GlobalComponents";
-import SearchBar from "../../../_SearchBars/SearchBar/SearchBar";
+import SearchBar from "../../../SearchBar/SearchBar";
 import TableAddButton from "../../TableAddButton/TableAddButton";
 import SortDataInput from "../../SortDataInput/SortDataInput";
 import { Context } from "../../../../Root";
