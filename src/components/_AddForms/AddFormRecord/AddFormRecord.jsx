@@ -5,9 +5,9 @@ import { writeToDb } from "../../../utils/firebase";
 import { changeEmptyString, validationSchemaRecords } from "../../../utils/yupvalidation";
 import { setBaner } from "../../../utils/setBaner";
 import Banner from "../../Banner/Banner.jsx";
-import { StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm, StyledAddButton, StyledSelectRecords } from "../../GlobalStyle/GlobalComponents.jsx";
+import { StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm, StyledAddButton, StyledSelectRecords, StyledExitIcon } from "../../GlobalStyle/GlobalComponents.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faClose } from "@fortawesome/free-solid-svg-icons";
 
 const initialValues = {
   date: "",
@@ -20,7 +20,7 @@ const initialValues = {
 
 function AddFormRecord() {
   const context = useContext(Context);
-  const { addBaner, setAddBaner, deleteBaner, editBaner } = context;
+  const { addBaner, setAddBaner, deleteBaner, editBaner, setIsAddFormRecordsOpen } = context;
   return (
     <Formik
       initialValues={initialValues}
@@ -78,6 +78,9 @@ function AddFormRecord() {
                   </StyledAddButton>
                 </StyledInputBox>
               </StyledForm>
+              <StyledExitIcon onClick={() => setIsAddFormRecordsOpen(false)}>
+                <FontAwesomeIcon style={{fontSize: "28px"}} icon={faClose} />
+              </StyledExitIcon>
               {addBaner && <Banner text="Poprawnie dodano do bazy danych" />}
               {deleteBaner && <Banner text="Poprawnie usunięto z bazy danych" />}
               {editBaner && <Banner text="Poprawnie zmieniono dane" />}

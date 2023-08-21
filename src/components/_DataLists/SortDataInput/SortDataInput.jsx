@@ -4,7 +4,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSort } from "@fortawesome/free-solid-svg-icons";
 
-const SortDataInput = ({ setIsSortOpen, isSortOpen, setSortOrder }) => {
+const SortDataInput = ({ setIsSortOpen, isSortOpen, setSortOrder, type }) => {
   const handleOnClickPopup = () => {
     setIsSortOpen(!isSortOpen);
   };
@@ -28,12 +28,16 @@ const SortDataInput = ({ setIsSortOpen, isSortOpen, setSortOrder }) => {
             <li className="dateDesc" onClick={handleOnClick}>
               Wg daty malejąco
             </li>
-            <li className="signAsc" onClick={handleOnClick}>
-              Wg sygnatury rosnąco
-            </li>
-            <li className="signDescc" onClick={handleOnClick}>
-              Wg sygnatury malejąco
-            </li>
+            {type !== "records" && (
+              <li className={type === "edicts" ? "signAscEdicts" : "signAsc"} onClick={handleOnClick}>
+                Wg sygnatury rosnąco
+              </li>
+            )}
+            {type !== "records" && (
+              <li className={type === "edicts" ? "signDescEdicts" : "signDesc"} onClick={handleOnClick}>
+                Wg sygnatury malejąco
+              </li>
+            )}
           </ul>
         </StyledSelectPopup>
       )}

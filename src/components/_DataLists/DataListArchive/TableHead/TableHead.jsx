@@ -7,14 +7,14 @@ import { Context } from "../../../../Root";
 
 const TableHead = ({  btnText, type }) => {
   const context = useContext(Context);
-  const { credentialsArchive, setCredentialsArchive, credentialsContracts, setCredentialsContracts } = context;
+  const { credentialsArchive, setCredentialsArchive, credentialsContracts, setCredentialsContracts, credentialsEdicts, credentialsRecord, setCredentialsEdicts, setCredentialsRecord } = context;
   const [sortOrder, setSortOrder] = useState("");
   const [isSortOpen, setIsSortOpen] = useState(false);
-  const credentials = type === "archive" ? credentialsArchive : credentialsContracts;
-  const settingFunc = type === "archive" ? setCredentialsArchive : setCredentialsContracts;
+  const credentials = type === "archive" ? credentialsArchive : type === "contracts" ? credentialsContracts : type==="edicts" ? credentialsEdicts : credentialsRecord;
+  const settingFunc = type === "archive" ? setCredentialsArchive : type === "contracts" ? setCredentialsContracts : type==="edicts" ? setCredentialsEdicts : setCredentialsRecord;
   return (
     <StyledTableHead>
-      <SortDataInput setSortOrder={setSortOrder} isSortOpen={isSortOpen} setIsSortOpen={setIsSortOpen} />
+      <SortDataInput setSortOrder={setSortOrder} isSortOpen={isSortOpen} setIsSortOpen={setIsSortOpen} type={type}/>
       <StyledTableHeadBox>
         <SearchBar
           sortOrder={sortOrder}

@@ -10,8 +10,8 @@ import { faCircleInfo, faDownload, faTrash, faPenToSquare } from "@fortawesome/f
 import { useState } from "react";
 import EdictsInfoPopup from "../EdictsInfoPopup/EdictsInfoPopup.jsx";
 import { getDownloadURL, ref as storageRef } from "firebase/storage";
-import SearchBarEdicts from "../../_SearchBars/SearchBarEdicts/SearchBarEdicts.jsx";
 import TableAddButton from "../TableAddButton/TableAddButton.jsx";
+import TableHead from "../DataListArchive/TableHead/TableHead";
 
 const DataListEdicts = () => {
   const context = useContext(Context);
@@ -50,8 +50,9 @@ const DataListEdicts = () => {
   };
   return (
     <>
-      <SearchBarEdicts />
+      
       <StyledDataList>
+        <TableHead btnText="Dodaj zarządzenie" type="edicts"/>
         <StyledTable>
           <thead>
             <StyledTableHeader>

@@ -7,7 +7,7 @@ import { db } from "../../../utils/firebase";
 import { StyledDataList, StyledButtonBox, StyledCell, StyledTableHeader, StyledTable, StyledRow, StyledDataButton } from "../StyledDataList.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import SearchBarRecord from "../../_SearchBars/SearchBarRecords/SearchBarRecords.jsx";
+import TableHead from "../DataListArchive/TableHead/TableHead";
 
 function DataListRecord() {
   const context = useContext(Context);
@@ -28,8 +28,9 @@ function DataListRecord() {
 
   return (
     <>
-      <SearchBarRecord />
+
       <StyledDataList>
+        <TableHead type="records" btnText="Dodaj pozycję"/>
         <StyledTable>
           <thead>
             <StyledTableHeader>
