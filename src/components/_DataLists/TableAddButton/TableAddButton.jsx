@@ -10,7 +10,7 @@ const StyledTableAddButton = styled.div`
   align-items: center;
   gap: 5px;
   background-color: var(--primary);
-  width: 170px;
+  width: 180px;
   height: 30px;
   color: var(--white);
   border-radius: 8px;

@@ -64,7 +64,6 @@ const DataListEdicts = () => {
                 {isInfoActive && <EdictsInfoPopup />}
               </th>
               <th>Akcje</th>
-              <TableAddButton text="Dodaj zarządzenie" type="addEdicts" />
             </StyledTableHeader>
           </thead>
           <tbody>
