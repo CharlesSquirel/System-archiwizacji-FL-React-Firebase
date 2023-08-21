@@ -8,10 +8,11 @@ import { StyledDataList, StyledButtonBox, StyledCell, StyledTableHeader, StyledT
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import TableHead from "./TableHead/TableHead";
+import Banner from "../../Banner/Banner";
 
 function DataListArchive() {
   const context = useContext(Context);
-  const { credentialsArchive, setDeleteBaner } = context;
+  const { credentialsArchive, setDeleteBaner, addBaner, deleteBaner, editBaner } = context;
   const handleDelete = (index) => {
     // obsługa kasowania wpisu
     const confirm = window.confirm("Czy na pewno chcesz to usunąć?");
@@ -29,7 +30,10 @@ function DataListArchive() {
   return (
     <>
       <StyledDataList>
-        <TableHead btnText="Dodaj pozycję" type="archive"/>
+      {addBaner && <Banner text="Poprawnie dodano do bazy danych" />}
+      {deleteBaner && <Banner text="Poprawnie usunięto z bazy danych" />}
+      {editBaner && <Banner text="Poprawnie zmieniono dane" />}
+        <TableHead btnText="Dodaj pozycję" type="archive" />
         <StyledTable>
           <thead>
             <StyledTableHeader>

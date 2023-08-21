@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledDataList = styled.main`
+  position: relative;
   width: 77%;
   padding-bottom: 20px;
 `;
