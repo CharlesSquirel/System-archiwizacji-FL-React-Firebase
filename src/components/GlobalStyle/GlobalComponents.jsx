@@ -118,8 +118,11 @@ export const StyledExitIcon = styled.div`
 `;
 
 export const StyledTableHead = styled.div`
+position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
   width: 100%;
   height: 65px;
   background-color: var(--gray);
@@ -165,3 +168,15 @@ export const StyledSortBox = styled.div`
     font-size: 18px;
   }
 `;
+
+export const StyledTableHeadBox = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  .search-icon{
+    position: absolute;
+    right: 200px;
+    top: 9px;
+  }
+`

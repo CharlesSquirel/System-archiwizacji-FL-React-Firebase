@@ -17,17 +17,17 @@ const StyledTableAddButton = styled.div`
   cursor: pointer;
 `;
 
-const TableAddButton = ({ text, type }) => {
+const TableAddButton = ({ text, btntype }) => {
   const context = useContext(Context);
   const { setIsAddFormContractsOpen, setIsAddFormEdictsOpen, setIsAddFormRecordsOpen, setIsAddFormArchiveOpen } = context;
   const settingFunc =
-    type === "addContract"
+    btntype === "addContract"
       ? setIsAddFormContractsOpen
-      : type === "addEdicts"
+      : btntype === "addEdict"
       ? setIsAddFormEdictsOpen
-      : type === "addRecord"
+      : btntype === "addRecord"
       ? setIsAddFormRecordsOpen
-      : type === "addArchive"
+      : btntype === "addArchive"
       ? setIsAddFormArchiveOpen
       : "";
   return (

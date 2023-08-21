@@ -1,32 +1,26 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
-import { StyledSearchBarWrapper, StyledSearchBarInput } from "../StyledSearchBar";
+import React, { useState, useEffect, useRef } from "react";
+import { StyledSearchBarInput } from "../StyledSearchBar";
 import { readFromDb } from "../../../utils/firebase";
 import { sortCredentials } from "../../../utils/sortingFunc";
-import { Context } from "../../../Root";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import SortDataInput from "components/_DataLists/SortDataInput/SortDataInput";
 
-const SearchBarArchive = () => {
-  const context = useContext(Context);
-  const { credentialsArchive, setCredentialsArchive } = context;
+const SearchBarArchive = ({ sortOrder, settingFunc, credentials, searchBarType }) => {
   const [query, setQuery] = useState("");
-  const [sortOrder, setSortOrder] = useState("");
-  const [isSortOpen, setIsSortOpen] = useState(false);
-  const [searchBarWidth, setSearchBarWidth] = useState("20%");
+  const [searchBarWidth, setSearchBarWidth] = useState("200px");
   const searchBarRef = useRef(null);
 
   // wymuszanie rerenderingu dla poprawnego funkcjonowania select
   useEffect(() => {
-    sortCredentials(credentialsArchive, setCredentialsArchive, sortOrder);
+    sortCredentials(credentials, settingFunc, sortOrder);
   }, [sortOrder]);
 
   const handleSearchWidthBlur = () => {
-    setSearchBarWidth("20%");
+    setSearchBarWidth("200px");
   };
 
   const handleSearchWidthClick = () => {
-    setSearchBarWidth("40%");
+    setSearchBarWidth("350px");
   };
 
   // obsługa wyszukiwania
@@ -35,9 +29,9 @@ const SearchBarArchive = () => {
     setQuery(inputValue);
 
     if (inputValue === "") {
-      readFromDb("archive", setCredentialsArchive);
+      readFromDb(searchBarType, settingFunc);
     } else {
-      readFromDb("archive", (data) => {
+      readFromDb(searchBarType, (data) => {
         const filteredCredentials = Object.entries(data).filter(([key, value]) => {
           for (const prop in value) {
             if (value[prop].toLowerCase().includes(inputValue)) {
@@ -47,13 +41,12 @@ const SearchBarArchive = () => {
           return false;
         });
         const filteredCredentialsObject = Object.fromEntries(filteredCredentials);
-        setCredentialsArchive(filteredCredentialsObject);
+        settingFunc(filteredCredentialsObject);
       });
     }
   };
   return (
-    <StyledSearchBarWrapper>
-      <SortDataInput setSortOrder={setSortOrder} isSortOpen={isSortOpen} setIsSortOpen={setIsSortOpen} />
+    <>
       <StyledSearchBarInput
         style={{ width: searchBarWidth }}
         ref={searchBarRef}
@@ -67,8 +60,8 @@ const SearchBarArchive = () => {
         placeholder="Wyszukaj"
         autoComplete="off"
       />
-      {searchBarWidth === "20%" && <FontAwesomeIcon className="search-icon" icon={faSearch} />}
-    </StyledSearchBarWrapper>
+      {searchBarWidth === "200px" && <FontAwesomeIcon className="search-icon" icon={faSearch} />}
+    </>
   );
 };
 

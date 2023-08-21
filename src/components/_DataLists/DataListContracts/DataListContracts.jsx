@@ -7,9 +7,7 @@ import { StyledButtonBox, StyledCell, StyledDataButton, StyledDataList, StyledRo
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import SearchBarContracts from "../../_SearchBars/SearchBarContracts/SearchBarContracts";
-import TableAddButton from "../TableAddButton/TableAddButton";
-import { StyledTableHead } from "../../GlobalStyle/GlobalComponents";
+import TableHead from "../DataListArchive/TableHead/TableHead";
 
 const DataListContracts = () => {
   const context = useContext(Context);
@@ -25,10 +23,7 @@ const DataListContracts = () => {
   };
   return (
     <StyledDataList>
-      <StyledTableHead>
-        <SearchBarContracts />
-        <TableAddButton text="Dodaj umowę" type="addContract" />
-      </StyledTableHead>
+      <TableHead btnType="addContract" btnText="Dodaj umowę" searchBarType="contracts"/>
       <StyledTable>
         <thead>
           <StyledTableHeader>

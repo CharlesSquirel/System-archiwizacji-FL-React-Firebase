@@ -1,5 +1,5 @@
-import { StyledSelectPopup, StyledSortBox } from "../../GlobalStyle/GlobalComponents.jsx";
-import { StyledLabel } from "components/_SearchBars/StyledSearchBar";
+import { StyledSelectPopup, StyledSortBox } from "../../GlobalStyle/GlobalComponents";
+import { StyledLabel } from "../../_SearchBars/StyledSearchBar";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSort } from "@fortawesome/free-solid-svg-icons";

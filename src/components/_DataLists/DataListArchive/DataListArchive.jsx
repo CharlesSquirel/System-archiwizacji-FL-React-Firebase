@@ -7,9 +7,7 @@ import { db } from "../../../utils/firebase";
 import { StyledDataList, StyledButtonBox, StyledCell, StyledTableHeader, StyledTable, StyledRow, StyledDataButton } from "../StyledDataList.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import TableAddButton from "../TableAddButton/TableAddButton";
-import { StyledTableHead } from "../../GlobalStyle/GlobalComponents";
-import SearchBarArchive from "../../_SearchBars/SearchBarArchive/SearchBarArchive";
+import TableHead from "./TableHead/TableHead";
 
 function DataListArchive() {
   const context = useContext(Context);
@@ -31,10 +29,7 @@ function DataListArchive() {
   return (
     <>
       <StyledDataList>
-        <StyledTableHead>
-          <SearchBarArchive />
-          <TableAddButton text="Dodaj pozycję" type="addArchive" />
-        </StyledTableHead>
+        <TableHead btnType="addArchive" btnText="Dodaj pozycję" searchBarType="archive"/>
         <StyledTable>
           <thead>
             <StyledTableHeader>
