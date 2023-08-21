@@ -29,7 +29,7 @@ function DataListArchive() {
   return (
     <>
       <StyledDataList>
-        <TableHead btnType="addArchive" btnText="Dodaj pozycję" searchBarType="archive"/>
+        <TableHead btnText="Dodaj pozycję" type="archive"/>
         <StyledTable>
           <thead>
             <StyledTableHeader>

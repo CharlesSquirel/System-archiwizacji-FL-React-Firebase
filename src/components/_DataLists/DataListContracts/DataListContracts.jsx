@@ -23,7 +23,7 @@ const DataListContracts = () => {
   };
   return (
     <StyledDataList>
-      <TableHead btnType="addContract" btnText="Dodaj umowę" searchBarType="contracts"/>
+      <TableHead  btnText="Dodaj umowę" type="contracts"/>
       <StyledTable>
         <thead>
           <StyledTableHeader>

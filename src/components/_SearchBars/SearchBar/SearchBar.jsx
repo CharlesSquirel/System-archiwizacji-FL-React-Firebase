@@ -5,7 +5,7 @@ import { sortCredentials } from "../../../utils/sortingFunc";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-const SearchBarArchive = ({ sortOrder, settingFunc, credentials, searchBarType }) => {
+const SearchBar = ({ sortOrder, settingFunc, credentials, type }) => {
   const [query, setQuery] = useState("");
   const [searchBarWidth, setSearchBarWidth] = useState("200px");
   const searchBarRef = useRef(null);
@@ -29,13 +29,26 @@ const SearchBarArchive = ({ sortOrder, settingFunc, credentials, searchBarType }
     setQuery(inputValue);
 
     if (inputValue === "") {
-      readFromDb(searchBarType, settingFunc);
+      readFromDb(type, settingFunc);
     } else {
-      readFromDb(searchBarType, (data) => {
+      readFromDb(type, (data) => {
+        console.log(Object.entries(data))
         const filteredCredentials = Object.entries(data).filter(([key, value]) => {
           for (const prop in value) {
-            if (value[prop].toLowerCase().includes(inputValue)) {
+            const propValue = value[prop];
+
+            if (typeof propValue === "string" && propValue.toLowerCase().includes(inputValue)) {
               return true;
+            }
+
+            if (typeof propValue === "object") {
+              for (const nestedProp in propValue) {
+                const nestedPropValue = propValue[nestedProp];
+
+                if (nestedPropValue === true && nestedProp.toLowerCase().includes(inputValue)) {
+                  return true;
+                }
+              }
             }
           }
           return false;
@@ -65,4 +78,4 @@ const SearchBarArchive = ({ sortOrder, settingFunc, credentials, searchBarType }
   );
 };
 
-export default SearchBarArchive;
+export default SearchBar;

@@ -17,23 +17,23 @@ const StyledTableAddButton = styled.div`
   cursor: pointer;
 `;
 
-const TableAddButton = ({ text, btntype }) => {
+const TableAddButton = ({ btnText, type }) => {
   const context = useContext(Context);
   const { setIsAddFormContractsOpen, setIsAddFormEdictsOpen, setIsAddFormRecordsOpen, setIsAddFormArchiveOpen } = context;
   const settingFunc =
-    btntype === "addContract"
+    type === "contracts"
       ? setIsAddFormContractsOpen
-      : btntype === "addEdict"
+      : type === "edicts"
       ? setIsAddFormEdictsOpen
-      : btntype === "addRecord"
+      : type === "records"
       ? setIsAddFormRecordsOpen
-      : btntype === "addArchive"
+      : type === "archive"
       ? setIsAddFormArchiveOpen
       : "";
   return (
     <StyledTableAddButton onClick={() => settingFunc(true)}>
       <FontAwesomeIcon icon={faPlus} />
-      <p>{text}</p>
+      <p>{btnText}</p>
     </StyledTableAddButton>
   );
 };

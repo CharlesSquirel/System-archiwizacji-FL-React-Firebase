@@ -1,27 +1,28 @@
 import React, { useContext, useState } from "react";
 import { StyledTableHead, StyledTableHeadBox } from "../../../GlobalStyle/GlobalComponents";
-import SearchBarArchive from "../../../_SearchBars/SearchBarArchive/SearchBarArchive";
+import SearchBar from "../../../_SearchBars/SearchBar/SearchBar";
 import TableAddButton from "../../TableAddButton/TableAddButton";
 import SortDataInput from "../../SortDataInput/SortDataInput";
 import { Context } from "../../../../Root";
 
-const TableHead = ({ btnType, btnText, searchBarType }) => {
+const TableHead = ({  btnText, type }) => {
   const context = useContext(Context);
   const { credentialsArchive, setCredentialsArchive, credentialsContracts, setCredentialsContracts } = context;
   const [sortOrder, setSortOrder] = useState("");
   const [isSortOpen, setIsSortOpen] = useState(false);
+  const credentials = type === "archive" ? credentialsArchive : credentialsContracts;
+  const settingFunc = type === "archive" ? setCredentialsArchive : setCredentialsContracts;
   return (
     <StyledTableHead>
       <SortDataInput setSortOrder={setSortOrder} isSortOpen={isSortOpen} setIsSortOpen={setIsSortOpen} />
       <StyledTableHeadBox>
-        <SearchBarArchive
+        <SearchBar
           sortOrder={sortOrder}
-          setSortOrder={setSortOrder}
-          credentials={searchBarType === "archive" ? credentialsArchive : credentialsContracts}
-          settingFunc={searchBarType === "archive" ? setCredentialsArchive : setCredentialsContracts}
-          searchBarType={searchBarType}
+          credentials={credentials}
+          settingFunc={settingFunc}
+          type={type}
         />
-        <TableAddButton text={btnText} type={btnType} />
+        <TableAddButton btnText={btnText} type={type} />
       </StyledTableHeadBox>
     </StyledTableHead>
   );
