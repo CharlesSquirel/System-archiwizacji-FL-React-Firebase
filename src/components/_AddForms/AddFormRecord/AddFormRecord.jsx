@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { Context } from "../../../Root";
 import { Formik } from "formik";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
+import Banner from "../../Banner/Banner.jsx";
+import { StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm, StyledAddButton, StyledSelectRecords, StyledExitIcon, StyledInputRow } from "../../GlobalStyle/GlobalComponents.jsx";
 import { writeToDb } from "../../../utils/firebase";
 import { changeEmptyString, validationSchemaRecords } from "../../../utils/yupvalidation";
 import { setBaner } from "../../../utils/setBaner";
-import Banner from "../../Banner/Banner.jsx";
-import { StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm, StyledAddButton, StyledSelectRecords, StyledExitIcon, StyledInputRow } from "../../GlobalStyle/GlobalComponents.jsx";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 const initialValues = {
   date: "",

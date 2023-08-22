@@ -202,3 +202,25 @@ export const StyledSelectRecordsBox = styled.div`
   gap: 5px;
   align-items: center;
 `;
+
+export const StyledCheckboxBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 3px;
+`;
+
+export const StyledCheckboxLabel = styled.label`
+  font-size: 15px;
+  font-weight: 500;
+`;
+
+export const StyledCheckbox = styled.input`
+  width: 16px;
+  height: 16px;
+`;
+
+export const StyledDoubleCheckboxes = styled.div`
+  display: flex;
+  gap: 10px;
+  width: 407px;
+`;

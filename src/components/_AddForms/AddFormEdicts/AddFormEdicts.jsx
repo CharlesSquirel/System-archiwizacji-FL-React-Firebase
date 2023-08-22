@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from "react";
-import styled from "styled-components";
+import Banner from "../../Banner/Banner.jsx";
 import {
   ErrorMessage,
   StyledForm,
@@ -9,6 +9,9 @@ import {
   StyledAddButton,
   StyledExitIcon,
   StyledInputRow,
+  StyledCheckboxBox,
+  StyledCheckbox,
+  StyledCheckboxLabel,
 } from "../../GlobalStyle/GlobalComponents.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
@@ -17,29 +20,6 @@ import { validationSchemaEdicts, changeEmptyString } from "../../../utils/yupval
 import { Context } from "../../../Root";
 import { uploadToStorage, writeToDb } from "../../../utils/firebase";
 import { setBaner } from "../../../utils/setBaner";
-import Banner from "../../Banner/Banner.jsx";
-
-export const StyledCheckboxBox = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 3px;
-`;
-
-export const StyledCheckboxLabel = styled.label`
-  font-size: 15px;
-  font-weight: 500;
-`;
-
-export const StyledCheckbox = styled.input`
-  width: 16px;
-  height: 16px;
-`;
-
-export const StyledDoubleCheckboxes = styled.div`
-  display: flex;
-  gap: 10px;
-  width: 407px;
-`;
 
 const initialValuesEdicts = {
   number: "",
