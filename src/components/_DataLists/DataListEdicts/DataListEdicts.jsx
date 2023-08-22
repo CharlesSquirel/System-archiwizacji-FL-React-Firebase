@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../../../Root";
-import { StyledButtonBox, StyledCell, StyledDataButton, StyledDataList, StyledRow, StyledTable, StyledTableHeader } from "../StyledDataList.jsx";
+import { StyledButtonBox, StyledCell, StyledDataButton, StyledDataList, StyledRow, StyledTable, StyledTableHeader } from "../StyledDataList";
 import { Link } from "react-router-dom";
 import { ref, remove } from "firebase/database";
 import { db, deleteFromStorage, storage } from "../../../utils/firebase";
@@ -8,9 +8,8 @@ import { setBaner } from "../../../utils/setBaner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo, faDownload, faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import EdictsInfoPopup from "../EdictsInfoPopup/EdictsInfoPopup.jsx";
+import EdictsInfoPopup from "../EdictsInfoPopup/EdictsInfoPopup";
 import { getDownloadURL, ref as storageRef } from "firebase/storage";
-import TableAddButton from "../TableAddButton/TableAddButton.jsx";
 import TableHead from "../DataListArchive/TableHead/TableHead";
 
 const DataListEdicts = () => {
@@ -50,9 +49,8 @@ const DataListEdicts = () => {
   };
   return (
     <>
-      
       <StyledDataList>
-        <TableHead btnText="Dodaj zarządzenie" type="edicts"/>
+        <TableHead btnText="Dodaj zarządzenie" type="edicts" />
         <StyledTable>
           <thead>
             <StyledTableHeader>
@@ -60,7 +58,7 @@ const DataListEdicts = () => {
               <th>Data</th>
               <th>Tytuł</th>
               <th>
-                Adresaci <FontAwesomeIcon className="icon-info" icon={faCircleInfo} onMouseEnter={handleInfoPopup} onMouseLeave={handleInfoPopup}></FontAwesomeIcon>{" "}
+                Adresaci <FontAwesomeIcon className="icon-info" icon={faCircleInfo} onMouseEnter={handleInfoPopup} onMouseLeave={handleInfoPopup}></FontAwesomeIcon>
                 {isInfoActive && <EdictsInfoPopup />}
               </th>
               <th>Akcje</th>
