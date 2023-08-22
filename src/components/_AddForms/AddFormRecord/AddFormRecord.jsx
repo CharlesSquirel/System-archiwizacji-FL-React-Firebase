@@ -5,9 +5,9 @@ import { writeToDb } from "../../../utils/firebase";
 import { changeEmptyString, validationSchemaRecords } from "../../../utils/yupvalidation";
 import { setBaner } from "../../../utils/setBaner";
 import Banner from "../../Banner/Banner.jsx";
-import { StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm, StyledAddButton, StyledSelectRecords, StyledExitIcon } from "../../GlobalStyle/GlobalComponents.jsx";
+import { StyledInputBox, StyledInput, ErrorMessage, StyledFormWrapper, StyledForm, StyledAddButton, StyledSelectRecords, StyledExitIcon, StyledInputRow } from "../../GlobalStyle/GlobalComponents.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faClose } from "@fortawesome/free-solid-svg-icons";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 const initialValues = {
   date: "",
@@ -46,6 +46,8 @@ function AddFormRecord() {
           <>
             <StyledFormWrapper>
               <StyledForm onSubmit={handleSubmit}>
+                <StyledInputRow>
+
                 <StyledInputBox>
                   <label htmlFor="date">Data:</label>
                   <StyledInput id="date" name="date" className="input" placeholder="01.01.2023" autoComplete="off" {...formik.getFieldProps("date")}></StyledInput>
@@ -70,16 +72,15 @@ function AddFormRecord() {
                     <option value="audycja umuzykalniająca">audycja umuzykalniająca</option>
                   </StyledSelectRecords>
                 </StyledInputBox>
+                </StyledInputRow>
                 <StyledInputBox>
-                  <label htmlFor="btn">Akcje:</label>
-                  <StyledAddButton id="btn" type="submit">
+                  <StyledAddButton type="submit">
                     Dodaj
-                    <FontAwesomeIcon className="icon" icon={faPlus} />
                   </StyledAddButton>
                 </StyledInputBox>
               </StyledForm>
               <StyledExitIcon onClick={() => setIsAddFormRecordsOpen(false)}>
-                <FontAwesomeIcon style={{fontSize: "28px"}} icon={faClose} />
+                <FontAwesomeIcon className="icon-close" icon={faClose} />
               </StyledExitIcon>
               {addBaner && <Banner text="Poprawnie dodano do bazy danych" />}
               {deleteBaner && <Banner text="Poprawnie usunięto z bazy danych" />}
