@@ -18,7 +18,7 @@ export const Context = React.createContext();
 
 function Root() {
   const [actualUser, setActualUser] = useState("");
-  const [logoutBaner, setLogoutBaner] = useState(true);
+  const [logoutBaner, setLogoutBaner] = useState(false);
   const [addBaner, setAddBaner] = useState(false);
   const [deleteBaner, setDeleteBaner] = useState(false);
   const [editBaner, setEditBaner] = useState(false);

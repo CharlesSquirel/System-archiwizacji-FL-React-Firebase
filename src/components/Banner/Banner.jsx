@@ -6,7 +6,7 @@ const BannerBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  top: -51px;
+  top: ${(props) => (props.baner === "login_page" ? "120px" : "-51px")};
   left: 50%;
   transform: translateX(-50%);
   width: 30%;
