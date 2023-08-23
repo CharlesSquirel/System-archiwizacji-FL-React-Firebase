@@ -39,6 +39,7 @@ function Root() {
     sortCredentials(credentialsArchive, setCredentialsArchive, "dateAsc");
     getLogInfo();
     getActualUser(setActualUser);
+    
   };
 
   const getLogInfo = () => {
@@ -64,6 +65,7 @@ function Root() {
   useEffect(() => {
     readFromDb("records/0", setCredentialsRecord);
     sortCredentials(credentialsRecord, setCredentialsRecord, "dateAsc");
+    
   }, []);
   return (
     <>

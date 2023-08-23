@@ -6,6 +6,7 @@
 ☐ reset checkboxów nie działa w addFormEdicts
 ☐ może pokusić się o jedne style w jednym pliku dla wszystkich komponentów z jednej grupy
 ☐ coś szwankuje search bar records
+☐ nie działa sortowanie w module Records
 ✔ Search bary dla poszczególnych modułów @done (13.08.2023, 19:27:33)
 ✔ Record view @done (13.08.2023, 19:27:26)
 ✔ Routing outlet pod nawigację i zmiana nazw psozczególnych modułów @done (10.07.2023, 17:53:09)
