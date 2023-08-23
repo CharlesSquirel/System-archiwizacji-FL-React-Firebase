@@ -37,7 +37,7 @@ function AddFormRecord() {
       onSubmit={(values, { resetForm }) => {
         console.log(values);
         changeEmptyString(values);
-        writeToDb("records", {
+        writeToDb("records/0", {
           date: values.date,
           title: values.title,
           type: values.type,

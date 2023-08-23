@@ -60,7 +60,7 @@ function Root() {
   }, []);
 
   useEffect(() => {
-    readFromDb("records", setCredentialsRecord);
+    readFromDb("records/0", setCredentialsRecord);
   }, []);
   return (
     <>

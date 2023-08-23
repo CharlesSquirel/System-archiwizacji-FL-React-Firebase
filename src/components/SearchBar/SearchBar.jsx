@@ -9,6 +9,7 @@ const SearchBar = ({ sortOrder, settingFunc, credentials, type }) => {
   const [query, setQuery] = useState("");
   const [searchBarWidth, setSearchBarWidth] = useState("200px");
   const searchBarRef = useRef(null);
+  const ref = type === "records" ? "records/0" : type;
 
   // wymuszanie rerenderingu dla poprawnego funkcjonowania select
   useEffect(() => {
@@ -29,9 +30,9 @@ const SearchBar = ({ sortOrder, settingFunc, credentials, type }) => {
     setQuery(inputValue);
 
     if (inputValue === "") {
-      readFromDb(type, settingFunc);
+      readFromDb(ref, settingFunc);
     } else {
-      readFromDb(type, (data) => {
+      readFromDb(ref, (data) => {
         console.log(Object.entries(data))
         const filteredCredentials = Object.entries(data).filter(([key, value]) => {
           for (const prop in value) {

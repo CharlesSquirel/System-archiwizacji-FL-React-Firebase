@@ -24,7 +24,7 @@ function DataListRecord() {
     const confirm = window.confirm("Czy na pewno chcesz to usunąć?");
     if (confirm) {
       const toRemove = Object.keys(credentialsRecord)[index];
-      remove(ref(db, `/files/records/${toRemove}`));
+      remove(ref(db, `/files/records/0/${toRemove}`));
       setBaner(setDeleteBaner);
     }
   };
