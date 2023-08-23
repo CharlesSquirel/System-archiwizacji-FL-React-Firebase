@@ -53,14 +53,17 @@ function Root() {
 
   useEffect(() => {
     readFromDb("edicts", setCredentialsEdicts);
+    sortCredentials(credentialsEdicts, setCredentialsEdicts, "dateAsc");
   }, []);
 
   useEffect(() => {
     readFromDb("contracts", setCredentialsContracts);
+    sortCredentials(credentialsContracts, setCredentialsContracts, "dateAsc");
   }, []);
 
   useEffect(() => {
     readFromDb("records/0", setCredentialsRecord);
+    sortCredentials(credentialsRecord, setCredentialsRecord, "dateAsc");
   }, []);
   return (
     <>
