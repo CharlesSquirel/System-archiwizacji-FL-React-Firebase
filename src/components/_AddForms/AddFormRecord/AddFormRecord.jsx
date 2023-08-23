@@ -29,13 +29,11 @@ function AddFormRecord() {
   const [music, setMusic] = useState("");
   const context = useContext(Context);
   const { addBaner, setAddBaner, deleteBaner, editBaner, setIsAddFormRecordsOpen } = context;
-  console.log(musicians);
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchemaRecords}
       onSubmit={(values, { resetForm }) => {
-        console.log(values);
         changeEmptyString(values);
         writeToDb("records/0", {
           date: values.date,
@@ -85,12 +83,10 @@ function AddFormRecord() {
                 <StyledInputRow>
                   <div style={{ display: "flex", flexDirection: "column", width: "50%" }}>
                     <label htmlFor="musicians">Wykonawcy</label>
-                    {/* <textarea id="musicians" cols="30" rows="10"></textarea> */}
                     <ReactQuill id="musicians" style={{ width: "100%", height: "200px" }} modules={modules} value={musicians} onChange={setMusicians} />
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", width: "50%" }}>
                     <label htmlFor="music">Program</label>
-                    {/* <textarea id="musicians" cols="30" rows="10"></textarea> */}
                     <ReactQuill id="music" style={{ width: "100%", height: "200px" }} modules={modules} value={music} onChange={setMusic} />
                   </div>
                 </StyledInputRow>
