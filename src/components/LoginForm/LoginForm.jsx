@@ -20,6 +20,7 @@ const LoginForm = () => {
     password: "",
     error: "",
   });
+  console.log(process.env.REACT_APP_API_KEY)
 
   useEffect(() => {
     if (logoutBaner) {

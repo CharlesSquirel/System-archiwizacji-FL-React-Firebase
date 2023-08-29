@@ -2,7 +2,7 @@
 ☐ pewnie czeka migracja do TS
 ☐ poprawić strukturę plików
 ☐ utworzyć i zredagować README
-☐ env.location czy coś takiego dla zabezpieczenia konfiguracji firebase
+✔ env.location czy coś takiego dla zabezpieczenia konfiguracji firebase @done (29.08.2023, 10:00:14)
 ☐ reset checkboxów nie działa w addFormEdicts
 ☐ może pokusić się o jedne style w jednym pliku dla wszystkich komponentów z jednej grupy
 ☐ coś szwankuje search bar records
@@ -48,7 +48,7 @@
 ✔ przenieść login error message jako error baner w miejsce wyświetlania logout baner @done (8.07.2023, 19:10:04)
 ✔ może pokusić się o baner poprawne dodanie danych, usuwanie i edytowanie @done (10.07.2023, 12:34:35)
 DAREK:
-☐ zmienne środowiskowe dla pliku firebase
+✔ zmienne środowiskowe dla pliku firebase @done (29.08.2023, 10:00:19)
 ☐ edicts wejście bez zalogowania
 ☐ powtarzający się kod: after do buttonów praktycznie non stop powtarzane np.
 ☐ aliasy dla importów

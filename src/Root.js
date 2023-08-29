@@ -32,6 +32,7 @@ function Root() {
   const [isAddFormArchiveOpen, setIsAddFormArchiveOpen] = useState(false);
   const [isAddFormEdictsOpen, setIsAddFormEdictsOpen] = useState(false);
   const [isAddFormRecordsOpen, setIsAddFormRecordsOpen] = useState(false);
+  
 
   const start = () => {
     readFromDb("archive", setCredentialsArchive);
@@ -50,6 +51,7 @@ function Root() {
   };
   useEffect(() => {
     start();
+    
   }, []);
 
   useEffect(() => {
