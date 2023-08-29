@@ -1,27 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-
-const StyledInfoPopup = styled.div`
-  position: absolute;
-  width: 80%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-  padding: 10px;
-  background-color: var(--white);
-  color: var(--black);
-  border: 1px solid var(--primary);
-  border-radius: 10px;
-  text-align: left;
-  span {
-    font-weight: 600;
-    font-size: 19px;
-  }
-  li {
-    font-size: 17px;
-    font-weight: 400;
-  }
-`;
+import { StyledInfoPopup } from "../../GlobalStyle/GlobalComponents";
 
 const EdictsInfoPopup = () => {
   return (

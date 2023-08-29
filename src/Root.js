@@ -32,6 +32,7 @@ function Root() {
   const [isAddFormArchiveOpen, setIsAddFormArchiveOpen] = useState(false);
   const [isAddFormEdictsOpen, setIsAddFormEdictsOpen] = useState(false);
   const [isAddFormRecordsOpen, setIsAddFormRecordsOpen] = useState(false);
+  
 
   const start = () => {
     readFromDb("archive", setCredentialsArchive);
@@ -39,6 +40,7 @@ function Root() {
     sortCredentials(credentialsArchive, setCredentialsArchive, "dateAsc");
     getLogInfo();
     getActualUser(setActualUser);
+    
   };
 
   const getLogInfo = () => {
@@ -49,18 +51,23 @@ function Root() {
   };
   useEffect(() => {
     start();
+    
   }, []);
 
   useEffect(() => {
     readFromDb("edicts", setCredentialsEdicts);
+    sortCredentials(credentialsEdicts, setCredentialsEdicts, "dateAsc");
   }, []);
 
   useEffect(() => {
     readFromDb("contracts", setCredentialsContracts);
+    sortCredentials(credentialsContracts, setCredentialsContracts, "dateAsc");
   }, []);
 
   useEffect(() => {
-    readFromDb("records", setCredentialsRecord);
+    readFromDb("records/0", setCredentialsRecord);
+    sortCredentials(credentialsRecord, setCredentialsRecord, "dateAsc");
+    
   }, []);
   return (
     <>

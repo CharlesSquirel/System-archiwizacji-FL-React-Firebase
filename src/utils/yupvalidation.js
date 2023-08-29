@@ -15,7 +15,7 @@ export const validationSchemaContracts = Yup.object().shape({
     .required("Pole jest wymagane!")
     .test("długość inputa jest równa 10", "Pole musi zawierać 10 znaków", (value) => value.length === 10),
   contractor: Yup.string().required("Pole jest wymagane!"),
-  price: Yup.string().required("Pole jest wymagane!"),
+  price: Yup.number().required("Pole jest wymagane!"),
   description: Yup.string(),
 });
 

@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     --gray: #e7e7e7;
     --bg: #323f4d;
     --error: #c3021e;
-    --btn-shadow: #fff;
+    --btn-shadow: #323f4d;
     /* --primary-text-shadow: 2px 1px 5px var(--black);
     --secondary-text-shadow: 2px 1px 5px var(--white); */
 }
@@ -48,7 +48,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 18px;
+    gap: 65px;
     width: 100%;
     height: 100%;
 }
@@ -60,5 +60,8 @@ a{
 
 ul {
     list-style-type: none;
+}
+.icon-close {
+    font-size: 28px;
 }
 `;

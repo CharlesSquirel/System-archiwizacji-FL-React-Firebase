@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledDataList = styled.main`
+  position: relative;
   width: 77%;
   padding-bottom: 20px;
 `;
@@ -32,7 +33,8 @@ export const StyledTableHeader = styled.tr`
     cursor: pointer;
     color: var(--primary);
   }
-  & th:nth-of-type(4) {
+  & th:nth-of-type(4),
+  & th:nth-of-type(3) {
     position: relative;
   }
 `;

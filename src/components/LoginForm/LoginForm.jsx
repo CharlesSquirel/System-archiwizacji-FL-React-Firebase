@@ -20,6 +20,7 @@ const LoginForm = () => {
     password: "",
     error: "",
   });
+  console.log(process.env.REACT_APP_API_KEY)
 
   useEffect(() => {
     if (logoutBaner) {
@@ -43,7 +44,6 @@ const LoginForm = () => {
       })
       .catch(() => {
         setLogin({ ...login, error: "Nieprawidłowy email lub hasło" });
-
         setErrorBaner(true);
       });
   };
@@ -54,8 +54,8 @@ const LoginForm = () => {
         <LogoImg src={logoFL} alt="logo" />
         <Title text="System dokumentacji FL" />
       </TitleBox>
-      {logoutBaner && <Banner text="Zostałeś poprawnie wylogowany!" />}
-      {errorBaner && <Banner text={login.error} error={login.error} />}
+      {logoutBaner && <Banner baner="login_page" text="Zostałeś poprawnie wylogowany!" />}
+      {errorBaner && <Banner baner="login_page" text={login.error} error={login.error} />}
       <LoginContainer>
         <Title />
         <StyledLoginForm onSubmit={handleOnSubmit}>

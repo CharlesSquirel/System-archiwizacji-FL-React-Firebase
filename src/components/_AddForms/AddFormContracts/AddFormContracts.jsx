@@ -1,4 +1,9 @@
 import React, { useContext } from "react";
+import { Context } from "../../../Root";
+import { Formik } from "formik";
+import Banner from "../../Banner/Banner.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
 import {
   ErrorMessage,
   StyledForm,
@@ -8,12 +13,10 @@ import {
   StyledAddButton,
   StyledSelectRecords,
   StyledExitIcon,
+  StyledInputRow,
+  StyledSelectRow,
+  StyledSelectRecordsBox,
 } from "../../GlobalStyle/GlobalComponents.jsx";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faClose } from "@fortawesome/free-solid-svg-icons";
-import { Context } from "../../../Root";
-import { Formik } from "formik";
-import Banner from "../../Banner/Banner.jsx";
 import { changeEmptyString, validationSchemaContracts } from "../../../utils/yupvalidation";
 import { writeToDb } from "../../../utils/firebase";
 import { setBaner } from "../../../utils/setBaner";
@@ -47,7 +50,7 @@ const AddFormContracts = () => {
           description: values.description,
         });
         setBaner(setAddBaner);
-        setIsAddFormContractsOpen(false)
+        setIsAddFormContractsOpen(false);
         resetForm();
       }}
     >
@@ -55,8 +58,8 @@ const AddFormContracts = () => {
         const { errors, touched, handleSubmit } = formik;
         return (
           <StyledFormWrapper>
-            <StyledForm onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column" }}>
-              <div style={{ display: "flex" }}>
+            <StyledForm onSubmit={handleSubmit}>
+              <StyledInputRow>
                 <StyledInputBox>
                   <label htmlFor="signature">Sygnatura:</label>
                   <StyledInput
@@ -101,6 +104,7 @@ const AddFormContracts = () => {
                     className="input"
                     placeholder="500,00"
                     autoComplete="off"
+                    type="number"
                     {...formik.getFieldProps("price")}
                   ></StyledInput>
                   {touched.price && errors.price && <ErrorMessage>{errors.price}</ErrorMessage>}
@@ -117,9 +121,9 @@ const AddFormContracts = () => {
                   ></StyledInput>
                   {touched.description && errors.description && <ErrorMessage>{errors.description}</ErrorMessage>}
                 </StyledInputBox>
-              </div>
-              <div style={{display: "flex", gap: "5px"}}>
-                <div style={{display: "flex", gap: "5px", alignItems: "center"}}>
+              </StyledInputRow>
+              <StyledSelectRow>
+                <StyledSelectRecordsBox>
                   <label htmlFor="type">Rodzaj umowy:</label>
                   <StyledSelectRecords id="type" name="type" {...formik.getFieldProps("type")}>
                     <option value="umowa zlecenie">umowa zlecenie</option>
@@ -127,23 +131,22 @@ const AddFormContracts = () => {
                     <option value="umowa o współpracę">umowa o współpracę</option>
                     <option value="umowa licencyjna">umowa licencyjna</option>
                   </StyledSelectRecords>
-                </div>
-                <div style={{display: "flex", gap: "5px", alignItems: "center"}}>
+                </StyledSelectRecordsBox>
+                <StyledSelectRecordsBox>
                   <label htmlFor="person_in_charge">Osoba odpowiedzialna:</label>
                   <StyledSelectRecords id="person_in_charge" name="person_in_charge" {...formik.getFieldProps("person_in_charge")}>
                     <option value="Anna Król">Anna Król</option>
                     <option value="Alina Staniak-Ziółkowska">Alina Staniak-Ziółkowska</option>
                   </StyledSelectRecords>
-                </div>
-              </div>
+                </StyledSelectRecordsBox>
+              </StyledSelectRow>
               <StyledInputBox>
-                <StyledAddButton id="btn" type="submit" style={{backgroundColor: "green"}}>
+                <StyledAddButton type="submit">
                   Dodaj
-                  <FontAwesomeIcon className="icon" icon={faPlus} />
                 </StyledAddButton>
               </StyledInputBox>
               <StyledExitIcon onClick={() => setIsAddFormContractsOpen(false)}>
-                <FontAwesomeIcon style={{fontSize: "28px"}} icon={faClose} />
+                <FontAwesomeIcon className="icon-close" icon={faClose} />
               </StyledExitIcon>
             </StyledForm>
             {addBaner && <Banner text="Poprawnie dodano do bazy danych" />}

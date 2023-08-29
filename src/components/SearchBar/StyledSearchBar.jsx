@@ -7,10 +7,7 @@ export const StyledSearchBarWrapper = styled.div`
   align-items: center;
   gap: 20px;
   width: 100%;
-  .search-icon{
-position: absolute;
-right: 10px;
-  }
+
 `;
 export const StyledLabel = styled.label`
   color: var(--white);

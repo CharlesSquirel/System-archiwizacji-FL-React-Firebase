@@ -3,25 +3,15 @@ import { Context } from "../../../Root";
 import { ref, remove } from "firebase/database";
 import { db } from "../../../utils/firebase";
 import { setBaner } from "../../../utils/setBaner";
-import {
-  StyledButtonBox,
-  StyledCell,
-  StyledDataButton,
-  StyledDataList,
-  StyledRow,
-  StyledTable,
-  StyledTableHeader,
-} from "../DataListArchive/StyledDataList";
+import { StyledButtonBox, StyledCell, StyledDataButton, StyledDataList, StyledRow, StyledTable, StyledTableHeader } from "../StyledDataList";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import SearchBarContracts from "../../_SearchBars/SearchBarContracts/SearchBarContracts";
-import TableAddButton from "../../TableAddButton/TableAddButton";
-import { StyledTableHead } from "../../GlobalStyle/GlobalComponents";
+import TableHead from "../DataListArchive/TableHead/TableHead";
 
 const DataListContracts = () => {
   const context = useContext(Context);
-  const { credentialsContracts, setDeleteBaner} = context;
+  const { credentialsContracts, setDeleteBaner } = context;
   const handleDelete = (index) => {
     // obsługa kasowania wpisu
     const confirm = window.confirm("Czy na pewno chcesz to usunąć?");
@@ -33,10 +23,7 @@ const DataListContracts = () => {
   };
   return (
     <StyledDataList>
-      <StyledTableHead>
-        <SearchBarContracts />
-        <TableAddButton text="Dodaj umowę" type="addContract"/>
-      </StyledTableHead>
+      <TableHead  btnText="Dodaj umowę" type="contracts"/>
       <StyledTable>
         <thead>
           <StyledTableHeader>

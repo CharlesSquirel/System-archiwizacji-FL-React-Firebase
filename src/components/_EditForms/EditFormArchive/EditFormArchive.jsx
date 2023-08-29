@@ -56,7 +56,7 @@ function EditFormArchive() {
               </StyledInputBox>
               <StyledInputBox>
                 <label htmlFor="btn">Akcje:</label>
-                <StyledButton id="btn" type="submit">
+                <StyledButton type="submit">
                   Zmień
                 </StyledButton>
               </StyledInputBox>

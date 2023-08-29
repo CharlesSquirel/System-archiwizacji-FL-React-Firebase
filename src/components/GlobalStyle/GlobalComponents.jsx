@@ -2,15 +2,15 @@ import styled from "styled-components";
 
 export const StyledFormWrapper = styled.div`
   position: absolute;
-  top: 155px;
+  top: 204px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
-  width: 85%;
+  /* justify-content: center; */
+  width: 77%;
   color: var(--black);
   background-color: var(--white);
-  padding: 20px;
+  padding: 15px;
   border-radius: 20px;
   z-index: 1;
   .icon {
@@ -21,8 +21,8 @@ export const StyledFormWrapper = styled.div`
 
 export const StyledForm = styled.form`
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
+  flex-direction: column;
+  gap: 12px;
 `;
 
 export const StyledButton = styled.button`
@@ -34,7 +34,7 @@ export const StyledButton = styled.button`
   gap: 5px;
   width: 260px;
   height: 40px;
-  border-radius: 5px;
+  border-radius: 8px;
   font-weight: 600;
   font-size: 22px;
   background: var(--primary);
@@ -42,11 +42,12 @@ export const StyledButton = styled.button`
 `;
 
 export const StyledAddButton = styled(StyledButton)`
+  background-color: green;
   ::after {
     content: "";
     position: absolute;
     left: 0px;
-    bottom: -6px;
+    bottom: -4px;
     width: 260px;
     height: 40px;
     border-radius: 12px;
@@ -54,10 +55,10 @@ export const StyledAddButton = styled(StyledButton)`
     z-index: -1;
   }
   :hover::after {
-    bottom: -3px;
+    bottom: 0;
   }
   :hover {
-    bottom: -3px;
+    bottom: -2px;
   }
 `;
 
@@ -84,6 +85,7 @@ export const StyledLoginButton = styled(StyledButton)`
 export const StyledInputBox = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 10px;
   min-height: 77px;
 `;
@@ -112,14 +114,17 @@ export const StyledSelectRecords = styled.select`
 
 export const StyledExitIcon = styled.div`
   position: absolute;
-  right: 50px;
+  right: 30px;
   top: 10px;
   cursor: pointer;
 `;
 
 export const StyledTableHead = styled.div`
+  position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
   width: 100%;
   height: 65px;
   background-color: var(--gray);
@@ -163,5 +168,81 @@ export const StyledSortBox = styled.div`
   label {
     color: var(--black);
     font-size: 18px;
+  }
+`;
+
+export const StyledTableHeadBox = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  .search-icon {
+    position: absolute;
+    right: 200px;
+    top: 9px;
+  }
+`;
+
+export const StyledInputRow = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+`;
+
+export const StyledSelectRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+`;
+
+export const StyledSelectRecordsBox = styled.div`
+  display: flex;
+  gap: 5px;
+  align-items: center;
+`;
+
+export const StyledCheckboxBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 3px;
+`;
+
+export const StyledCheckboxLabel = styled.label`
+  font-size: 15px;
+  font-weight: 500;
+`;
+
+export const StyledCheckbox = styled.input`
+  width: 16px;
+  height: 16px;
+`;
+
+export const StyledDoubleCheckboxes = styled.div`
+  display: flex;
+  gap: 10px;
+  width: 407px;
+`;
+
+export const StyledInfoPopup = styled.div`
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  padding: 10px;
+  background-color: var(--white);
+  color: var(--black);
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  text-align: left;
+  span {
+    font-weight: 600;
+    font-size: 19px;
+  }
+  li {
+    font-size: 17px;
+    font-weight: 400;
   }
 `;

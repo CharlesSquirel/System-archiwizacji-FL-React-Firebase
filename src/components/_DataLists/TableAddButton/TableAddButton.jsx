@@ -2,8 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { Context } from "../../Root";
-
+import { Context } from "../../../Root";
 
 const StyledTableAddButton = styled.div`
   display: flex;
@@ -11,30 +10,30 @@ const StyledTableAddButton = styled.div`
   align-items: center;
   gap: 5px;
   background-color: var(--primary);
-  width: 170px;
+  width: 180px;
   height: 30px;
   color: var(--white);
   border-radius: 8px;
   cursor: pointer;
 `;
 
-const TableAddButton = ({ text, type }) => {
+const TableAddButton = ({ btnText, type }) => {
   const context = useContext(Context);
   const { setIsAddFormContractsOpen, setIsAddFormEdictsOpen, setIsAddFormRecordsOpen, setIsAddFormArchiveOpen } = context;
   const settingFunc =
-    type === "addContract"
+    type === "contracts"
       ? setIsAddFormContractsOpen
-      : type === "addEdicts"
+      : type === "edicts"
       ? setIsAddFormEdictsOpen
-      : type === "addRecord"
+      : type === "records"
       ? setIsAddFormRecordsOpen
-      : type === "addArchive"
+      : type === "archive"
       ? setIsAddFormArchiveOpen
       : "";
   return (
     <StyledTableAddButton onClick={() => settingFunc(true)}>
       <FontAwesomeIcon icon={faPlus} />
-      <p>{text}</p>
+      <p>{btnText}</p>
     </StyledTableAddButton>
   );
 };

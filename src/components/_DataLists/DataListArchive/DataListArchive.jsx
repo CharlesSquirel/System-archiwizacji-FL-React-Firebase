@@ -4,16 +4,15 @@ import { setBaner } from "../../../utils/setBaner";
 import { ref, remove } from "firebase/database";
 import { Link } from "react-router-dom";
 import { db } from "../../../utils/firebase";
-import { StyledDataList, StyledButtonBox, StyledCell, StyledTableHeader, StyledTable, StyledRow, StyledDataButton } from "./StyledDataList.jsx";
+import { StyledDataList, StyledButtonBox, StyledCell, StyledTableHeader, StyledTable, StyledRow, StyledDataButton } from "../StyledDataList.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import TableAddButton from "../../TableAddButton/TableAddButton";
-import { StyledTableHead } from "../../GlobalStyle/GlobalComponents";
-import SearchBarArchive from "../../_SearchBars/SearchBarArchive/SearchBarArchive";
+import TableHead from "./TableHead/TableHead";
+import Banner from "../../Banner/Banner";
 
 function DataListArchive() {
   const context = useContext(Context);
-  const { credentialsArchive, setDeleteBaner } = context;
+  const { credentialsArchive, setDeleteBaner, addBaner, deleteBaner, editBaner } = context;
   const handleDelete = (index) => {
     // obsługa kasowania wpisu
     const confirm = window.confirm("Czy na pewno chcesz to usunąć?");
@@ -31,10 +30,10 @@ function DataListArchive() {
   return (
     <>
       <StyledDataList>
-        <StyledTableHead>
-          <SearchBarArchive />
-          <TableAddButton text="Dodaj pozycję" type="addArchive" />
-        </StyledTableHead>
+      {addBaner && <Banner text="Poprawnie dodano do bazy danych" />}
+      {deleteBaner && <Banner text="Poprawnie usunięto z bazy danych" />}
+      {editBaner && <Banner text="Poprawnie zmieniono dane" />}
+        <TableHead btnText="Dodaj pozycję" type="archive" />
         <StyledTable>
           <thead>
             <StyledTableHeader>
